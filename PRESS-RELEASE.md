@@ -1,4 +1,4 @@
-EtherList
+# EtherList #
 
 Trustless decentralized marketplace with smart contracts.
 
