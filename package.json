@@ -1,0 +1,21 @@
+{
+  "name": "EtherList",
+  "version": "1.0.0",
+  "description": "A reputation-based, transaction-oriented platform",
+  "main": "index.js",
+  "scripts": {
+    "start": "echo \"Error: npm start not configured yet\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EtherList/EtherList.git"
+  },
+  "keywords": [],
+  "author": "EtherList",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EtherList/EtherList/issues"
+  },
+  "homepage": "https://github.com/EtherList/EtherList#readme"
+}
