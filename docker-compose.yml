@@ -1,0 +1,16 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - postgres
+    # entrypoint: node
+    command: nodemon -v
+    environment:
+      - DEBUG=0
+  postgres:
+    image: postgres
