@@ -9,8 +9,9 @@ services:
     depends_on:
       - postgres
     # entrypoint: node
-    command: nodemon -v
+    command: npm start
     environment:
+      - PORT=80
       - DEBUG=0
   postgres:
     image: postgres

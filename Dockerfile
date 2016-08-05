@@ -5,13 +5,14 @@ MAINTAINER EtherList <cholmgreen@gmail.com>
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # Install project dependencies
-RUN mkdir -p /usr/src
-WORKDIR /usr/src
-COPY package.json /usr/src/package.json
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+COPY package.json /usr/src/app/package.json
 
 # Install Node and project deps.
 RUN npm install -g nodemon \
-  && npm install
+  && npm install \
+  && npm install -g webpack
 
 # Expose port 80 (http)
 EXPOSE 80
