@@ -1,11 +1,16 @@
 module.exports = function(express, passport) {
   var routes = express.Router();
+
+  routes.get('/', function(req, res) {
+    res.send('ok');
+  });
+
   routes.get('/auth', passport.authenticate('facebook', {
     successRedirect: '/',
-    failureRedirect: '/login.html'
+    failureRedirect: '/login'
   }));
 
-  routes.get('/auth/return', passport.authenticate('facebook', {
+  routes.get('/auth/facebook/callback', passport.authenticate('facebook', {
     successRedirect: '/',
     failureRedirect: '/login'
   }));
@@ -15,10 +20,4 @@ module.exports = function(express, passport) {
     res.redirect('/');
   });  
 
-  function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-      return next();
-    }
-    res.redirect('/login');
-  }
 }

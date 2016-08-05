@@ -4,10 +4,16 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 passport.use(new FacebookStrategy({
   clientID: process.env.FB_ID,
   clientSecret: process.env.FB_SECRET,
-  callbackURL: '/auth/return'
+  callbackURL: '/auth/facebook/callback'
 },
 function(accessToken, refreshToken, profile, done){
-  //define what to do, given that we don't store users in a database
+
+  User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+    if (err) {
+      return console.error(err);
+    }
+    return done(err, user);
+  });
 
 }
 ));
@@ -19,6 +25,14 @@ passport.deserializeUser((id, done) => {
  //define what to do, given that we don't store users in a database
 });
 
+function isAuth(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/login');
+}
+
 module.exports = {
-  passport
+  passport,
+  isAuth
 };
