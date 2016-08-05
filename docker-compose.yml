@@ -11,6 +11,8 @@ services:
     # entrypoint: node
     command: npm start
     environment:
+      - FB_ID=$FB_ID
+      - FB_SECRET=$FB_SECRET
       - PORT=80
       - DEBUG=0
   postgres:
