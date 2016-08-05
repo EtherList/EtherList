@@ -4,7 +4,7 @@
   "description": "A reputation-based, transaction-oriented platform",
   "main": "index.js",
   "scripts": {
-    "start": "echo \"Error: npm start not configured yet\" && exit 1",
+    "start": "webpack --progress --colors --watch & nodemon server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,5 +17,19 @@
   "bugs": {
     "url": "https://github.com/EtherList/EtherList/issues"
   },
-  "homepage": "https://github.com/EtherList/EtherList#readme"
+  "homepage": "https://github.com/EtherList/EtherList#readme",
+  "dependencies": {
+    "babel-core": "^6.13.0",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.13.0",
+    "babel-preset-react": "^6.11.1",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "morgan": "^1.7.0",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0"
+  },
+  "devDependencies": {
+    "webpack": "^1.13.1"
+  }
 }
