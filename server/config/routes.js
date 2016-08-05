@@ -5,10 +5,7 @@ module.exports = function(express, passport) {
     res.send('ok');
   });
 
-  routes.get('/auth', passport.authenticate('facebook', {
-    successRedirect: '/',
-    failureRedirect: '/login'
-  }));
+  routes.get('/auth/facebook', passport.authenticate('facebook'));
 
   routes.get('/auth/facebook/callback', passport.authenticate('facebook', {
     successRedirect: '/',
@@ -19,5 +16,5 @@ module.exports = function(express, passport) {
     req.logout();
     res.redirect('/');
   });  
-
+  return routes;
 }

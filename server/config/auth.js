@@ -10,9 +10,9 @@ function(accessToken, refreshToken, profile, done){
 
   User.findOrCreate({ facebookId: profile.id }, function (err, user) {
     if (err) {
-      return console.error(err);
+      return done(err);
     }
-    return done(err, user);
+    return done(null, user);
   });
 
 }
