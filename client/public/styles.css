@@ -1,0 +1,15 @@
+footer {
+  position: relative;
+  margin-top: 0px; /* negative value of footer height */
+  height: 50px;
+  clear:both;
+  padding: 20px 20px;
+  background-color: rgb(44, 62, 80);
+  color: white;
+  border-radius: 5px;
+} 
+
+.signIn, .signUp{
+  padding: 10px;
+  margin: 10px;
+}
