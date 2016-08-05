@@ -1,9 +1,12 @@
 import React from 'react';
+import {Link} from 'react-router';
 
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
   }
+
+
 
   render() {
     return (
@@ -14,23 +17,30 @@ export default class Login extends React.Component {
             <fieldset>
 
               <div className="form-group">
-                <label className="control-label">Username</label>
-                <div>
-                  <input type="text" className="form-control" placeholder="Username" onChange={this.handleUsernameChange}/>
-                </div>
-              </div>
+                <label className="control-label">
+                  Username
+                </label>
+                <input type="text" className="form-control" 
+                  placeholder="Username" onChange={this.handleUsernameChange}/>
 
-              <div className="form-group">
-                <label className="control-label">Password</label>
-                <div>
-                  <input type="password" className="form-control" placeholder="Password" onChange={this.handlePasswordChange}/>
-                </div>
+                <label className="control-label">
+                  Password
+                </label>
+                <input type="password" className="form-control" 
+                  placeholder="Password"/>
               </div>
 
               <div>
-                <button className='signIn btn btn-success' type='button' onClick={this.handleSubmit}>Sign In!</button>
-                OR                
-                <button className='signUp btn btn-danger'>Sign Up!</button>
+                <button className='signIn btn btn-success' type='button' 
+                  onClick={this.handleSubmit}>
+                  Sign In!
+                </button>
+
+                OR
+
+                <Link to="/signup"><button className='signUp btn btn-danger'>
+                    Go to Sign Up!
+                </button></Link>
               </div>
 
             </fieldset>
