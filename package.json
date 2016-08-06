@@ -4,7 +4,7 @@
   "description": "A reputation-based, transaction-oriented platform",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --progress --colors --watch & nodemon server/server.js",
+    "start": "webpack --progress --colors --watch & nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -35,6 +35,11 @@
     "sequelize": "^3.23.6"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.0.1",
+    "supertest": "^2.0.0",
+    "supertest-chai": "0.0.8",
     "webpack": "^1.13.1"
   }
 }
