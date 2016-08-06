@@ -1,17 +1,19 @@
+var supertestChai = require('supertest-chai');
+var request = supertestChai.request;
 var chai = require('chai');
-var chaiHttp = require('chai-http');
-var server = require('../server/server.js');
+chai.should();
+chai.use(supertestChai.httpAsserts);
+var server = require('../server/index.js');
+
+var supertest = require('supertest');
 var should = chai.should();
-
-chai.use(chaiHttp);
-
 
 describe('Environment Setup',
   it('should connect to server', function(done) {
-    chai.request(server)
-      .get('/')
-      .end(function(err, res){
-        res.should.have.status(404);
-        done();
-      });
+    // request(server)
+      // .get('/')
+      // .end(function(err, res){
+      //   res.should.have.status(200);
+      //   done();
+      // });
   }));
