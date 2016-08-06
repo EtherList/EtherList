@@ -10,10 +10,10 @@ var should = chai.should();
 
 describe('Environment Setup',
   it('should connect to server', function(done) {
-    // request(server)
-      // .get('/')
-      // .end(function(err, res){
-      //   res.should.have.status(200);
-      //   done();
-      // });
+    request(server)
+      .get('/')
+      .end(function(err, res){
+        res.should.have.status(200);
+        done();
+      });
   }));

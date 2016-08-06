@@ -12,7 +12,8 @@ COPY package.json /usr/src/app/package.json
 # Install Node and project deps.
 RUN npm install -g nodemon \
   && npm install \
-  && npm install -g webpack
+  && npm install -g webpack \
+  && npm install -g mocha
 
 # Expose port 80 (http)
 EXPOSE 80
