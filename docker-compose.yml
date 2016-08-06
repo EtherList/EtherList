@@ -11,7 +11,12 @@ services:
     # entrypoint: node
     command: npm start
     environment:
+      - FB_ID=$FB_ID
+      - FB_SECRET=$FB_SECRET
       - PORT=80
       - DEBUG=0
   postgres:
     image: postgres
+    volumes:
+      - ./docker:/docker-entrypoint-initdb.d
+    command: /docker-entrypoint.sh postgres
