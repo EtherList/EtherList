@@ -1,5 +1,6 @@
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
+var User = require('../db/userModel');
 
 passport.use(new FacebookStrategy({
   clientID: process.env.FB_ID,
@@ -7,12 +8,14 @@ passport.use(new FacebookStrategy({
   callbackURL: '/auth/facebook/callback'
 },
 function(accessToken, refreshToken, profile, done){
-
-  User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-    if (err) {
-      return done(err);
-    }
-    return done(null, user);
+  console.log('auth ', profile);
+  User.findOrCreate({where: { facebookId: profile.id }, defaults: {
+    wallet: 'none', privateKey: 'none', imageURL: 'none'
+  }}).spread(function(user, created) {
+    console.log('user ', user.get({
+      plain: true
+    }))
+    console.log('created ',created);
   });
 
 }
@@ -23,6 +26,9 @@ passport.serializeUser((id, done) => {
 });
 passport.deserializeUser((id, done) => {
  //define what to do, given that we don't store users in a database
+ User.findById(id).then(user => {
+  done(null, user);
+ });
 });
 
 function isAuth(req, res, next) {

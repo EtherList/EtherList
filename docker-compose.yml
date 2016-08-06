@@ -17,3 +17,6 @@ services:
       - DEBUG=0
   postgres:
     image: postgres
+    volumes:
+      - ./docker:/docker-entrypoint-initdb.d
+    command: /docker-entrypoint.sh postgres
