@@ -1,32 +1,19 @@
 import React from 'react';
 import Category from './Category.jsx';
-import { outerDivStyle } from '../styles/categoryStyle.js';
-
-const calculateDiameter = (numPosts) => {
-console.log(numPosts);
-}
+import { outerDivStyle, screenWidth, screenHeight } from '../styles/categoryStyle.js';
 
 export default class Categories extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
           categories: ['achernar',
-                            'unperfected',
-                            'vascularity',
-                            'revote',
-                            'campsheeting',
-                            'concordantly',
-                            'ipiales',
-                            'diffident',
-                            'nonbending',
-                            'centrist',
-                            'orangeist',
-                            'counteroffensive',
-                            'dishevelling',
-                            'uncorseted',
-                            'depressively',
-                            'nondietetic',
-                            'lagomorphic']
+                      'unperfected',
+                      'vascularity',
+                      'campsheeting',
+                      'concordantly',
+                      'nonbending',
+                      'orangeist',
+                      'counteroffensive']
         }
 
     }
@@ -34,8 +21,8 @@ export default class Categories extends React.Component {
         return (
           <div style={outerDivStyle}>
           {this.state.categories.map((category) => {
-            console.log(category);
-            return (<Category key={category} name={category}></Category>);
+            var cx = Math.floor(Math.random() * (screenWidth) + )
+            return (<Category key={category} name={category} cx={cx} cy={cy}></Category>);
           })}
         </div>
         );
