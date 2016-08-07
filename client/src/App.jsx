@@ -11,10 +11,10 @@ import {Router, Route, browserHistory, IndexRoute, replace} from 'react-router';
 ReactDOM.render((
   <Router history={browserHistory}>
     <Route path="/" component={Main}>
-      <IndexRoute component={Login} />
+      <IndexRoute component={Dashboard} />
+      <Route path="home" component={Dashboard} />
       <Route path="login" component={Login} />
       <Route path="signup" component={SignUp} />
-      <Route path="home" component={Dashboard} onEnter={Utils.requireAuth} />
       <Route path="listings" component={Listings} onEnter={Utils.requireAuth} />
     </Route>
   </Router>
