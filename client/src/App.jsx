@@ -5,6 +5,7 @@ import Login from './pages/Login.jsx';
 import SignUp from './pages/SignUp.jsx';
 import Utils from './utils/RouteHelpers.jsx';
 import Dashboard from './pages/Dashboard.jsx';
+import Listings from './pages/Listings.jsx';
 import {Router, Route, browserHistory, IndexRoute, replace} from 'react-router';
 
 ReactDOM.render((
@@ -14,6 +15,7 @@ ReactDOM.render((
       <Route path="login" component={Login} />
       <Route path="signup" component={SignUp} />
       <Route path="home" component={Dashboard} onEnter={Utils.requireAuth} />
+      <Route path="listings" component={Listings} onEnter={Utils.requireAuth} />
     </Route>
   </Router>
 ), document.getElementById('app'));
