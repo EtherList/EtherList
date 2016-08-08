@@ -1,9 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import ListingsTable from './components/ListingsTable.jsx';
-import { Button, Modal } from 'react-bootstrap';
-import { DateField } from 'react-date-picker'
-
+import CustomModal from './components/Modal.jsx';
 
 export default class Listings extends React.Component {
   constructor(props) {
@@ -160,54 +158,10 @@ export default class Listings extends React.Component {
               Add Listing!
             </button>
 
-            <Modal
-              show={this.state.show}
-              onHide={this.closeModal.bind(this)}
-              container={this}
-              aria-labelledby="contained-modal-title"
-            >
-              <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title">
-                  Add Listing
-                </Modal.Title>
-              </Modal.Header>
-
-              <Modal.Body>
-                Add your listing here:
-                <div className="form-group">
-                  <label className="control-label">Name</label>
-                  <input type="text" className="form-control" placeholder="Name" 
-                    value={this.state.username} onChange={this.handleChange.bind(this)}/>
-
-                  <label className="control-label">Description</label>
-                  <textarea className="form-control" placeholder="Enter a description of your listing here..." rows="3" id="comment"></textarea>
-
-                  <label className="control-label">Location</label>
-                  <input type="text" className="form-control" placeholder="Location" 
-                    value={this.state.username} onChange={this.handleChange.bind(this)}/>
-                </div>
-
-                <label className="control-label">Date</label>
-                <div className="row">
-                  <DateField dateFormat="YYYY-MM-DD HH:mm" date={this.state.addListing.time} />
-                </div>
-
-                <div className="form-group">
-                  <label className="control-label">Price</label>
-                  <input type="text" className="form-control" placeholder="Price" 
-                    value={this.state.username} onChange={this.handleChange.bind(this)}/>
-
-                  <label className="control-label">Terms</label>
-                  <textarea className="form-control" rows="3" placeholder="Enter a description of your terms here..." id="comment"></textarea>
-                </div>
-              </Modal.Body>
-
-              <Modal.Footer>
-                <Button className="btn btn-success" onClick={this.closeModal.bind(this)}>Add Listing</Button>
-                <Button className="btn btn-danger" onClick={this.closeModal.bind(this)}>Cancel</Button>
-              </Modal.Footer>
-            </Modal>
-
+            <CustomModal addListing={this.state.addListing} show={this.state.show}
+              openModal={this.openModal.bind(this)} closeModal={this.closeModal.bind(this)}
+              handleChange={this.handleChange.bind(this)}
+            />
           </div>
         </div>
 
