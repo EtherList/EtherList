@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router';
 import ListingsTable from './components/ListingsTable.jsx';
 import ListingPageNavigation from './components/ListingPageNavigation.jsx';
 
@@ -14,7 +13,7 @@ export default class Listings extends React.Component {
         name: 'test',
         description: 'test',
         location: 'test',
-        time: this.createDateDefault(),
+        time: 'test',
         reputation: 'test',
         price: 'test',
         terms: 'test' 
