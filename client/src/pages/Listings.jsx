@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import ListingsTable from './components/ListingsTable.jsx';
-import CustomModal from './components/Modal.jsx';
+import ListingPageNavigation from './components/ListingPageNavigation.jsx';
 
 export default class Listings extends React.Component {
   constructor(props) {
@@ -107,63 +107,22 @@ export default class Listings extends React.Component {
 
   }
 
-  createDateDefault() {
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1;
-    var yyyy = today.getFullYear();
-
-    if(dd<10) {
-        dd='0'+dd
-    } 
-
-    if(mm<10) {
-        mm='0'+mm
-    } 
-
-    today = mm + '/' + dd + '/' + yyyy + ' 12:00';
-  }
-
-  // calendarOnChange(dateString, { dateMoment, timestamp }) => {
-  //   this.setState({addListing.date, dateString})
-  // }
-
   render() {
     return (
       <div className="col-xs-12">
-        
-        <div className="row col-xs-12">
-          <h3 className="text-center">
-            {'Search listings for ' + this.state.category}
-          </h3>
-        </div>
+        <h3 className="text-center row">
+          {'Search listings for ' + this.state.category}
+        </h3>
 
-        <div className="row text-center transparentBG col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8">
-          <p>Do you want to...</p>
-          <div className="col-xs-8">
-            <p>Select new category?</p>
-            <select className="form-control" onChange={this.changeCategory.bind(this)}>
-              {
-                this.state.categories.map(function(category) {
-                  return <option key={category} value={category}>{category}</option>
-                })
-              }
-            </select>
-          </div>
-
-          <div className="col-xs-4">
-            <p>Add a new listing?</p>
-
-            <button className="btn btn-success btn-sm" onClick={this.openModal.bind(this)}>
-              Add Listing!
-            </button>
-
-            <CustomModal addListing={this.state.addListing} show={this.state.show}
-              openModal={this.openModal.bind(this)} closeModal={this.closeModal.bind(this)}
-              handleChange={this.handleChange.bind(this)}
-            />
-          </div>
-        </div>
+        <ListingPageNavigation 
+          categories={this.state.categories} 
+          addListing={this.state.addListing} 
+          show={this.state.show}
+          changeCategory={this.changeCategory.bind(this)} 
+          closeModal={this.closeModal.bind(this)}
+          openModal={this.openModal.bind(this)} 
+          handleChange={this.handleChange.bind(this)}
+        />
 
         <ListingsTable listings={this.state.listings} />
       </div>
