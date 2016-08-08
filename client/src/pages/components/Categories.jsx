@@ -6,14 +6,14 @@ export default class Categories extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          categories: ['achernar',
-                      'unperfected',
-                      'vascularity',
-                      'campsheeting',
-                      'concordantly',
-                      'nonbending',
-                      'orangeist',
-                      'counteroffensive']
+          categories: [{ name: 'achernar', totalPosts: 1},
+                      { name: 'unperfected', totalPosts: 1},
+                      { name:'vascularity', totalPosts: 1},
+                      { name:'campsheeting', totalPosts: 1},
+                      { name:'concordantly', totalPosts: 1},
+                      { name:'nonbending', totalPosts: 1},
+                      { name:'orangeist', totalPosts: 1},
+                      { name:'counteroffensive', totalPosts: 1}]
         }
 
     }
@@ -21,8 +21,7 @@ export default class Categories extends React.Component {
         return (
           <div style={outerDivStyle}>
           {this.state.categories.map((category) => {
-            var cx = Math.floor(Math.random() * (screenWidth) + )
-            return (<Category key={category} name={category} cx={cx} cy={cy}></Category>);
+            return (<Category key={category.name} name={category.name} cx='50' cy='50'></Category>);
           })}
         </div>
         );

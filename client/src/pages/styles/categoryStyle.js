@@ -1,8 +1,9 @@
-export const screenWidth = 1000;
-export const screenHeight = 500;
+export const screenWidth = 500;
+export const screenHeight = 300;
 
 export const skateSpotStyle = {
   textAlign: 'center',
+  color: 'black',
   fontFamily: 'Helvetica-Neue',
   fontSize: 16,
   cursor: 'pointer'
@@ -32,3 +33,4 @@ export const colors = {
   orangeist: '#FFD700',
   counteroffensive: '#FFA07A'
 };
+
