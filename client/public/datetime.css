@@ -2555,9 +2555,9 @@
   .react-date-picker__month-view--theme-default .react-date-picker__month-view-day--next-month {
     color: #b3b3b3; }
   .react-date-picker__month-view--theme-default .react-date-picker__month-view-day--weekend-highlight {
-    color: red; }
+    color: black; }
     .react-date-picker__month-view--theme-default .react-date-picker__month-view-day--weekend-highlight.react-date-picker__month-view-day--prev-month, .react-date-picker__month-view--theme-default .react-date-picker__month-view-day--weekend-highlight.react-date-picker__month-view-day--next-month {
-      color: #d68e8e; }
+      color: #b3b3b3; }
   .react-date-picker__month-view--theme-default .react-date-picker__month-view-day--today-highlight {
     color: magenta; }
     .react-date-picker__month-view--theme-default .react-date-picker__month-view-day--today-highlight.react-date-picker__month-view-day--prev-month, .react-date-picker__month-view--theme-default .react-date-picker__month-view-day--today-highlight.react-date-picker__month-view-day--next-month {
