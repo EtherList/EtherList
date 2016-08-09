@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Main from './pages/Main.jsx';
 import Login from './pages/Login.jsx';
 import SignUp from './pages/SignUp.jsx';
-import Utils from './utils/RouteHelpers.jsx';
+import Utils from './utils/Utils.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Listings from './pages/Listings.jsx';
 import {Router, Route, browserHistory, IndexRoute, replace} from 'react-router';
