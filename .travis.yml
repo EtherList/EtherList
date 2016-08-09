@@ -1,3 +1,20 @@
+# http://graysonkoonce.com/managing-docker-and-docker-compose-versions-on-travis-ci/
+
+sudo: required
+services:
+  - docker
+
 language: node_js
 node_js:
   - "6"
+
+env:
+  DOCKER_COMPOSE_VERSION: 1.8.0
+
+before_install:
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+
+script:
+  - docker-compose run web npm test

@@ -7,7 +7,8 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 # Install project dependencies
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-COPY package.json /usr/src/app/package.json
+# COPY package.json /usr/src/app/package.json
+COPY . /usr/src/app
 
 # Install Node and project deps.
 RUN npm install -g nodemon \
