@@ -3,8 +3,8 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var User = require('../db/userModel');
 
 passport.use(new FacebookStrategy({
-  clientID: process.env.FB_ID,
-  clientSecret: process.env.FB_SECRET,
+  clientID: process.env.FB_ID || 'INVALID_FB_ID',
+  clientSecret: process.env.FB_SECRET || 'INVALID_FB_SECRET',
   callbackURL: '/auth/facebook/callback'
 },
 function(accessToken, refreshToken, profile, done){
