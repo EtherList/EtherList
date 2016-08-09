@@ -18,6 +18,11 @@ export const fakeCategories = [{ id: 1, name: 'achernar', totalPosts: 1},
                       { id: 15, name:'orangeist', totalPosts: 20},
                       { id: 16, name:'counteroffensive', totalPosts: 120}];
 
+export const pageStyle = {
+   backgroundImage: 'url(http://orig03.deviantart.net/b575/f/2012/083/7/f/blurry_lights_by_empegz-d4tu18a.jpg)',
+   opacity: 0.5
+};
+
 export const categoryStyle = {
   textAlign: 'center',
   transition: 'all 2.5s ease',

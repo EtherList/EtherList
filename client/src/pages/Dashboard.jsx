@@ -1,5 +1,6 @@
 import React from 'react';
 import Categories from './components/Categories.jsx';
+import { pageStyle } from './styles/categoryStyle.js';
 
 export default class Dashboard extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ export default class Dashboard extends React.Component {
 
   render() {
     return (
-      <div id='dashboard'>
+      <div id='dashboard' style={pageStyle}>
       <Categories />
       </div>
     );

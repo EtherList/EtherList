@@ -1,6 +1,5 @@
 import React from 'react';
 import { screenWidth, screenHeight, colors, fakeCoords, CategoryHoverStyle, categoryStyle, outerDivStyle, baseSize } from '../styles/categoryStyle.js';
-import { Link } from 'react-router';
 
 var style = categoryStyle;
 
@@ -64,7 +63,6 @@ export default class Category extends React.Component {
 
       <circle cx={this.props.cx} cy={this.props.cy} r={this.state.radius} fill={this.state.color} className={this.props.name} cursor='default'></circle>
       <text cursor='default' fill='black' x={this.props.cx} y={this.props.cy} >{this.props.name}</text>
-      <Link to='/listings'></Link>
       </g>
       );
   }
