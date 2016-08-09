@@ -5,51 +5,53 @@ export const baseSize = 100;
 
 export const fakeCategories = [{ id: 1, name: 'achernar', totalPosts: 1},
                       { id: 2, name: 'unperfected', totalPosts: 100},
-                      { id: 5, name:'vascularity', totalPosts: 10},
-                      { id: 8, name:'campsheeting', totalPosts: 57},
-                      { id: 0, name:'concordantly', totalPosts: 40},
-                      { id: 35, name:'nonbending', totalPosts: 30},
-                      { id: 27, name:'orangeist', totalPosts: 120},
-                      { id: 11, name:'counteroffensive', totalPosts: 200}];
+                      { id: 3, name:'vascularity', totalPosts: 10},
+                      { id: 4, name:'campsheeting', totalPosts: 57},
+                      { id: 5, name:'concordantly', totalPosts: 40},
+                      { id: 6, name:'nonbending', totalPosts: 30},
+                      { id: 7, name:'orangeist', totalPosts: 120},
+                      { id: 8, name:'counteroffensive', totalPosts: 200}, 
+                      { id: 9, name: 'achernar', totalPosts: 10},
+                      { id: 10, name: 'unperfected', totalPosts: 100},
+                      { id: 12, name:'campsheeting', totalPosts: 57},
+                      { id: 14, name:'nonbending', totalPosts: 30},
+                      { id: 15, name:'orangeist', totalPosts: 20},
+                      { id: 16, name:'counteroffensive', totalPosts: 120}];
 
 export const categoryStyle = {
   textAlign: 'center',
+  transition: 'all 2.5s ease',
   zIndex: -1,
-  color: 'black',
-  fontFamily: 'Helvetica-Neue',
   fontSize: 16,
   cursor: 'pointer',
   opacity: 0.5
 };
 
 export const CategoryHoverStyle = {
+  transition: 'all 0.25s ease',
   zIndex: 100,
-  textAlign: 'center',
-  fontFamily: 'Helvetica-Neue',
   fontSize: 20,
   cursor: 'pointer',
-  opacity: 1
+  opacity: 1.2
 };
 
 export const outerDivStyle = {
   width: screenWidth,
-  height: screenHeight,
-  fill: 'black'
+  height: screenHeight
 };
 
+//52 pre-selected cool colors for categories
+export const colors = ['#FF82AB', '#FF1493', '#836FFF', '#1E90FF', 
+ '#98F5FF', '#98FB98', '#FFD700', '#FFA07A', '#DC143C', '#87CEFA',
+ '#FF6347', '#FFFF00', '#ADFF2F', '#7B68EE', '#00FF7F', '#00CED1',
+ '#00BFFF', '#DDA0DD', '#FFE4C4', '#F4A460', '#778899', '#008000',
+ '#EC7063', '#2980B9', '#E32636', '#8DB600', '#007FFF', '#FFBF00',
+ '#5D8AA8', '#87A96B', '#A1CAF1', '#F4C2C2', '#98777B', '#DE5D83',
+ '#BF94E4', '#08E8DE', '#92A1CF', '#FFA700', '#E34234', '#CD5C5C',
+ '#0047AB', '#FF3800', '#FBEC5D', '#008B8B', '#FF8C00', '#E75480',
+ '#FFA812', '#FC8EAC', '#F7E98E', '#50C878', '#B2EC5D', '#CCCCFF'];
 
-export const colors = {
-  achernar: '#FF82AB',
-  unperfected: '#FF1493',
-  vascularity: '#836FFF',
-  campsheeting: '#1E90FF',
-  concordantly: '#98F5FF',
-  nonbending: '#98FB98',
-  orangeist: '#FFD700',
-  counteroffensive: '#FFA07A'
-};
-
-export const coords = [ 
+export const fakeCoords = [ 
   { x: 485, y: 34 },
   { x: 93, y: 155 },
   { x: 585, y: 109 },
@@ -57,7 +59,7 @@ export const coords = [
   { x: 209, y: 271 },
   { x: 142, y: 129 },
   { x: 502, y: 385 },
-  { x: 396, y: 382 },
+  { x: 396, y: 302 },
   { x: 226, y: 180 },
   { x: 111, y: 280 },
   { x: 577, y: 264 },
