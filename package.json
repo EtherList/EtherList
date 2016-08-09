@@ -4,7 +4,8 @@
   "description": "A reputation-based, transaction-oriented platform",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --progress --colors --watch & nodemon server/index.js",
+    "start": "webpack -p && node server/index.js",
+    "start:dev": "webpack --progress --colors --watch & nodemon server/index.js",
     "test": "mocha test"
   },
   "repository": {

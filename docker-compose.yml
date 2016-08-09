@@ -9,7 +9,7 @@ services:
     depends_on:
       - postgres
     # entrypoint: node
-    command: npm start
+    command: npm start:dev
     environment:
       - FB_ID=$FB_ID
       - FB_SECRET=$FB_SECRET
