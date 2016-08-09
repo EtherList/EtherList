@@ -9,14 +9,14 @@ export default class Listings extends React.Component {
       category: 'CategoryName',
       show: false,
       addListing: {
-        key: 'test',
-        name: 'test',
-        description: 'test',
-        location: 'test',
-        time: 'test',
-        reputation: 'test',
-        price: 'test',
-        terms: 'test' 
+        key: '',
+        name: '',
+        description: '',
+        location: '',
+        time: '',
+        reputation: '',
+        price: '',
+        terms: '' 
       },
       categories: ['whatever', 'hello', 'thisWorks', 'tests\'n\'stuff'],
       listings: [{
@@ -102,8 +102,23 @@ export default class Listings extends React.Component {
     this.setState({show: false});
   }
 
-  handleChange() {
+  handleChange(e) {
+    var setStateObj = this.state.addListing;
+    setStateObj[e.target.name] = e.target.value;
+  }
 
+  resetAddListing() {
+    this.setState({addListing: {
+      key: '',
+      name: '',
+      description: '',
+      location: '',
+      time: '',
+      reputation: '',
+      price: '',
+      terms: '' 
+    }});
+    setTimeout(function() { console.log('this.state.addListing is', this.state.addListing) }.bind(this), 1000);
   }
 
   render() {
@@ -121,6 +136,7 @@ export default class Listings extends React.Component {
           closeModal={this.closeModal.bind(this)}
           openModal={this.openModal.bind(this)} 
           handleChange={this.handleChange.bind(this)}
+          resetAddListing={this.resetAddListing.bind(this)}
         />
 
         <ListingsTable listings={this.state.listings} />

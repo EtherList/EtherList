@@ -14,10 +14,14 @@ export default class ListingPageNavigation extends React.Component {
 
         <div className="col-xs-8">
           <p>Select new category?</p>
-          <select className="form-control" onChange={this.props.changeCategory}>{
+          <select 
+            className="form-control" 
+            onChange={this.props.changeCategory}>
+            {
               this.props.categories.map(function(category) {
                 return <option key={category} value={category}>{category}</option>
-              })}
+              })
+            }
           </select>
         </div>
 
@@ -26,9 +30,13 @@ export default class ListingPageNavigation extends React.Component {
           <button className="btn btn-success btn-sm" onClick={this.props.openModal}>
             Add Listing!
           </button>
-          <CustomModal addListing={this.props.addListing} show={this.props.show}
-            openModal={this.props.openModal} closeModal={this.props.closeModal}
+          <CustomModal 
+            addListing={this.props.addListing} 
+            show={this.props.show}
+            openModal={this.props.openModal} 
+            closeModal={this.props.closeModal}
             handleChange={this.props.handleChange}
+            resetAddListing={this.props.resetAddListing}
           />
         </div>
       </div>
