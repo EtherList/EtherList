@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack --progress --colors --watch & nodemon server/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test"
   },
   "repository": {
     "type": "git",
