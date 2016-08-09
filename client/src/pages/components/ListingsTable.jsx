@@ -22,7 +22,7 @@ export default class ListingTable extends React.Component {
           </thead>
           <tbody>{
             this.props.listings.map(function(listing) {
-              return <tr key={listing.key}>
+              return <tr key={listing.id}>
                 <td>{listing.name}</td>
                 <td>{listing.description}</td>
                 <td>{listing.time}</td>

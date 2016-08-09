@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import AddListingForm from './AddListingForm.jsx';
-import $ from 'jquery';
+import Utils from '../../utils/Utils.jsx';
 
 export default class CustomModal extends React.Component {
   constructor(props) {
@@ -9,30 +9,18 @@ export default class CustomModal extends React.Component {
   }
 
   postData() {
-    var theListing = this.props.addListing;
-    var that = this.props;
-    $.ajax({
-      method: "POST",
-      url: 'http://localhost/newListing',
-      data: JSON.stringify(theListing),
-      contentType: "application/json",
-      dataType: 'json'
-    })
-    .done(function(data){
-      console.log('Successfully posted', data);
-      that.resetAddListing();
-      that.closeModal();
-    })
-    .fail(function(e){
-      console.log('post failed, error is', e);
-    });
+    this.props.addListing(this.props.newListing);
+    Utils.ajaxJSON('/listings', 'POST', JSON.stringify(this.props.newListing))
+    .done(this.props.resetNewListing.bind(this))
+    .done(this.props.toggleModal.bind(this))
+    .fail(e => console.log('post failed, error is', e));
   }
 
   render() {
     return (
       <Modal
         show={this.props.show}
-        onHide={this.props.closeModal}
+        onHide={this.props.toggleModal}
         container={this}
         aria-labelledby="contained-modal-title"
       >
@@ -45,7 +33,7 @@ export default class CustomModal extends React.Component {
         <Modal.Body>
           Add your listing here:
           <AddListingForm handleChange={this.props.handleChange} 
-            addListing={this.props.addListing}
+            newListing={this.props.newListing} addListing={this.props.addListing}
           />
         </Modal.Body>
 
@@ -59,7 +47,7 @@ export default class CustomModal extends React.Component {
           
           <Button 
             className="btn btn-danger" 
-            onClick={this.props.closeModal}
+            onClick={this.props.toggleModal}
           >
             Cancel
           </Button>

@@ -27,16 +27,16 @@ export default class ListingPageNavigation extends React.Component {
 
         <div className="col-xs-4">
           <p>Add a new listing?</p>
-          <button className="btn btn-success btn-sm" onClick={this.props.openModal}>
+          <button className="btn btn-success btn-sm" onClick={this.props.toggleModal}>
             Add Listing!
           </button>
           <CustomModal 
-            addListing={this.props.addListing} 
+            newListing={this.props.newListing} 
             show={this.props.show}
-            openModal={this.props.openModal} 
-            closeModal={this.props.closeModal}
+            toggleModal={this.props.toggleModal} 
             handleChange={this.props.handleChange}
-            resetAddListing={this.props.resetAddListing}
+            resetNewListing={this.props.resetNewListing}
+            addListing={this.props.addListing}
           />
         </div>
       </div>

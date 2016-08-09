@@ -22,7 +22,7 @@ export default class AddListingForm extends React.Component {
           onChange={this.props.handleChange} name="location" />
 
         <label className="control-label">Time</label>
-        <DateField className="form-control showWeekDayColors" dateFormat="YYYY-MM-DD hh:mm a"
+        <DateField className="form-control" dateFormat="YYYY-MM-DD hh:mm a"
           onChange={this.props.handleChange} name="time" />
 
         <label className="control-label">Price</label>
