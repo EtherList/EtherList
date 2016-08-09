@@ -8,4 +8,5 @@ module.exports = function(app, express) {
   app.use(bodyParser.json());
   app.use(express.static(__dirname + '/../../client/public'));
   app.use(routes(express, auth.passport));
+  // app.use(routes(listings, auth.passport)); <--Matt will refactor
 }

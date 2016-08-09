@@ -1,3 +1,5 @@
+var controller = require('./controller');
+
 module.exports = function(express, passport) {
   var routes = express.Router();
 
@@ -15,6 +17,9 @@ module.exports = function(express, passport) {
   routes.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');
-  });  
+  });
+
+  routes.post('/newListing', controller.newListing); //<-- post to 'listings'
+
   return routes;
 }
