@@ -19,7 +19,8 @@ module.exports = function(express, passport) {
     res.redirect('/');
   });
 
-  routes.post('/newListing', controller.newListing); //<-- post to 'listings'
+  routes.get('/listings', controller.listings.get);
+  routes.post('/listings', controller.listings.post);
 
   return routes;
 }

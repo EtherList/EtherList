@@ -1,9 +1,18 @@
 var model = require('./model');
 
-exports.newListing = function(req, res) {
-  return model.newListing(req.body).then(function(data) {
-    res.status(200).send(JSON.stringify(data));
-  }).catch(function(error) {
-    res.status(500).send('nope, model didn\'t work');
-  });
-}
+var success = (data, res) => res.status(200).send(data);
+var error = (error, res) => res.status(500).send(error);
+
+exports.listings = {
+  get: (req, res) => { 
+    model.listings.get() 
+    .then(data => success(data, res))
+    .catch(data => error(error, res));
+  },
+
+  post: (req, res) => {
+    model.listings.post(req.body)
+    .then(data => success(data, res))
+    .catch(data => error(error, res));
+  }
+};

@@ -1,6 +1,7 @@
 var db = require('../db/userModel');
 var Promise = require('bluebird').Promise;
 
-exports.newListing = function(newListing) {
-  return db.Listings.create(newListing);
+exports.listings = {
+  get: () => db.Listings.findAll(),
+  post: newListing => db.Listings.create(newListing)
 }
