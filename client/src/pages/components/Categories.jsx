@@ -12,7 +12,6 @@ export default class Categories extends React.Component {
           coordinates: generateCoords(20, screenWidth, screenHeight)
         }
 
-
     }
     render() {
         return (
@@ -28,5 +27,3 @@ export default class Categories extends React.Component {
         );
     }
 }
-
-

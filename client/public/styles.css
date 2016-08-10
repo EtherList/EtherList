@@ -1,5 +1,5 @@
 footer {
-  position: fized;
+  position: relative;
   margin-top: 0px; /* negative value of footer height */
   bottom: 0;
   height: 50px;
@@ -44,3 +44,4 @@ thead {
 .modal-container .modal, .modal-container .modal-backdrop {
   position: absolute;
 }
+

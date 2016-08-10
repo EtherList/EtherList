@@ -7,7 +7,7 @@ export default class Foot extends React.Component {
 
   render() {
     return (
-      <footer id="footer">
+      <footer id="footer" className="container-fluid">
         © 2016 Team Ether, Inc.
       </footer>
     )

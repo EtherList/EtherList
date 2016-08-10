@@ -26,7 +26,7 @@ export const pageStyle = {
 export const categoryStyle = {
   textAlign: 'center',
   transition: 'all 2.5s ease',
-  zIndex: -1,
+  zIndex: 1,
   fontSize: 16,
   cursor: 'pointer',
   opacity: 0.5
@@ -45,6 +45,24 @@ export const outerDivStyle = {
   height: screenHeight
 };
 
+export const userProfileStyle = {
+  width: screenWidth,
+  height: screenHeight,
+  float: 'right',
+  fontSize: 16,
+  textAlign: 'center',
+  margin: 20
+};
+
+export const userpicStyle = {
+  width: 150,
+  height: 150,
+  float: 'left',
+  borderRadius: 75,
+  textAlign: 'center',
+  margin: 20
+};
+
 //52 pre-selected cool colors for categories
 export const colors = ['#FF82AB', '#FF1493', '#836FFF', '#1E90FF', 
  '#98F5FF', '#98FB98', '#FFD700', '#FFA07A', '#DC143C', '#87CEFA',
@@ -56,54 +74,4 @@ export const colors = ['#FF82AB', '#FF1493', '#836FFF', '#1E90FF',
  '#0047AB', '#FF3800', '#FBEC5D', '#008B8B', '#FF8C00', '#E75480',
  '#FFA812', '#FC8EAC', '#F7E98E', '#50C878', '#B2EC5D', '#CCCCFF'];
 
-export const fakeCoords = [ 
-  { x: 485, y: 34 },
-  { x: 93, y: 155 },
-  { x: 585, y: 109 },
-  { x: 96, y: 38 },
-  { x: 209, y: 271 },
-  { x: 142, y: 129 },
-  { x: 502, y: 385 },
-  { x: 396, y: 302 },
-  { x: 226, y: 180 },
-  { x: 111, y: 280 },
-  { x: 577, y: 264 },
-  { x: 153, y: 363 },
-  { x: 663, y: 284 },
-  { x: 78, y: 30 },
-  { x: 259, y: 111 },
-  { x: 142, y: 314 },
-  { x: 1, y: 231 },
-  { x: 488, y: 288 },
-  { x: 313, y: 169 },
-  { x: 409, y: 120 },
-  { x: 324, y: 276 },
-  { x: 410, y: 158 },
-  { x: 435, y: 54 },
-  { x: 492, y: 137 },
-  { x: 551, y: 39 },
-  { x: 43, y: 278 },
-  { x: 376, y: 365 },
-  { x: 607, y: 326 },
-  { x: 149, y: 361 },
-  { x: 504, y: 393 },
-  { x: 279, y: 356 },
-  { x: 449, y: 90 },
-  { x: 515, y: 130 },
-  { x: 36, y: 42 },
-  { x: 199, y: 239 },
-  { x: 44, y: 154 },
-  { x: 194, y: 197 },
-  { x: 193, y: 281 },
-  { x: 681, y: 316 },
-  { x: 388, y: 111 },
-  { x: 42, y: 44 },
-  { x: 164, y: 118 },
-  { x: 662, y: 71 },
-  { x: 542, y: 8 },
-  { x: 374, y: 121 },
-  { x: 112, y: 389 },
-  { x: 320, y: 181 },
-  { x: 40, y: 327 },
-  { x: 163, y: 98 },
-  { x: 439, y: 334 } ];
+ 
