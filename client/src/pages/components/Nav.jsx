@@ -22,8 +22,11 @@ export default class Nav extends React.Component {
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
-              <li className="active"><Link to="/login">Log In<span className="sr-only">(current)</span></Link></li>
+              <li><Link to="/login">Log In</Link></li>
+              <li><Link to="/signup">Sign Up</Link></li>
               <li><Link to="/home">Dashboard</Link></li>
+              <li><Link to="/categories">Categories</Link></li>
+              <li><Link to="/listings">Listings</Link></li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li><Link to="/login">Sign Out</Link></li>

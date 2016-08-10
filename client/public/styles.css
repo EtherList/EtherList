@@ -13,3 +13,33 @@ footer {
   padding: 10px;
   margin: 10px;
 }
+
+table {
+  display: block;
+  height: 450px;
+  overflow-y: scroll;
+}
+
+thead {
+  background-color: #2C3E50;
+  color: white;
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.transparentBG {
+  padding: 7px;
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.modal-container {
+  position: relative;
+}
+.modal-container .modal, .modal-container .modal-backdrop {
+  position: absolute;
+}
