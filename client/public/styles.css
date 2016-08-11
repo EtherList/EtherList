@@ -1,6 +1,7 @@
 footer {
   position: relative;
   margin-top: 0px; /* negative value of footer height */
+  bottom: 0;
   height: 50px;
   clear:both;
   padding: 20px 20px;

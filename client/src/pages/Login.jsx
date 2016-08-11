@@ -33,13 +33,13 @@ export default class Login extends React.Component {
               <div>
                 <button className='signIn btn btn-success' type='button' 
                   onClick={this.handleSubmit}>
-                  Sign In!
+                  Sign In
                 </button>
 
                 OR
 
                 <Link to="/signup"><button className='signUp btn btn-danger'>
-                    Go to Sign Up!
+                    Go to Sign Up
                 </button></Link>
               </div>
 
