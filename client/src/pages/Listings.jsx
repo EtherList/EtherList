@@ -1,14 +1,18 @@
 import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+
 import ListingsTable from './components/ListingsTable.jsx';
 import ListingPageNavigation from './components/ListingPageNavigation.jsx';
 import Utils from '../utils/Utils.jsx';
+import MapComponent from './components/GoogleMap.jsx';
 
 export default class Listings extends React.Component {
   constructor(props) {
     super(props);
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
       category: 'CategoryName',
-      show: false,
+      showModal: false,
       newListing: {
         id: '',
         name: '',
@@ -17,10 +21,14 @@ export default class Listings extends React.Component {
         time: '',
         reputation: '',
         price: '',
-        terms: '' 
+        terms: '',
+        lat: '',
+        lng: ''
       },
+      idTracker: '',
       categories: ['whatever', 'hello', 'thisWorks', 'tests\'n\'stuff'],
-      listings: [{'id': 0}]
+      listings: [{'id': 0}],
+      defaultCenter: {lat: 37.6547, lng: -122.4194}
     }
   }
 
@@ -31,12 +39,19 @@ export default class Listings extends React.Component {
   getListings() {
     Utils.ajaxJSON('/listings', 'GET')
     .done(data => this.setState({listings: data}))
+    .done(data => this.setState({idTracker: data[data.length - 1]['id']}))
+    .done(() => this.resetNewListing())
     .fail(e => console.log('get request failed, error is', e));
   }
 
   
   addListing(newListing) {
-    this.state.listings.push(newListing);
+    var updatedListings = this.state.listings;
+    updatedListings.push(JSON.parse(JSON.stringify(newListing)));
+    this.state.listings = updatedListings;
+    setTimeout(function() { console.log('listings is', this.state.listings) }.bind(this), 2000);
+    setTimeout(function() { console.log('idTracker is', this.state.idTracker) }.bind(this), 2000);
+    setTimeout(function() { console.log('newListing is', this.state.newListing) }.bind(this), 2000);
   }
 
   changeCategory(e) {
@@ -45,41 +60,59 @@ export default class Listings extends React.Component {
   }
 
   toggleModal() {
-    this.setState({show: !this.state.show});
+    this.setState({showModal: !this.state.showModal});
   }
 
   handleChange(e) {
-    //The date-picker input field returns a string for e
-    //special handling for this case will be necessary
-    var setStateObj = this.state.newListing;
-    setStateObj[e.target.name] = e.target.value;
+    this.state.newListing[e.target.name] = e.target.value;
   }
 
   resetNewListing() {
+    this.state.idTracker++;
     for (var key in this.state.newListing) {
-      this.state.newListing[key] = '';
+      if (key === 'id') {
+        this.state.newListing[key] = this.state.idTracker;
+      } else {
+        this.state.newListing[key] = '';
+      }
     }
+  }
+
+  clearTableContents() {
+    Utils.ajaxJSON('/clearData', 'GET')
+    .done(data => this.setState({listings: data}))
+    .fail(e => console.log('get request failed, error is', e));
   }
 
   render() {
     return (
-      <div className="col-xs-12">
-        <h3 className="text-center row">
-          {'Search listings for ' + this.state.category}
-        </h3>
+      <div className="flex-container">
 
-        <ListingPageNavigation 
-          categories={this.state.categories} 
-          newListing={this.state.newListing} 
-          show={this.state.show}
-          changeCategory={this.changeCategory.bind(this)} 
-          toggleModal={this.toggleModal.bind(this)}
-          handleChange={this.handleChange.bind(this)}
-          resetNewListing={this.resetNewListing.bind(this)}
-          addListing={this.addListing.bind(this)}
-        />
+        <div className="flex-column flex1" id="listingTable">
+          <button onClick={this.clearTableContents} className="btn btn-small btn-danger">Delete Table Contents</button>
+          <h3 className="text-center row">
+            {'Search listings for ' + this.state.category}
+          </h3>
+          <ListingPageNavigation 
+            categories={this.state.categories} 
+            newListing={this.state.newListing} 
+            showModal={this.state.showModal}
+            changeCategory={this.changeCategory.bind(this)} 
+            toggleModal={this.toggleModal.bind(this)}
+            handleChange={this.handleChange.bind(this)}
+            resetNewListing={this.resetNewListing.bind(this)}
+            addListing={this.addListing.bind(this)}
+          />
+          <ListingsTable listings={this.state.listings} />
+        </div>
 
-        <ListingsTable listings={this.state.listings} />
+        <div id="mapContainer" className="flex-column flex1">
+          <MapComponent 
+            listings={this.state.listings}
+            defaultCenter={this.state.defaultCenter}
+          />
+        </div>
+
       </div>
     )
   }

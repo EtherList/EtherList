@@ -25,7 +25,7 @@ export default class ListingTable extends React.Component {
       modal = <p></p>;
     }
     return ( 
-      <div className="col-xs-offset-1 col-xs-10 col-md-offset-2 col-md-8">
+      <div>
         <table className="table table-striped table-hover">
           <thead>
             <tr>
