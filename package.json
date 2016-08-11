@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack -p && node server/index.js",
-    "start:dev": "webpack --progress --colors --watch & nodemon server/index.js",
+    "start:dev": "webpack --watch --progress --colors & nodemon server/index.js",
     "test": "mocha test"
   },
   "repository": {

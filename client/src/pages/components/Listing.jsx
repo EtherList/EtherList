@@ -7,10 +7,6 @@ export default class Listing extends React.Component {
     super(props);
   }
 
-  toggleModal() {
-    console.log('it works');
-  }
-
   render() {
 
     return(
@@ -19,10 +15,10 @@ export default class Listing extends React.Component {
       <div>
       <img src={this.props.image} style={listingPicStyle}/>
       </div>
+      <p>{this.props.reputation}</p>
       <p>name: {this.props.name}</p>
       <p>description: {this.props.description}</p>
       <p>time: {this.props.time}</p>
-      <p>{this.props.reputation}</p>
       <p>price: {this.props.price}</p>
       <p>location: {this.props.location}</p>
       </div>
