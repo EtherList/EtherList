@@ -1,12 +1,29 @@
 import React from 'react';
 import {Link} from 'react-router';
+import ListingModal from './ListingModal.jsx';
 
 export default class ListingTable extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      modalShown: false;
+    };
+  }
+
+  listingOnClick() {
+    this.setState({
+      modalShown: true
+    });
+    console.log('modal shown');
   }
 
   render() {
+    if (this.state.modalShown) {
+      modal = <ListingModal />;
+    }
+    else {
+      modal = <p></p>;
+    }
     return ( 
       <div className="col-xs-offset-1 col-xs-10 col-md-offset-2 col-md-8">
         <table className="table table-striped table-hover">
@@ -29,6 +46,7 @@ export default class ListingTable extends React.Component {
                 <td>{listing.reputation}</td>
                 <td>{listing.price}</td>
                 <td>{listing.location}</td>
+                <td><Button onClick={() => {this.listingOnClick()}}>take a look</Button></td>
               </tr>;
             })}
           </tbody>

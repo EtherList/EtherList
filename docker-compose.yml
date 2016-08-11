@@ -5,7 +5,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - /usr/src/app/npm_modules
+      - /usr/src/app/node_modules
       - .:/usr/src/app
     depends_on:
       - postgres
