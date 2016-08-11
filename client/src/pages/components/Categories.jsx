@@ -1,6 +1,6 @@
 import React from 'react';
 import Category from './Category.jsx';
-import { screenWidth, screenHeight, outerDivStyle, fakeCoords, fakeCategories } from '../styles/categoryStyle.js';
+import { screenWidth, screenHeight, outerDivStyle, fakeCoords, fakeCategories } from '../styles/customStyle.js';
 import {generateCoords} from './helpers.js';
 import { Link } from 'react-router';
 

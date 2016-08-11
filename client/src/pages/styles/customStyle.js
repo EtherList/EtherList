@@ -1,5 +1,5 @@
 export const screenWidth = 900;
-export const screenHeight = 500;
+export const screenHeight = 505;
 
 export const baseSize = 100;
 
@@ -29,7 +29,7 @@ export const categoryStyle = {
   zIndex: 1,
   fontSize: 16,
   cursor: 'pointer',
-  opacity: 0.5
+  opacity: 0.65
 };
 
 export const CategoryHoverStyle = {
@@ -61,6 +61,17 @@ export const userpicStyle = {
   borderRadius: 75,
   textAlign: 'center',
   margin: 20
+};
+
+export const listingPicStyle = {
+  width: 300,
+  height: 200,
+  float: 'left',
+  margin: 20
+};
+
+export const navbarMargin = {
+  marginBottom: 1
 };
 
 //52 pre-selected cool colors for categories

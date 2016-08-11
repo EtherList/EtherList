@@ -1,5 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router';
+import { Link } from 'react-router';
+import { navbarMargin } from '../styles/customStyle.js';
 
 export default class Nav extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ export default class Nav extends React.Component {
 
   render() {
     return (
-      <nav className="navbar navbar-default">
+      <nav className="navbar navbar-default" style={navbarMargin}>
         <div className="container-fluid">
           <div className="navbar-header">
             <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">

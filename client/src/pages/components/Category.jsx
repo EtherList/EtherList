@@ -1,5 +1,5 @@
 import React from 'react';
-import { screenWidth, screenHeight, colors, fakeCoords, CategoryHoverStyle, categoryStyle, outerDivStyle, baseSize } from '../styles/categoryStyle.js';
+import { screenWidth, screenHeight, colors, fakeCoords, CategoryHoverStyle, categoryStyle, outerDivStyle, baseSize } from '../styles/customStyle.js';
 
 var style = categoryStyle;
 

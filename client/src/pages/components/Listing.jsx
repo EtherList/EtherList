@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
+import { listingPicStyle } from '../styles/customStyle.js';
 
 export default class Listing extends React.Component {
   constructor(props) {
@@ -11,23 +12,22 @@ export default class Listing extends React.Component {
   }
 
   render() {
-    return (
-      <Modal className='modal-container'>
-      <Modal.Header closeButton>
-      <Modal.Title>
-      </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-      <Button className="btn btn-success" >
-      Sign the contract
-      </Button>
-      <Button className="btn btn-danger" onClick={this.toggleModal.bind(this)}>
-      Cancel
-      </Button>
-      </Modal.Body>
-      <Modal.Footer>
-      </Modal.Footer>
-      </Modal>
+
+    return(
+      <div>
+      <div>
+      <div>
+      <img src={this.props.image} style={listingPicStyle}/>
+      </div>
+      <p>name: {this.props.name}</p>
+      <p>description: {this.props.description}</p>
+      <p>time: {this.props.time}</p>
+      <p>{this.props.reputation}</p>
+      <p>price: {this.props.price}</p>
+      <p>location: {this.props.location}</p>
+      </div>
+      </div>
+
       );
   }
 };
