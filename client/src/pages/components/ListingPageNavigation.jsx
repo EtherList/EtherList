@@ -36,6 +36,7 @@ export default class ListingPageNavigation extends React.Component {
             toggleModal={this.props.toggleModal} 
             handleChange={this.props.handleChange}
             resetNewListing={this.props.resetNewListing}
+            getListings={this.props.getListings}
             addListing={this.props.addListing}
           />
         </div>

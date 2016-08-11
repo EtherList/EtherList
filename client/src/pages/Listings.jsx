@@ -1,5 +1,4 @@
 import React from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 import ListingsTable from './components/ListingsTable.jsx';
 import ListingPageNavigation from './components/ListingPageNavigation.jsx';
@@ -9,12 +8,10 @@ import MapComponent from './components/GoogleMap.jsx';
 export default class Listings extends React.Component {
   constructor(props) {
     super(props);
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
       category: 'CategoryName',
       showModal: false,
       newListing: {
-        id: '',
         name: '',
         description: '',
         location: '',
@@ -25,7 +22,6 @@ export default class Listings extends React.Component {
         lat: '',
         lng: ''
       },
-      idTracker: '',
       categories: ['whatever', 'hello', 'thisWorks', 'tests\'n\'stuff'],
       listings: [{'id': 0}],
       defaultCenter: {lat: 37.6547, lng: -122.4194}
@@ -39,7 +35,6 @@ export default class Listings extends React.Component {
   getListings() {
     Utils.ajaxJSON('/listings', 'GET')
     .done(data => this.setState({listings: data}))
-    .done(data => this.setState({idTracker: data[data.length - 1]['id']}))
     .done(() => this.resetNewListing())
     .fail(e => console.log('get request failed, error is', e));
   }
@@ -50,7 +45,6 @@ export default class Listings extends React.Component {
     updatedListings.push(JSON.parse(JSON.stringify(newListing)));
     this.state.listings = updatedListings;
     setTimeout(function() { console.log('listings is', this.state.listings) }.bind(this), 2000);
-    setTimeout(function() { console.log('idTracker is', this.state.idTracker) }.bind(this), 2000);
     setTimeout(function() { console.log('newListing is', this.state.newListing) }.bind(this), 2000);
   }
 
@@ -68,13 +62,8 @@ export default class Listings extends React.Component {
   }
 
   resetNewListing() {
-    this.state.idTracker++;
     for (var key in this.state.newListing) {
-      if (key === 'id') {
-        this.state.newListing[key] = this.state.idTracker;
-      } else {
-        this.state.newListing[key] = '';
-      }
+      this.state.newListing[key] = '';
     }
   }
 
@@ -101,6 +90,7 @@ export default class Listings extends React.Component {
             toggleModal={this.toggleModal.bind(this)}
             handleChange={this.handleChange.bind(this)}
             resetNewListing={this.resetNewListing.bind(this)}
+            getListings={this.getListings.bind(this)}
             addListing={this.addListing.bind(this)}
           />
           <ListingsTable listings={this.state.listings} />

@@ -10,8 +10,7 @@ export default class CustomModal extends React.Component {
 
   postData() {
     Utils.ajaxJSON('/listings', 'POST', JSON.stringify(this.props.newListing))
-    .done(this.props.addListing(this.props.newListing))
-    .done(this.props.resetNewListing)
+    .done(this.props.getListings)
     .done(this.props.toggleModal)
     .fail(e => console.log('post failed, error is', e));
   }
@@ -34,7 +33,7 @@ export default class CustomModal extends React.Component {
         <Modal.Body>
           Add your listing here:
           <AddListingForm handleChange={this.props.handleChange} 
-            newListing={this.props.newListing} addListing={this.props.addListing}
+            newListing={this.props.newListing}
           />
         </Modal.Body>
 
