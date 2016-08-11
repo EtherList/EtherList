@@ -4,6 +4,12 @@ var bluebird = require('bluebird');
 
 exports.Listings = db.define('listings', {
 
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true 
+  },
+
   name: {
     type: Sequelize.STRING,
     allowNull: false
