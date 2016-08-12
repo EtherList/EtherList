@@ -13,7 +13,7 @@ ReactDOM.render((
     <Route path="/" component={Main}>
       <IndexRoute component={Dashboard} />
       <Route path="/" component={Dashboard} />
-      <Route path="login" component={Login} />
+      <Route path="auth/facebook" component={Login} />
       <Route path="listings" component={Listings} onEnter={Utils.requireAuth} />
       <Route path="profile" component={UserProfile} />
     </Route>

@@ -1,34 +1,33 @@
 import React from 'react';
-import {Link} from 'react-router';
-import {Button} from 'react-bootstrap';
+import Button from 'react-bootstrap';
+import { Link } from 'react-router';
 import ListingModal from './ListingModal.jsx';
+
 
 export default class ListingTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalShown: false;
+      showModal: false,
+      currentListing: {}
     };
   }
 
-  listingOnClick() {
+  toggleModal() {
     this.setState({
-      modalShown: true
+      showModal: !this.state.showModal
     });
-    console.log('modal shown');
   }
 
+
   render() {
-    if (this.state.modalShown) {
-      modal = <ListingModal />;
-    }
-    else {
-      modal = <p></p>;
-    }
+
     return ( 
+
       <div>
+      <div className="col-xs-offset-1 col-xs-10 col-md-offset-2 col-md-8">
         <table className="table table-striped table-hover">
-          <thead>
+          <thead onClick={this.toggleModal.bind(this)}>
             <tr>
               <th className="text-center">Name</th>
               <th className="text-center">Description</th>
@@ -47,12 +46,13 @@ export default class ListingTable extends React.Component {
                 <td>{listing.reputation}</td>
                 <td>{listing.price}</td>
                 <td>{listing.location}</td>
-                <td><Button onClick={() => {this.listingOnClick()}}>take a look</Button></td>
               </tr>;
             })}
           </tbody>
         </table>
       </div>
-    )
+      <ListingModal showModal={this.state.showModal} toggleModal={this.toggleModal.bind(this)}/>
+      </div>
+    );
   }
 }

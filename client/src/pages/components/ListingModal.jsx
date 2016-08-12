@@ -11,18 +11,17 @@ export default class ListingModal extends React.Component {
   }
 
   toggleModal() {
-    this.setState({
-      show: !this.state.show
-    });
+    this.props.toggleModal();
+    console.log(this.props);
   }
+
+
 
   render() {
 
     return (
       <div>
-      <Button onClick={this.toggleModal.bind(this)}>See the modal
-      </Button>
-      <Modal className='modal-container' id='ListingModal' show={this.state.show} onHide={this.toggleModal.bind(this)}>
+      <Modal id='ListingModal' show={this.props.showModal} onHide={this.props.toggleModal.bind(this)}>
       <Modal.Header closeButton>
       <Modal.Title>
       {this.props.name}

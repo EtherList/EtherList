@@ -8,8 +8,8 @@ passport.use(new FacebookStrategy({
   callbackURL: '/auth/facebook/callback'
 },
 function(accessToken, refreshToken, profile, done){
-  console.log('auth ', profile);
-  User.findOrCreate({where: { facebookId: profile.id }, defaults: {
+  console.log('User ', User);
+  User.User.findOrCreate({where: { facebookId: profile.id }, defaults: {
     wallet: 'none', privateKey: 'none', imageURL: 'none'
   }}).spread(function(user, created) {
     console.log('user ', user.get({
@@ -26,7 +26,7 @@ passport.serializeUser((id, done) => {
 });
 passport.deserializeUser((id, done) => {
  //define what to do, given that we don't store users in a database
- User.findById(id).then(user => {
+ User.User.findById(id).then(user => {
   done(null, user);
  });
 });

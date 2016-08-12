@@ -6,6 +6,32 @@ export default class Login extends React.Component {
     super(props);
   }
 
+  handleSubmit() {
+    console.log('fetch is about to happen');
+    fetch('/auth/facebook', {  
+        method: 'get',  
+        headers: {  
+          "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"  
+        } 
+      })
+      .then(  
+        function(response) {  
+          if (response.status !== 200) {  
+            console.log('Looks like there was a problem. Status Code: ' +  
+              response.status);  
+            return;  
+          }
+
+          // Examine the text in the response  
+          response.json().then(function(data) {  
+            console.log(data);  
+          });  
+        }  
+      )  
+      .catch(function(err) {  
+        console.log('Fetch Error :-S', err);  
+      });
+  }
 
 
   render() {
@@ -20,7 +46,7 @@ export default class Login extends React.Component {
                   Username
                 </label>
                 <input type="text" className="form-control" 
-                  placeholder="Username" onChange={this.handleUsernameChange}/>
+                  placeholder="Username" onChange={() => {this.handleUsernameChange()}}/>
 
                 <label className="control-label">
                   Password
@@ -30,14 +56,14 @@ export default class Login extends React.Component {
               </div>
 
               <div>
-                <button className='signIn btn btn-success' type='button' 
-                  onClick={this.handleSubmit}>
+                <Link to='/auth/facebook'><button className='signIn btn btn-success' type='button' 
+                  onClick={() => {this.handleSubmit()}}>
                   Sign In
-                </button>
+                </button></Link>
 
                 OR
 
-                <Link to="/signup"><button className='signUp btn btn-danger'>
+                <Link to="/signup"><button className='signUp btn btn-primary'>
                     Go to Sign Up
                 </button></Link>
               </div>
