@@ -1,5 +1,4 @@
 import React from 'react';
-import API_KEY from '../../../../apiKeyStore.js';
 import GoogleMap from 'google-map-react';
 import MapPin from './MapPin.jsx';
 
@@ -17,7 +16,7 @@ export default class MapComponent extends React.Component {
     return (
       <GoogleMap
         bootstrapURLKeys={{ 
-          key: API_KEY.googleMaps,
+          key: process.env.GOOGLEMAPSAPI,
           libraries: 'places'
         }}
         center={this.state.center}
