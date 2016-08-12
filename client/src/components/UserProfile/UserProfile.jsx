@@ -6,6 +6,31 @@ var fakeUserpic = 'http://www.lovemarks.com/wp-content/uploads/profile-avatars/d
 export default class UserProfile extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      user: {
+        name: '',
+        imageURL: ''
+      }
+    };
+  }
+
+  componentWillMount() {
+    fetch('/profile', {credentials: 'same-origin'}).then((response) => {
+      if(response.status !== 200) {
+        //TODO: re-route unauthenticated users
+      }
+      return response.json().then((data) => {
+        this.setState({
+          user: { 
+            name: data.name,
+            imageURL: data.imageURL
+          }
+        });
+      });
+    }).catch((err) => {
+      console.error(err);
+    });
+
   }
 
   render() {
@@ -13,15 +38,14 @@ export default class UserProfile extends React.Component {
     return (
       <div>
       <div>
-        <img src={this.props.imageURL} src={fakeUserpic} style={userpicStyle}/>
+        <img src={this.state.user.imageURL} style={userpicStyle}/>
       </div>
       <div>
-      <p>name: {this.props.displayName}</p>
-      <p>id: {this.props.facebookId}</p>
-      <p>reputation: {this.props.reputation}</p>
+      <p>name: {this.state.user.name}</p>
+      <p>reputation: 20 </p>
       <p>active contracts: {this.props.userContracts}</p>
       <p>active listings: {this.props.userListings}</p>
-      <p><Button bsStyle='primary' onClick={this.toggleModal}>see history</Button></p>
+      <p><Button bsStyle='primary'>see history</Button></p>
       </div>
       </div>
       );

@@ -1,4 +1,5 @@
 var controller = require('./controller');
+var auth = require('./auth');
 
 module.exports = function(express, passport) {
   var routes = express.Router();
@@ -11,7 +12,15 @@ module.exports = function(express, passport) {
   }));
 
   routes.get('/fail', function(req, res){
-    res.end('ok');
+    res.end('"ok"');
+  });
+
+  routes.get('/profile', auth.isAuth, function(req, res) {
+    res.json(req.user);
+  });
+
+  routes.get('/login', function(req, res) {
+    res.end('"ok"');
   });
 
   routes.get('/logout', (req, res) => {

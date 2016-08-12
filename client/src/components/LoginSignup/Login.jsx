@@ -19,30 +19,10 @@ export default class Login extends React.Component {
           <form className="form-horizontal col-xs-8 col-xs-offset-2">
             <fieldset>
 
-              <div className="form-group">
-                <label className="control-label">
-                  Username
-                </label>
-                <input type="text" className="form-control" 
-                  placeholder="Username" onChange={() => {this.handleUsernameChange()}}/>
-
-                <label className="control-label">
-                  Password
-                </label>
-                <input type="password" className="form-control" 
-                  placeholder="Password"/>
-              </div>
-
               <div>
                 <Link to='/auth/facebook'><button className='signIn btn btn-success' type='button' 
                   onClick={() => {this.handleSubmit()}}>
                   Sign In
-                </button></Link>
-
-                OR
-
-                <Link to="/signup"><button className='signUp btn btn-primary'>
-                    Go to Sign Up
                 </button></Link>
               </div>
 
