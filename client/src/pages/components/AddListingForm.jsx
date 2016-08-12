@@ -1,6 +1,5 @@
 import React from 'react';
 import { DateField } from 'react-date-picker';
-import API_KEY from '../../../../apiKeyStore.js';
 import GoogleMap from 'google-map-react';
 import MapPin from './MapPin.jsx';
 import $ from 'jquery';
@@ -93,7 +92,7 @@ export default class AddListingForm extends React.Component {
         />
         <div id="modalMapContainer">
           <GoogleMap id="modalMap" styles={{height: "250px", width: "250px"}}
-            bootstrapURLKeys={{ key: API_KEY.googleMaps }} center={this.state.center} zoom={this.state.zoom}
+            bootstrapURLKeys={{ key: process.env.GOOGLEMAPSAPI }} center={this.state.center} zoom={this.state.zoom}
           >
             {pin}
           </GoogleMap>

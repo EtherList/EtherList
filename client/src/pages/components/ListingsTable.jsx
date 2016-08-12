@@ -6,25 +6,25 @@ import ListingModal from './ListingModal.jsx';
 export default class ListingTable extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   modalShown: false;
-    // };
+    this.state = {
+      modalShown: false;
+    };
   }
 
-  // listingOnClick() {
-  //   this.setState({
-  //     modalShown: true
-  //   });
-  //   console.log('modal shown');
-  // }
+  listingOnClick() {
+    this.setState({
+      modalShown: true
+    });
+    console.log('modal shown');
+  }
 
   render() {
-    // if (/*this.state.modalShown*/) {
-    //   modal = <ListingModal />;
-    // }
-    // else {
-    //   modal = <p></p>;
-    // }
+    if (this.state.modalShown) {
+      modal = <ListingModal />;
+    }
+    else {
+      modal = <p></p>;
+    }
     return ( 
       <div>
         <table className="table table-striped table-hover">
