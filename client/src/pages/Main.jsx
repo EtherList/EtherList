@@ -11,10 +11,10 @@ export default class Main extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="height100">
         <Nav />
 
-        <div>
+        <div className="height100">
           {this.props.children}
         </div>
 

@@ -9,17 +9,17 @@ export default class CustomModal extends React.Component {
   }
 
   postData() {
-    this.props.addListing(this.props.newListing);
     Utils.ajaxJSON('/listings', 'POST', JSON.stringify(this.props.newListing))
-    .done(this.props.resetNewListing.bind(this))
-    .done(this.props.toggleModal.bind(this))
+    .done(this.props.getListings)
+    .done(this.props.toggleModal)
     .fail(e => console.log('post failed, error is', e));
   }
 
   render() {
     return (
       <Modal
-        show={this.props.show}
+        show={this.props.showModal}
+        onEnter={this.toggleMapHeight}
         onHide={this.props.toggleModal}
         container={this}
         aria-labelledby="contained-modal-title"
@@ -33,7 +33,7 @@ export default class CustomModal extends React.Component {
         <Modal.Body>
           Add your listing here:
           <AddListingForm handleChange={this.props.handleChange} 
-            newListing={this.props.newListing} addListing={this.props.addListing}
+            newListing={this.props.newListing}
           />
         </Modal.Body>
 

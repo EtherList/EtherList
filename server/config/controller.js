@@ -14,5 +14,5 @@ exports.listings = {
     model.listings.post(req.body)
     .then(data => success(data, res))
     .catch(data => error(error, res));
-  }
+  },
 };

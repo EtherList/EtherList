@@ -7,7 +7,7 @@ export default class Foot extends React.Component {
 
   render() {
     return (
-      <footer id="footer" className="container-fluid">
+      <footer className="navbar-fixed-bottom boxFlexRow boxFlexFooter" id="footer">
         © 2016 Team Ether, Inc.
       </footer>
     )

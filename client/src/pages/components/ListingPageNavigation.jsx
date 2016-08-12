@@ -9,7 +9,7 @@ export default class ListingPageNavigation extends React.Component {
 
   render() {
     return (
-      <div className="row text-center transparentBG col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8">
+      <div className="row text-center transparentBG">
         <p>Do you want to...</p>
 
         <div className="col-xs-8">
@@ -32,10 +32,11 @@ export default class ListingPageNavigation extends React.Component {
           </button>
           <CustomModal 
             newListing={this.props.newListing} 
-            show={this.props.show}
+            showModal={this.props.showModal}
             toggleModal={this.props.toggleModal} 
             handleChange={this.props.handleChange}
             resetNewListing={this.props.resetNewListing}
+            getListings={this.props.getListings}
             addListing={this.props.addListing}
           />
         </div>

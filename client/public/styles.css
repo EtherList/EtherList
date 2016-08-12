@@ -2,13 +2,55 @@ footer {
   position: relative;
   margin-top: 0px; /* negative value of footer height */
   bottom: 0;
+}
+
+#footer {
   height: 50px;
-  clear:both;
-  padding: 20px 20px;
+  padding: 20px;
   background-color: rgb(44, 62, 80);
   color: white;
   border-radius: 5px;
-} 
+  margin: 0px;
+}
+
+html, body, .height100, #app {
+  height: 100%;
+}
+
+.flex-container {
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.flex-column {
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-height: 100%;
+}
+
+.flex1 {
+  -webkit-flex: 1;
+  flex: 1;
+}
+
+.vertical-container {
+  align-items: flex-center;
+  height: 300px;
+  display: -webkit-flex;
+  display:         flex;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+
+.navbar {
+  margin-bottom: 0px;
+}
 
 .signIn, .signUp{
   padding: 10px;
@@ -44,3 +86,23 @@ thead {
 .modal-container .modal, .modal-container .modal-backdrop {
   position: absolute;
 }
+
+#modalMapContainer {
+  margin-top: 10px;  
+}
+
+.pac-container {
+  background-color: #FFF;
+  z-index: 20;
+  position: fixed;
+  display: inline-block;
+  float: left;
+}
+
+.modal{
+    z-index: 20;   
+}
+
+.modal-backdrop{
+    z-index: 10;        
+}​
