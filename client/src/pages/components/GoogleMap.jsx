@@ -1,6 +1,7 @@
 import React from 'react';
 import GoogleMap from 'google-map-react';
 import MapPin from './MapPin.jsx';
+import apiKeys from '../../../../keyStorage.js';
 
 export default class MapComponent extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ export default class MapComponent extends React.Component {
     return (
       <GoogleMap
         bootstrapURLKeys={{ 
-          key: process.env.GOOGLEMAPSAPI,
+          key: apiKeys.googleMaps,
           libraries: 'places'
         }}
         center={this.state.center}

@@ -4,6 +4,7 @@ import GoogleMap from 'google-map-react';
 import MapPin from './MapPin.jsx';
 import $ from 'jquery';
 import Promise from 'bluebird';
+import apiKeys from '../../../../keyStorage.js';
 
 export default class AddListingForm extends React.Component {
   constructor(props) {
@@ -92,7 +93,7 @@ export default class AddListingForm extends React.Component {
         />
         <div id="modalMapContainer">
           <GoogleMap id="modalMap" styles={{height: "250px", width: "250px"}}
-            bootstrapURLKeys={{ key: process.env.GOOGLEMAPSAPI }} center={this.state.center} zoom={this.state.zoom}
+            bootstrapURLKeys={{ key: apiKeys.googleMaps }} center={this.state.center} zoom={this.state.zoom}
           >
             {pin}
           </GoogleMap>
