@@ -29,7 +29,7 @@ export default class Nav extends React.Component {
               <li><Link to="/profile">My Profile</Link></li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
-              <li><Link to="/login">Sign Out</Link></li>
+              <li><a href="/logout">Sign Out</a></li>
             </ul>
           </div>
         </div>

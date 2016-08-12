@@ -16,16 +16,17 @@ function(accessToken, refreshToken, profile, done){
       plain: true
     }))
     console.log('created ',created);
+    done(null, user);
   });
 
 }
 ));
 
-passport.serializeUser((id, done) => {
+passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 passport.deserializeUser((id, done) => {
- //define what to do, given that we don't store users in a database
+
  User.User.findById(id).then(user => {
   done(null, user);
  });
