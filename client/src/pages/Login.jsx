@@ -7,30 +7,8 @@ export default class Login extends React.Component {
   }
 
   handleSubmit() {
-    console.log('fetch is about to happen');
-    fetch('/auth/facebook', {  
-        method: 'get',  
-        headers: {  
-          "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"  
-        } 
-      })
-      .then(  
-        function(response) {  
-          if (response.status !== 200) {  
-            console.log('Looks like there was a problem. Status Code: ' +  
-              response.status);  
-            return;  
-          }
-
-          // Examine the text in the response  
-          response.json().then(function(data) {  
-            console.log(data);  
-          });  
-        }  
-      )  
-      .catch(function(err) {  
-        console.log('Fetch Error :-S', err);  
-      });
+    //forcing the page to reload in order to make a server-side call to FB for authentication
+    window.location.reload();
   }
 
 
