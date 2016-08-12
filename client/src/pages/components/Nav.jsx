@@ -23,13 +23,13 @@ export default class Nav extends React.Component {
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
-              <li><Link to="/login">Log In</Link></li>
+              <li><Link to="/auth/facebook">Log In</Link></li>
               <li><Link to="/">Categories</Link></li>
               <li><Link to="/listings">Listings</Link></li>
               <li><Link to="/profile">My Profile</Link></li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
-              <li><Link to="/login">Sign Out</Link></li>
+              <li><a href="/logout">Sign Out</a></li>
             </ul>
           </div>
         </div>

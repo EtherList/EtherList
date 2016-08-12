@@ -6,6 +6,10 @@ export default class Login extends React.Component {
     super(props);
   }
 
+  handleSubmit() {
+    //forcing the page to reload in order to make a server-side call to FB for authentication
+    window.location.reload();
+  }
 
 
   render() {
@@ -20,7 +24,7 @@ export default class Login extends React.Component {
                   Username
                 </label>
                 <input type="text" className="form-control" 
-                  placeholder="Username" onChange={this.handleUsernameChange}/>
+                  placeholder="Username" onChange={() => {this.handleUsernameChange()}}/>
 
                 <label className="control-label">
                   Password
@@ -30,14 +34,14 @@ export default class Login extends React.Component {
               </div>
 
               <div>
-                <button className='signIn btn btn-success' type='button' 
-                  onClick={this.handleSubmit}>
+                <Link to='/auth/facebook'><button className='signIn btn btn-success' type='button' 
+                  onClick={() => {this.handleSubmit()}}>
                   Sign In
-                </button>
+                </button></Link>
 
                 OR
 
-                <Link to="/signup"><button className='signUp btn btn-danger'>
+                <Link to="/signup"><button className='signUp btn btn-primary'>
                     Go to Sign Up
                 </button></Link>
               </div>

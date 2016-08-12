@@ -14,6 +14,8 @@ services:
     environment:
       - FB_ID=$FB_ID
       - FB_SECRET=$FB_SECRET
+      - GOOGLEMAPSAPI=$GOOGLEMAPSAPI
+      - SESSION_SECRET=$SESSION_SECRET
       - PORT=80
       - DEBUG=0
   postgres:
