@@ -15,13 +15,4 @@ exports.listings = {
     .then(data => success(data, res))
     .catch(data => error(error, res));
   },
-
 };
-
-exports.clearData = {
-  truncate: (req, res) => {
-    model.clearData.truncate(req.body)
-    .then(data => success(data, res))
-    .catch(data => error(error, res));
-  }
-}
