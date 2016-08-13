@@ -57,33 +57,3 @@ export default class ListingTable extends React.Component {
     );
   }
 }
-
-      // <ListingModal showModal={this.state.showModal} toggleModal={this.toggleModal.bind(this)}/>
-/*
-<table className="table table-striped table-hover">
-  <thead>
-    <tr>
-      <th className="text-center">Name</th>
-      <th className="text-center">Description</th>
-      <th className="text-center">Time</th>
-      <th className="text-center">Reputation</th>
-      <th className="text-center">Price</th>
-      <th className="text-center">Location</th>
-      <th className="text-center">View</th>
-    </tr>
-  </thead>
-  <tbody>{
-    this.props.listings.map(function(listing) {
-      return <tr key={listing.id}>
-        <td>{listing.name}</td>
-        <td>{listing.description}</td>
-        <td>{listing.time}</td>
-        <td>{listing.reputation}</td>
-        <td>{listing.price}</td>
-        <td>{listing.location}</td>
-        <td><Button onClick={() => {this.listingOnClick()}}>take a look</Button></td>
-      </tr>;
-    })}
-  </tbody>
-</table>
-*/
