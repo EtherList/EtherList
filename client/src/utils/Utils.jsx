@@ -1,11 +1,20 @@
 import $ from 'jquery';
 
 exports.requireAuth = (nextState, replace) => {
-  //Is user logged in?
-  if (false /*user is not logged in*/) {
-    console.log('nope, you cant do that without logging in');
-    replace('/login');
-  }
+  var temp;
+  fetch('/profile', {credentials: 'same-origin'}).then(function(response){
+    if(response.status !== 200) {
+      replace('/login');
+    }
+    return response.json().then(function(data){
+      console.log('fetch data ', data);
+      temp = data;
+      return data;
+    });
+  }).catch((err) => {
+      console.error(err);
+    });
+
 };
 
 exports.ajaxJSON = (url, type, data) => {

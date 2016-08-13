@@ -9,11 +9,17 @@ exports.User = db.define('user', {
     allowNull: false
   },
 
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+
   wallet: {
     type: Sequelize.STRING,
     allowNull: true
   },
 
+  //TODO: make sure it is never sent out
   privateKey: {
     type: Sequelize.STRING,
     allowNull: true
