@@ -15,9 +15,11 @@ export default class UserProfile extends React.Component {
   }
 
   componentWillMount() {
+    console.log(window.location);
     fetch('/profile', {credentials: 'same-origin'}).then((response) => {
       if(response.status !== 200) {
         //TODO: re-route unauthenticated users
+        window.location = window.location.origin + "/";
       }
       return response.json().then((data) => {
         this.setState({

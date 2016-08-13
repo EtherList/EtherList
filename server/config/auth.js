@@ -37,7 +37,8 @@ function isAuth(req, res, next) {
     return next();
   }
   else {
-    res.redirect('/login');
+    res.status(401);
+    res.end();
   }
 
 };
