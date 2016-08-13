@@ -1,8 +1,9 @@
 import React from 'react';
 import Category from './Category.jsx';
-import { screenWidth, screenHeight, outerDivStyle, fakeCategories } from '../../utils/customStyle.js';
+import { screenWidth, screenHeight, outerDivStyle, fakeCategories, pageStyle } from '../../utils/customStyle.js';
 import {generateCoords} from '../../utils/helpers.js';
 import { Link } from 'react-router';
+
 
 export default class Categories extends React.Component {
     constructor(props) {
@@ -15,15 +16,20 @@ export default class Categories extends React.Component {
     }
     render() {
         return (
-          <Link to='/listings'>
-          <svg style={outerDivStyle}>
-          {this.state.categories.map((category) => {
-            return (
-              <Category key={category.id} id={category.id} name={category.name} totalPosts={category.totalPosts} cx={this.state.coordinates[category.id].x} cy={this.state.coordinates[category.id].y}></Category>
-              );
-          })}
-          </svg>
-          </Link>
+          <div id="dashboard" style={pageStyle}>
+            <Link to='/listings'>
+              <svg style={outerDivStyle}>
+                {this.state.categories.map((category) => {
+                  return (
+                    <Category key={category.id} id={category.id} name={category.name} 
+                      totalPosts={category.totalPosts} cx={this.state.coordinates[category.id].x} 
+                      cy={this.state.coordinates[category.id].y}>
+                    </Category>
+                    );
+                })}
+              </svg>
+            </Link>
+          </div>
         );
     }
 }
