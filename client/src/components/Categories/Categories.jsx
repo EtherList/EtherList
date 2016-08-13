@@ -1,7 +1,7 @@
 import React from 'react';
 import Category from './Category.jsx';
-import { screenWidth, screenHeight, outerDivStyle, fakeCategories } from '../styles/customStyle.js';
-import {generateCoords} from './helpers.js';
+import { screenWidth, screenHeight, outerDivStyle, fakeCategories } from '../../utils/customStyle.js';
+import {generateCoords} from '../../utils/helpers.js';
 import { Link } from 'react-router';
 
 export default class Categories extends React.Component {

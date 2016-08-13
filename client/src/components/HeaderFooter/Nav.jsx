@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { navbarMargin } from '../styles/customStyle.js';
+import { navbarMargin } from '../../utils/customStyle.js';
 
 export default class Nav extends React.Component {
   constructor(props) {

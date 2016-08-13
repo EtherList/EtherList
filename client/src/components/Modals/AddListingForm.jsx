@@ -1,7 +1,7 @@
 import React from 'react';
 import { DateField } from 'react-date-picker';
 import GoogleMap from 'google-map-react';
-import MapPin from './MapPin.jsx';
+import MapPin from '../Maps/MapPin.jsx';
 import $ from 'jquery';
 import Promise from 'bluebird';
 import apiKeys from '../../../../keyStorage.js';

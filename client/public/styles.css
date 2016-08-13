@@ -1,7 +1,5 @@
-footer {
-  position: relative;
-  margin-top: 0px; /* negative value of footer height */
-  bottom: 0;
+html, body, .height100, #app {
+  height: 100%;
 }
 
 #footer {
@@ -10,42 +8,84 @@ footer {
   background-color: rgb(44, 62, 80);
   color: white;
   border-radius: 5px;
-  margin: 0px;
 }
 
-html, body, .height100, #app {
+.flexbox {
+  display: flex;
+  flex-flow: column;
   height: 100%;
+  overflow-y: scroll;
+}
+
+.categoryName {
+  text-align: center;
+  height: 60px;
+  margin: 10px 0 0 0;
+}
+
+.flexbox-column {
+  width: 50%;
+}
+
+.mapContainer {
+  position: absolute; 
+  right: 0; 
+  height: 92%;
+  top: 60px;
+}
+
+.listingColumn {
+  height: 94%;
+}
+
+.categorySelect {
+  width: 200px;
+  height: 120px;
+}
+
+.margin10 {
+  margin: 10px;
+}
+
+.centerDiv {
+  margin: 0 auto;
 }
 
 .flex-container {
-  display: -webkit-flex;
-  flex-wrap: wrap;
-  display: flex;
   padding: 0;
   margin: 0;
   list-style: none;
-}
 
-.flex-column {
-  -webkit-flex: 1 1 auto;
-  flex: 1 1 auto;
-  min-height: 100%;
-}
-
-.flex1 {
-  -webkit-flex: 1;
-  flex: 1;
-}
-
-.vertical-container {
-  align-items: flex-center;
-  height: 300px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
   display: -webkit-flex;
-  display:         flex;
-  -webkit-align-items: center;
-          align-items: center;
-  -webkit-justify-content: center;
-          justify-content: center;
+  display: flex;
+  
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.flex-item {
+  border: 1px solid black;
+  background: rgba(0,0,0, 0.1);
+  padding: 5px;
+  -webkit-flex-flow: row wrap;
+  width: 200px;
+  min-width: 150px;
+  height: 50px;
+  min-height: 25px;
+  text-align: center;
+  vertical-align: center;
+  margin: 2px 2px;  
+}
+
+div.flexbox div.flex-container:nth-of-type(even) {
+  background-color: rgba(0,0,0,0.2);
+}
+
+div.flexbox div.flex-container:nth-of-type(odd) {
+  background-color: rgba(0,0,0,0.6);
 }
 
 .navbar {
@@ -55,22 +95,6 @@ html, body, .height100, #app {
 .signIn, .signUp{
   padding: 10px;
   margin: 10px;
-}
-
-table {
-  display: block;
-  height: 450px;
-  overflow-y: scroll;
-}
-
-thead {
-  background-color: #2C3E50;
-  color: white;
-}
-
-.table > tbody > tr > td {
-  vertical-align: middle;
-  text-align: center;
 }
 
 .transparentBG {
@@ -100,9 +124,14 @@ thead {
 }
 
 .modal{
-    z-index: 20;   
+  z-index: 20;   
 }
 
 .modal-backdrop{
-    z-index: 10;        
+  z-index: 10;        
 }​
+
+.scroll {
+  overflow-y: scroll;
+  height: 100%;
+}

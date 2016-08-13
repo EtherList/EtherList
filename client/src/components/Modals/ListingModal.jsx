@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
-import Listing from './Listing.jsx';
+import Listing from '../Listings/Listing.jsx';
 
 export default class ListingModal extends React.Component {
   constructor(props) {
