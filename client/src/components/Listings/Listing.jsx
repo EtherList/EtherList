@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
-import { listingPicStyle } from '../styles/customStyle.js';
+import { listingPicStyle } from '../../utils/customStyle.js';
 
 export default class Listing extends React.Component {
   constructor(props) {

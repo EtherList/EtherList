@@ -1,6 +1,6 @@
 import React from 'react';
-import Nav from './components/Nav.jsx';
-import Foot from './components/Foot.jsx';
+import Nav from './components/HeaderFooter/Nav.jsx';
+import Foot from './components/HeaderFooter/Foot.jsx';
 import { Router, Route, Link, browserHistory, IndexRoute  } from 'react-router';
 
 
@@ -11,10 +11,10 @@ export default class Main extends React.Component {
 
   render() {
     return (
-      <div className="height100">
+      <div className="flexbox">
         <Nav />
 
-        <div className="height100">
+        <div className="flexbox">
           {this.props.children}
         </div>
 

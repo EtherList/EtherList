@@ -1,9 +1,9 @@
 import React from 'react';
 
-import ListingsTable from './components/ListingsTable.jsx';
-import ListingPageNavigation from './components/ListingPageNavigation.jsx';
-import Utils from '../utils/Utils.jsx';
-import MapComponent from './components/GoogleMap.jsx';
+import ListingsTable from './ListingsTable.jsx';
+import ListingPageNavigation from './ListingPageNavigation.jsx';
+import Utils from '../../utils/Utils.jsx';
+import MapComponent from '../Maps/GoogleMap.jsx';
 
 export default class Listings extends React.Component {
   constructor(props) {
@@ -75,13 +75,13 @@ export default class Listings extends React.Component {
 
   render() {
     return (
-      <div className="flex-container">
+      <div className="flexbox">
 
-        <div className="flex-column flex1" id="listingTable">
-          <button onClick={this.clearTableContents} className="btn btn-small btn-danger">Delete Table Contents</button>
-          <h3 className="text-center row">
-            {'Search listings for ' + this.state.category}
+        <div className="listingColumn flexbox flexbox-column" id="listingTable">
+          <h3 className="flexbox categoryName">
+            {this.state.category}
           </h3>
+
           <ListingPageNavigation 
             categories={this.state.categories} 
             newListing={this.state.newListing} 
@@ -93,10 +93,11 @@ export default class Listings extends React.Component {
             getListings={this.getListings.bind(this)}
             addListing={this.addListing.bind(this)}
           />
+
           <ListingsTable listings={this.state.listings} />
         </div>
 
-        <div id="mapContainer" className="flex-column flex1">
+        <div className="mapContainer flexbox flexbox-column">
           <MapComponent 
             listings={this.state.listings}
             defaultCenter={this.state.defaultCenter}
