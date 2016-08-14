@@ -3,3 +3,5 @@ node_modules
 keyStorage.js
 *.map
 keyStorage.js
+client/public/app.js
+client/public/contracts/

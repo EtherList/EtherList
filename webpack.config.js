@@ -25,8 +25,8 @@ var config = {
 
    plugins: [
      new CopyWebpackPlugin([
-       {from: 'node_modules/etherrep/build/contracts', to: 'client/public'},
-       {from: 'node_modules/etherrep/build/app.js', to: 'client/public'}
+       {from: 'node_modules/etherrep/build/contracts/', to: 'contracts/'},
+       {from: 'node_modules/etherrep/build/app.js'}
      ])
    ]
 }
