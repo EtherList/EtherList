@@ -9,6 +9,8 @@ export default class Listings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      color: {backgroundColor: 'transparent'},
+      isListingHovered: null,
       category: 'CategoryName',
       showModal: false,
       newListing: {
@@ -20,7 +22,8 @@ export default class Listings extends React.Component {
         price: '',
         terms: '',
         lat: '',
-        lng: ''
+        lng: '',
+        hovered: false
       },
       categories: ['whatever', 'hello', 'thisWorks', 'tests\'n\'stuff'],
       listings: [{'id': 0}],
@@ -44,8 +47,6 @@ export default class Listings extends React.Component {
     var updatedListings = this.state.listings;
     updatedListings.push(JSON.parse(JSON.stringify(newListing)));
     this.state.listings = updatedListings;
-    setTimeout(function() { console.log('listings is', this.state.listings) }.bind(this), 2000);
-    setTimeout(function() { console.log('newListing is', this.state.newListing) }.bind(this), 2000);
   }
 
   changeCategory(e) {
@@ -73,6 +74,22 @@ export default class Listings extends React.Component {
     .fail(e => console.log('get request failed, error is', e));
   }
 
+  onMapPinEnter(index, listing) {
+    this.setState({isListingHovered: listing.listing});
+  }
+
+  onMapPinLeave(index, listing) {
+    this.setState({isListingHovered: null});
+  }
+
+  onListingEnter(e) {
+    this.setState({isListingHovered: this.state.listings[e.target.id]});
+  }
+
+  onListingLeave(index, listing) {
+    this.setState({isListingHovered: null});
+  }
+
   render() {
     return (
       <div className="flexbox">
@@ -94,13 +111,21 @@ export default class Listings extends React.Component {
             addListing={this.addListing.bind(this)}
           />
 
-          <ListingsTable listings={this.state.listings} />
+          <ListingsTable listings={this.state.listings} 
+            onListingEnter={this.onListingEnter.bind(this)}
+            onListingLeave={this.onListingLeave.bind(this)}
+            isListingHovered={this.state.isListingHovered}
+            bgStyle={this.state.color}
+          />
         </div>
 
         <div className="mapContainer flexbox flexbox-column">
           <MapComponent 
             listings={this.state.listings}
             defaultCenter={this.state.defaultCenter}
+            onMapPinEnter={this.onMapPinEnter.bind(this)}
+            onMapPinLeave={this.onMapPinLeave.bind(this)}
+            isListingHovered={this.state.isListingHovered}
           />
         </div>
 
