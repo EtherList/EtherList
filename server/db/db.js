@@ -1,8 +1,9 @@
-var Sequelize = require('sequelize');
+var connection = require('./connection.js');
+var Listings = require('./listingModel.js');
+var Categories = require('./categoriesModel.js');
 
-var db = new Sequelize('ether', 'ether', '', {
-  host: 'postgres',
-  dialect: 'postgres'
-});
+Categories.Categories.hasMany(Listings.Listings);
+Listings.Listings.belongsTo(Categories.Categories);
 
-module.exports = db;
+
+module.exports = connection;
