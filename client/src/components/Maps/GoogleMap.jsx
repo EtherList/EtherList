@@ -35,11 +35,11 @@ export default class MapComponent extends React.Component {
             myStyle = {
               position: 'absolute',
               width: '60px',
-              height: '50px',
+              height: '60px',
               left: '-20px',
               top: '-20px',
               border: '5px solid #18bc9c',
-              borderRadius: '50px',
+              borderRadius: '60px',
               backgroundColor: '#2c3e50',
               textAlign: 'center',
               verticalAlign: 'middle',

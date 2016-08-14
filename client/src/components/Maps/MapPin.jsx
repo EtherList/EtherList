@@ -12,7 +12,7 @@ export default class MapPin extends React.Component {
         key={this.props.key}
         style={this.props.myStyle}
       >
-        {this.props.text}
+
       </div>
     )
   }
