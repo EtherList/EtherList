@@ -8,7 +8,7 @@ module.exports = function(app, express) {
   app.use(morgan('dev'));
   app.use(bodyParser.json());
   app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || 'keyboard cat',
     resave: false,
     saveUninitialized: false
   }));
