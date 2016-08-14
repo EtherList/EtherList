@@ -31,5 +31,7 @@ module.exports = function(express, passport) {
   routes.get('/listings', controller.listings.get);
   routes.post('/listings', controller.listings.post);
 
+  routes.get('/categories', controller.categories.get);
+
   return routes;
 };

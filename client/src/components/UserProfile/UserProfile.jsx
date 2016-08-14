@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { userProfileStyle, userpicStyle } from '../../utils/customStyle.js';
-var fakeUserpic = 'http://www.lovemarks.com/wp-content/uploads/profile-avatars/default-avatar-rainbow-unicorn.png';
+import keyStorage from '../../../../keyStorage.js';
 
 export default class UserProfile extends React.Component {
   constructor(props) {

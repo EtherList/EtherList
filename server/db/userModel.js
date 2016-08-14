@@ -1,4 +1,4 @@
-var db = require('./db');
+var db = require('./connection.js');
 var Sequelize = require('sequelize');
 var bluebird = require('bluebird');
 

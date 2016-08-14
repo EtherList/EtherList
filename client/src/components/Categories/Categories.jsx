@@ -9,11 +9,31 @@ export default class Categories extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          categories: fakeCategories,
+          categories: [],
           coordinates: generateCoords(20, screenWidth, screenHeight)
         }
 
     }
+
+    componentWillMount() {
+      fetch('/categories').then((response) => {
+      if(response.status !== 200) {
+        //TODO: re-route unauthenticated users
+        this.setState({
+          categories: fakeCategories
+        });
+      }
+      return response.json().then((data) => {
+        console.log(data);
+        this.setState({
+          categories: data
+        });
+      });
+    }).catch((err) => {
+      console.error(err);
+    });    
+    }
+
     render() {
         return (
           <div id="dashboard" style={pageStyle}>
