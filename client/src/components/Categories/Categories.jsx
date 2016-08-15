@@ -25,7 +25,6 @@ export default class Categories extends React.Component {
         });
       }
       return response.json().then((data) => {
-        console.log(data);
         this.setState({
           categories: data,
           coordinates: generateCoords(data.length + 1, screenWidth, screenHeight)
@@ -42,7 +41,7 @@ export default class Categories extends React.Component {
               <svg style={outerDivStyle}>
                 {this.state.categories.map((category) => {
                   return (
-                    <Link to='/listings'>
+                    <Link to='/listings' key={category.id}>
                     <Category key={category.id} id={category.id} name={category.name} 
                       totalPosts={category.totalPosts} cx={this.state.coordinates[category.id].x} 
                       cy={this.state.coordinates[category.id].y}>
