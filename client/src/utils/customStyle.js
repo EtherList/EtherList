@@ -3,19 +3,19 @@ export const screenHeight = 505;
 
 export const baseSize = 100;
 
-export const fakeCategories = [{ id: 1, name: 'achernar', totalPosts: 1},
-                      { id: 2, name: 'unperfected', totalPosts: 100},
-                      { id: 3, name:'vascularity', totalPosts: 10},
+export const fakeCategories = [{ id: 1, name: 'unperfected handmade socks', totalPosts: 1},
+                      { id: 2, name: 'amateur clown services', totalPosts: 100},
+                      { id: 3, name:'handstand lessons', totalPosts: 10},
                       { id: 4, name:'campsheeting', totalPosts: 57},
                       { id: 5, name:'concordantly', totalPosts: 40},
                       { id: 6, name:'nonbending', totalPosts: 30},
                       { id: 7, name:'orangeist', totalPosts: 120},
-                      { id: 8, name:'counteroffensive', totalPosts: 200}, 
-                      { id: 9, name: 'achernar', totalPosts: 10},
-                      { id: 10, name: 'unperfected', totalPosts: 100},
+                      { id: 8, name:'stuff that\'s hard to describe', totalPosts: 200}, 
+                      { id: 9, name: 'whatever', totalPosts: 10},
+                      { id: 10, name: 'crocodile fighting classes', totalPosts: 100},
                       { id: 12, name:'campsheeting', totalPosts: 57},
                       { id: 14, name:'nonbending', totalPosts: 30},
-                      { id: 15, name:'orangeist', totalPosts: 20},
+                      { id: 15, name:'orange pants for sale', totalPosts: 20},
                       { id: 16, name:'counteroffensive', totalPosts: 120}];
 
 export const pageStyle = {
