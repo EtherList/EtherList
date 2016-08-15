@@ -4,9 +4,9 @@ const morgan = require('morgan');
 const session = require('express-session');
 
 const utils = require('./config/utils');
-const auth = require('./config/auth.controller');
-const listings = require('./config/listings.controller');
-const routes = require('./config/routes');
+const auth = require('./controllers/auth.controller');
+const categories = require('./controllers/categories.controller');
+const listings = require('./controllers/listings.controller');
 
 let app = express();
 
@@ -19,8 +19,8 @@ app.use(session({
   saveUninitialized: false
 }));
 auth.loadController(app);
+categories.loadController(app);
 listings.loadController(app);
-app.use(routes(express, auth.passport));
 app.use(express.static(__dirname + '/../client/public'));
 
 module.exports = app;
