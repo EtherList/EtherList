@@ -1,6 +1,6 @@
-var express = require('express');
+const express = require('express');
 
-var app = express();
+let app = express();
 require('./config/middleware')(app, express);
 
 module.exports = app;

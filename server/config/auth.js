@@ -1,7 +1,6 @@
-var passport = require('passport');
-var FacebookStrategy = require('passport-facebook').Strategy;
-var User = require('../db/userModel');
-
+const passport = require('passport');
+const FacebookStrategy = require('passport-facebook').Strategy;
+const User = require('../db/models/user');
 
 passport.use(new FacebookStrategy({
   clientID: process.env.FB_ID || 'INVALID_FB_ID',
@@ -11,7 +10,7 @@ passport.use(new FacebookStrategy({
 },
 function(accessToken, refreshToken, profile, done){
   console.log('FB call ', profile._json.picture.data.url);
-  User.User.findOrCreate({where: {
+  User.findOrCreate({where: {
     facebookId: profile.id
   }, defaults: {
     name: profile.displayName,
@@ -45,7 +44,7 @@ function isAuth(req, res, next) {
 
 passport.deserializeUser((id, done) => {
 
- User.User.findById(id).then(user => {
+ User.findById(id).then(user => {
   done(null, user);
  }).catch((err) => {
   console.error(err);

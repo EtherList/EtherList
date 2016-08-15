@@ -1,7 +1,7 @@
 import React from 'react';
 import Category from './Category.jsx';
 import { screenWidth, screenHeight, outerDivStyle, fakeCategories, pageStyle } from '../../utils/customStyle.js';
-import {generateCoords} from '../../utils/helpers.js';
+import { generateCoords } from '../../utils/helpers.js';
 import { Link } from 'react-router';
 
 
@@ -18,7 +18,6 @@ export default class Categories extends React.Component {
     componentWillMount() {
       fetch('/categories').then((response) => {
       if(response.status !== 200) {
-        //TODO: re-route unauthenticated users
         this.setState({
           categories: fakeCategories,
           coordinates: generateCoords(20, screenWidth, screenHeight)
@@ -32,7 +31,7 @@ export default class Categories extends React.Component {
       });
     }).catch((err) => {
       console.error(err);
-    });    
+    });
     }
 
     render() {
@@ -43,7 +42,7 @@ export default class Categories extends React.Component {
                   return (
                     <Link to='/listings' key={category.id}>
                     <Category key={category.id} id={category.id} name={category.name} 
-                      totalPosts={category.totalPosts} cx={this.state.coordinates[category.id].x} 
+                      numPosts={category.numPosts} cx={this.state.coordinates[category.id].x} 
                       cy={this.state.coordinates[category.id].y}>
                     </Category>
                     </Link>

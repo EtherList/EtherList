@@ -1,7 +1,7 @@
-var db = require('../db/listingModel');
-var Promise = require('bluebird').Promise;
+const Listing = require('../db/models/listing');
+const Promise = require('bluebird').Promise;
 
 exports.listings = {
-  get: () => db.Listings.findAll(),
-  post: newListing => db.Listings.create(newListing),
-}
+  get: () => Listing.findAll(),
+  post: newListing => Listing.create(newListing)
+};

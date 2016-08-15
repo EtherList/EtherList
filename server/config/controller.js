@@ -1,12 +1,12 @@
-var model = require('./model');
-var Categories = require('../db/categoriesModel.js');
+const model = require('./model');
+const Category = require('../db/models/category');
 
-var success = (data, res) => res.status(200).send(data);
-var error = (error, res) => res.status(500).send(error);
+const success = (data, res) => res.status(200).send(data);
+const error = (error, res) => res.status(500).send(error);
 
-exports.listings = {
+module.exports.listings = {
   get: (req, res) => { 
-    model.listings.get() 
+    model.listings.get()
     .then(data => success(data, res))
     .catch(data => error(error, res));
   },
@@ -18,9 +18,9 @@ exports.listings = {
   },
 };
 
-exports.categories = {
+module.exports.categories = {
   get: (req, res) => {
-    Categories.Categories.findAll().then((data) => {
+    Category.findAll().then((data) => {
       res.json(data);
     });
   }
