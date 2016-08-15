@@ -10,7 +10,7 @@ export default class Categories extends React.Component {
         super(props);
         this.state = {
           categories: [],
-          coordinates: []
+          coordinates: generateCoords(20, screenWidth, screenHeight)
         }
 
     }
@@ -20,14 +20,13 @@ export default class Categories extends React.Component {
       if(response.status !== 200) {
         //TODO: re-route unauthenticated users
         this.setState({
-          categories: fakeCategories,
-          coordinates: generateCoords(20, screenWidth, screenHeight)
+          categories: fakeCategories
         });
       }
       return response.json().then((data) => {
+        console.log(data);
         this.setState({
-          categories: data,
-          coordinates: generateCoords(20, screenWidth, screenHeight)
+          categories: data
         });
       });
     }).catch((err) => {
@@ -38,18 +37,18 @@ export default class Categories extends React.Component {
     render() {
         return (
           <div id="dashboard" style={pageStyle}>
+            <Link to='/listings'>
               <svg style={outerDivStyle}>
                 {this.state.categories.map((category) => {
                   return (
-                    <Link to='/listings' key={category.id}>
                     <Category key={category.id} id={category.id} name={category.name} 
                       totalPosts={category.totalPosts} cx={this.state.coordinates[category.id].x} 
                       cy={this.state.coordinates[category.id].y}>
                     </Category>
-                    </Link>
                     );
                 })}
               </svg>
+            </Link>
           </div>
         );
     }
