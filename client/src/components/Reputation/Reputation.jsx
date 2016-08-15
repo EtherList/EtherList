@@ -8,7 +8,7 @@ export default class Reputation extends React.Component {
     }
   }
 
-  componentWillMount() {
+  componentWillReceiveProps() {
     let etherrep = EtherRep.deployed();
     etherrep.getReputation.call(this.props.wallet).then(rep => {
       console.log(rep.valueOf());
@@ -18,7 +18,7 @@ export default class Reputation extends React.Component {
 
   render() {
     return (
-      <span>r: {this.state.reputation}</span>
+      <span>{this.state.reputation || '[0]'}</span>
     )
   }
 }
