@@ -3,20 +3,20 @@ export const screenHeight = 505;
 
 export const baseSize = 100;
 
-export const fakeCategories = [{ id: 1, name: 'achernar', totalPosts: 1},
-                      { id: 2, name: 'unperfected', totalPosts: 100},
-                      { id: 3, name:'vascularity', totalPosts: 10},
-                      { id: 4, name:'campsheeting', totalPosts: 57},
-                      { id: 5, name:'concordantly', totalPosts: 40},
-                      { id: 6, name:'nonbending', totalPosts: 30},
-                      { id: 7, name:'orangeist', totalPosts: 120},
-                      { id: 8, name:'counteroffensive', totalPosts: 200}, 
-                      { id: 9, name: 'achernar', totalPosts: 10},
-                      { id: 10, name: 'unperfected', totalPosts: 100},
-                      { id: 12, name:'campsheeting', totalPosts: 57},
-                      { id: 14, name:'nonbending', totalPosts: 30},
-                      { id: 15, name:'orangeist', totalPosts: 20},
-                      { id: 16, name:'counteroffensive', totalPosts: 120}];
+export const fakeCategories = [{ id: 1, name: 'achernar', numPosts: 1},
+                      { id: 2, name: 'unperfected', numPosts: 100},
+                      { id: 3, name:'vascularity', numPosts: 10},
+                      { id: 4, name:'campsheeting', numPosts: 57},
+                      { id: 5, name:'concordantly', numPosts: 40},
+                      { id: 6, name:'nonbending', numPosts: 30},
+                      { id: 7, name:'orangeist', numPosts: 120},
+                      { id: 8, name:'counteroffensive', numPosts: 200}, 
+                      { id: 9, name: 'achernar', numPosts: 10},
+                      { id: 10, name: 'unperfected', numPosts: 100},
+                      { id: 12, name:'campsheeting', numPosts: 57},
+                      { id: 14, name:'nonbending', numPosts: 30},
+                      { id: 15, name:'orangeist', numPosts: 20},
+                      { id: 16, name:'counteroffensive', numPosts: 120}];
 
 export const pageStyle = {
    backgroundImage: 'url(http://orig03.deviantart.net/b575/f/2012/083/7/f/blurry_lights_by_empegz-d4tu18a.jpg)',

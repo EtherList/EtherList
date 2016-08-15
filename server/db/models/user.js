@@ -1,8 +1,7 @@
-var db = require('./connection.js');
-var Sequelize = require('sequelize');
-var bluebird = require('bluebird');
+const Sequelize = require('sequelize');
+const db = require('../connection.js');
 
-exports.User = db.define('user', {
+let User = db.define('user', {
 
   facebookId: {
     type: Sequelize.STRING,
@@ -30,3 +29,5 @@ exports.User = db.define('user', {
     allowNull: true
   }
 });
+
+module.exports = User;

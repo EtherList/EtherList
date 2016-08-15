@@ -1,14 +1,7 @@
-var db = require('./connection.js');
-var Sequelize = require('sequelize');
-var bluebird = require('bluebird');
+const Sequelize = require('sequelize');
+const db = require('../connection.js');
 
-exports.Listings = db.define('listings', {
-
-  id: {
-    type: Sequelize.INTEGER,
-    primaryKey: true,
-    autoIncrement: true 
-  },
+let Listing = db.define('listing', {
 
   name: {
     type: Sequelize.STRING,
@@ -28,19 +21,11 @@ exports.Listings = db.define('listings', {
   time: {
     type: Sequelize.STRING,
     allowNull: true
-  }, 
-
-  reputation: {
-    type: Sequelize.STRING,
-    allowNull: true
   },
 
+  // TODO : figure out how best to represent price
+  // price :: Either String Number
   price: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-
-  terms: {
     type: Sequelize.STRING,
     allowNull: true
   },
@@ -54,5 +39,7 @@ exports.Listings = db.define('listings', {
     type: Sequelize.FLOAT,
     allowNull: true
   }
+
 });
 
+module.exports = Listing;
