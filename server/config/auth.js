@@ -9,7 +9,6 @@ passport.use(new FacebookStrategy({
   profileFields: ['id', 'picture.type(large)', 'displayName']
 },
 function(accessToken, refreshToken, profile, done){
-  console.log('FB call ', profile._json.picture.data.url);
   User.findOrCreate({where: {
     facebookId: profile.id
   }, defaults: {
@@ -18,10 +17,6 @@ function(accessToken, refreshToken, profile, done){
     privateKey: 'none',
     imageURL: profile.photos[0].value
   }}).spread(function(user, created) {
-    console.log('user ', user.get({
-      plain: true
-    }))
-    // console.log('created ',created);
     done(null, user);
   });
 }
@@ -39,11 +34,9 @@ function isAuth(req, res, next) {
     res.status(401);
     res.end();
   }
-
 };
 
 passport.deserializeUser((id, done) => {
-
  User.findById(id).then(user => {
   done(null, user);
  }).catch((err) => {
