@@ -21,9 +21,6 @@ module.exports = function(express, passport) {
     res.redirect('/');
   });
 
-  routes.get('/listings', controller.listings.get);
-  routes.post('/listings', controller.listings.post);
-
   routes.get('/categories', controller.categories.get);
 
   return routes;
