@@ -3,15 +3,12 @@ export function generateCoords(catNum, screenWidth, screenHeight) {
 
   var circleCenters = [];
   //divide the screen into n rows and m columns (numbers depend on the screen size)
-  var numRows = Math.floor(Math.sqrt(catNum));
-  var numColumns = catNum / numRows;
+  var numColumns = Math.floor(Math.sqrt(catNum));
+  var numRows = catNum / numColumns;
   
-  //TODO: change hardcoded margin to a dynamic value based on radius
-  var margin = 20;
-
   var sqWidth = screenWidth / numColumns;
   var sqHeight = screenHeight / numRows;
-  // var d = Math.min(sqWidth, sqHeight);
+  var d = Math.min(sqWidth, sqHeight);
   
   //in each square (row x, column y)
   //calculate coordinates for category circle
@@ -19,8 +16,8 @@ export function generateCoords(catNum, screenWidth, screenHeight) {
     for (var j = 0; j < numColumns; j++) {
       var circleCoords = {};
     //shift circle within each square off center
-      circleCoords.x = Math.floor(j * sqWidth + margin + Math.random() * (sqWidth - 2 * margin));
-      circleCoords.y = Math.floor(i * sqHeight + margin + Math.random() * (sqHeight - 2 * margin)); 
+      circleCoords.x = Math.floor(j * sqWidth  + Math.random() * d);
+      circleCoords.y = Math.floor(i * sqHeight + Math.random() * d); 
       circleCenters.push(circleCoords);
     }
   }
