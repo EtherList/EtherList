@@ -49,16 +49,24 @@ function loadController(app) {
   });
 
   // Routes
-  let authRouter = express.Router();
-  authRouter.get('/auth/facebook', passport.authenticate('facebook'));
-  authRouter.get('/auth/facebook/callback', passport.authenticate('facebook', {
+  let routes = express.Router();
+  routes.get('/auth/facebook', passport.authenticate('facebook'));
+  routes.get('/auth/facebook/callback', passport.authenticate('facebook', {
     successRedirect: '/',
-    failureRedirect: '/fail'
+    failureRedirect: '/'
   }));
+  routes.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
+  });
+  // TODO : maybe move this elsewhere
+  routes.get('/profile', isAuth, function(req, res) {
+    res.json(req.user);
+  });
 
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use(authRouter);
+  app.use(routes);
 }
 
 module.exports = {
