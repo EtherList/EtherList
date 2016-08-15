@@ -1,6 +1,5 @@
 import React from 'react';
 import { screenWidth, screenHeight, colors, CategoryHoverStyle, categoryStyle, outerDivStyle, baseSize } from '../../utils/customStyle.js';
-
 var style = categoryStyle;
 
 export default class Category extends React.Component {
