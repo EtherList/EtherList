@@ -34,7 +34,7 @@ let Listing = db.define('listing', {
     type: Sequelize.BOOLEAN,
     allowNull: false,
     defaultValue: false
-  }
+  },
 
   lat: {
     type: Sequelize.FLOAT,
