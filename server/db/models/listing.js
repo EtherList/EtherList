@@ -30,6 +30,12 @@ let Listing = db.define('listing', {
     allowNull: true
   },
 
+  completed: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: false
+  }
+
   lat: {
     type: Sequelize.FLOAT,
     allowNull: true
