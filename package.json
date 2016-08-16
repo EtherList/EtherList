@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack -p && node server/index.js",
     "start:dev": "webpack --watch --progress --colors & nodemon server/index.js",
-    "test": "mocha test"
+    "test": "mocha --compilers js:babel-core/register test"
   },
   "repository": {
     "type": "git",
