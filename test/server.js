@@ -17,4 +17,4 @@ describe('Environment Setup', function() {
         done();
       });
   });
-})
+});
