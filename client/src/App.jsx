@@ -7,7 +7,7 @@ import PageLayout from './PageLayout.jsx';
 import Login from './components/LoginSignup/Login.jsx';
 import Categories from './components/Categories/Categories.jsx';
 import Listings from './components/Listings/Listings.jsx';
-import UserProfile from './components/UserProfile/UserProfile.jsx';
+import PublicProfile from './components/PublicProfile/PublicProfile.jsx';
 import VisibleCategories from './components/Categories/VisibleCategories.js';
 
 
@@ -19,7 +19,7 @@ ReactDOM.render((
         <Route path="/" component={VisibleCategories} />
         <Route path="auth/facebook" component={Login} />
         <Route path="listings" component={Listings} />
-        <Route path="profile" component={UserProfile} />
+        <Route path="profile" component={PublicProfile} />
       </Route>
     </Router>
   </Provider>

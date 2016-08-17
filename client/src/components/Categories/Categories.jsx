@@ -20,9 +20,7 @@ export default class Categories extends React.Component {
           //TODO: handle error
           alert('this dev team has no idea how to handle errors');
         }
-        return response.json().then((data) => {
-          this.props.onReceive(data);
-        });
+        return response.json().then(this.props.onReceive);
       }).catch((err) => {
         console.error(err);
       });
