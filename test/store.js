@@ -1,4 +1,4 @@
-import { createStore } from 'redux';
+import { createStore } from 'react-redux';
 import reducer from '../client/src/redux/reducers';
 import * as categories from '../client/src/redux/reducers/categories';
 import { expect } from 'chai';
