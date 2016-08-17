@@ -7,10 +7,6 @@ export default class Category extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      //keep track number of posts in this category to calculate cicrle diameter,
-      //can be swapped for popularuty index or whatever
-      numPosts: this.props.numPosts,
-      color: colors[this.props.id - 1],
       hover: false,
       radius: (baseSize + this.props.numPosts) / 3
     };
@@ -46,22 +42,17 @@ export default class Category extends React.Component {
   }
 
 
-  categoryOnClick(name) {
-    //connect to the next page later via parent component's state?
-    console.log(name);
-  }
-
   render() {
 
     return (
-      <g style={style} height={this.calculateRadius(this.props.numPosts) * 1.5} width={this.calculateRadius(this.props.numPosts) * 1.5} onClick={() => {this.categoryOnClick(this.props.name)}} onMouseEnter={() => this.categoryOnHover()} onMouseLeave={() => {this.categoryNoHover()}}>
+      <g style={style} height={this.calculateRadius(this.props.numPosts) * 1.5} width={this.calculateRadius(this.props.numPosts) * 1.5} onMouseEnter={() => this.categoryOnHover()} onMouseLeave={() => {this.categoryNoHover()}}>
 
       <radialGradient id='radialGradient'>
         <stop offset="80%" stopColor={this.state.color}/>
         <stop offset="100%" stopColor="white"/>
       </radialGradient>
 
-      <circle cx={this.props.cx} cy={this.props.cy} r={this.state.radius} fill={this.state.color} className={this.props.name} cursor='default'></circle>
+      <circle cx={this.props.cx} cy={this.props.cy} r={this.state.radius} fill={colors[this.props.id - 1]} className={this.props.name} cursor='default'></circle>
       <text cursor='default' fill='black' x={this.props.cx} y={this.props.cy} >{this.props.name}</text>
       </g>
       );

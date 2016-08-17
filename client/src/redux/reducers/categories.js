@@ -1,14 +1,12 @@
-// import initialState from '../store';
-
-export const initialState = {
+const initialState = {
   isLoading: false,
   categories: [],
   currentCategory: null
 };
 
-export const FETCH = 'CATEGORIES_FETCH';
-export const RECEIVE = 'CATEGORIES_RECEIVE';
-export const SELECT = 'CATEGORIES_SELECT';
+const FETCH = 'etherlist/categories/FETCH';
+const RECEIVE = 'etherlist/categories/RECEIVE';
+const SELECT = 'etherlist/categories/SELECT';
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {

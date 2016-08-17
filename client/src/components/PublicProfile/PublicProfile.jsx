@@ -4,16 +4,9 @@ import { userProfileStyle, userpicStyle } from '../../utils/customStyle.js';
 import keyStorage from '../../../../keyStorage.js';
 import Reputation from '../Reputation/Reputation.jsx';
 
-export default class UserProfile extends React.Component {
+export default class PublicProfile extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      user: {
-        name: '',
-        imageURL: '',
-        wallet: ''
-      }
-    };
   }
 
   componentWillMount() {
