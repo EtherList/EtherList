@@ -4,7 +4,7 @@ import Foot from './components/HeaderFooter/Foot.jsx';
 import { Router, Route, Link, browserHistory, IndexRoute  } from 'react-router';
 
 
-export default class Main extends React.Component {
+export default class PageLayout extends React.Component {
   constructor(props) {
     super(props);
   }
