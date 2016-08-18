@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Login from '../LoginSignup/Login.js';
 import { navbarMargin } from '../../utils/customStyle.js';
 
 export default class Nav extends React.Component {
@@ -23,7 +24,7 @@ export default class Nav extends React.Component {
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
-              <li><Link to="/auth/facebook">Log In</Link></li>
+              <li><Login /></li>
               <li><Link to="/">Categories</Link></li>
               <li><Link to="/listings">Listings</Link></li>
               <li><Link to="/profile">My Profile</Link></li>

@@ -50,6 +50,9 @@ function loadController(app) {
 
   // Routes
   let routes = express.Router();
+  routes.get('/auth/status', isAuth, function(req, res) {
+    res.json(req.user);
+  });
   routes.get('/auth/facebook', passport.authenticate('facebook'));
   routes.get('/auth/facebook/callback', passport.authenticate('facebook', {
     successRedirect: '/',

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import AddListingForm from './AddListingForm.jsx';
-import Utils from '../../utils/Utils.jsx';
+import Utils from '../../utils/utils';
 
 export default class CustomModal extends React.Component {
   constructor(props) {
