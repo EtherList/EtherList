@@ -2,7 +2,7 @@ import React from 'react';
 
 import ListingsTable from './ListingsTable.jsx';
 import ListingPageNavigation from './ListingPageNavigation.jsx';
-import Utils from '../../utils/Utils.jsx';
+import utils from '../../utils/utils';
 import MapComponent from '../Maps/GoogleMap.jsx';
 
 export default class Listings extends React.Component {

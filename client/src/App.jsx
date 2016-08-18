@@ -4,11 +4,11 @@ import { Provider } from 'react-redux';
 import { Router, Route, browserHistory, IndexRoute, replace } from 'react-router';
 import { store } from './redux/store';
 import PageLayout from './PageLayout.jsx';
-import Login from './components/LoginSignup/Login.jsx';
-import Categories from './components/Categories/Categories.jsx';
+import VisibleCategories from './components/Categories/VisibleCategories.js';
+import Login from './components/LoginSignup/Login.js';
 import Listings from './components/Listings/Listings.jsx';
 import PublicProfile from './components/PublicProfile/PublicProfile.jsx';
-import VisibleCategories from './components/Categories/VisibleCategories.js';
+
 
 
 ReactDOM.render((
