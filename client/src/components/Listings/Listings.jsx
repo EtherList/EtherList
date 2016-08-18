@@ -1,8 +1,7 @@
 import React from 'react';
-
 import ListingsTable from './ListingsTable.jsx';
 import ListingPageNavigation from './ListingPageNavigation.jsx';
-import utils from '../../utils/utils';
+import * as actions from '../../redux/reducers/listings';
 import MapComponent from '../Maps/GoogleMap.jsx';
 
 export default class Listings extends React.Component {
@@ -25,7 +24,7 @@ export default class Listings extends React.Component {
         lng: '',
         hovered: false
       },
-      categories: ['whatever', 'hello', 'thisWorks', 'tests\'n\'stuff'],
+      categories: this.props.categories,
       listings: [{'id': 0}],
       defaultCenter: {lat: 37.6547, lng: -122.4194}
     }
@@ -36,10 +35,20 @@ export default class Listings extends React.Component {
   }
 
   getListings() {
-    Utils.ajaxJSON('/listings', 'GET')
-    .done(data => this.setState({listings: data}))
-    .done(() => this.resetNewListing())
-    .fail(e => console.log('get request failed, error is', e));
+    this.props.onFetch();
+    fetch('/listings').then((response) => {
+      if(response.status !== 200) {
+        this.props.onFail(err);
+      } else {
+        return response.json().then((listings) => {
+          this.props.onReceive(listings);
+          this.resetNewListing();
+        }); 
+      }
+    }).catch((err) => {
+      this.props.onFail(err);
+      console.error(err);
+    });
   }
 
   
@@ -50,8 +59,8 @@ export default class Listings extends React.Component {
   }
 
   changeCategory(e) {
-    var value = e.target.value;
-    this.setState({category: value});
+    var categoryName = e.target.value;
+    this.props.onSelectCategory(categoryName);
   }
 
   toggleModal() {
@@ -68,12 +77,6 @@ export default class Listings extends React.Component {
     }
   }
 
-  clearTableContents() {
-    Utils.ajaxJSON('/clearData', 'GET')
-    .done(data => this.setState({listings: data}))
-    .fail(e => console.log('get request failed, error is', e));
-  }
-
   onMapPinEnter(index, listing) {
     this.setState({isListingHovered: listing.listing});
   }
@@ -83,7 +86,7 @@ export default class Listings extends React.Component {
   }
 
   onListingEnter(e) {
-    this.setState({isListingHovered: this.state.listings[e.target.id]});
+    this.setState({isListingHovered: this.props.listings[e.target.id]});
   }
 
   onListingLeave(index, listing) {
@@ -100,7 +103,7 @@ export default class Listings extends React.Component {
           </h3>
 
           <ListingPageNavigation 
-            categories={this.state.categories} 
+            categories={this.props.categories} 
             newListing={this.state.newListing} 
             showModal={this.state.showModal}
             changeCategory={this.changeCategory.bind(this)} 
@@ -111,7 +114,7 @@ export default class Listings extends React.Component {
             addListing={this.addListing.bind(this)}
           />
 
-          <ListingsTable listings={this.state.listings} 
+          <ListingsTable listings={this.props.listings} 
             onListingEnter={this.onListingEnter.bind(this)}
             onListingLeave={this.onListingLeave.bind(this)}
             isListingHovered={this.state.isListingHovered}
@@ -121,7 +124,7 @@ export default class Listings extends React.Component {
 
         <div className="mapContainer flexbox flexbox-column">
           <MapComponent 
-            listings={this.state.listings}
+            listings={this.props.listings}
             defaultCenter={this.state.defaultCenter}
             onMapPinEnter={this.onMapPinEnter.bind(this)}
             onMapPinLeave={this.onMapPinLeave.bind(this)}
