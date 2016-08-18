@@ -6,7 +6,7 @@ import { store } from './redux/store';
 import PageLayout from './PageLayout.jsx';
 import VisibleCategories from './components/Categories/VisibleCategories.js';
 import Login from './components/LoginSignup/Login.js';
-import Listings from './components/Listings/Listings.jsx';
+import VisibleListings from './components/Listings/VisibleListings';
 import PublicProfile from './components/PublicProfile/PublicProfile.jsx';
 
 
@@ -18,7 +18,7 @@ ReactDOM.render((
         <IndexRoute component={VisibleCategories} />
         <Route path="/" component={VisibleCategories} />
         <Route path="auth/facebook" component={Login} />
-        <Route path="listings" component={Listings} />
+        <Route path="listings" component={VisibleListings} />
         <Route path="profile" component={PublicProfile} />
       </Route>
     </Router>
