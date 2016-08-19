@@ -26,7 +26,7 @@ describe('Search Functionality', function() {
   let listing2 = {
     name: 'Donovan is cool',
     description: 'Casper is crazy',
-    completed: true
+    completed: false
   };
 
   beforeEach(function() {
@@ -36,6 +36,8 @@ describe('Search Functionality', function() {
     .then(addUser('nat'))
     .then(userAddsListing(listing2));
   });
+
+  // TODO : add test about only returning active listings
 
   it('should fetch listings', function(done) {
     request(server)

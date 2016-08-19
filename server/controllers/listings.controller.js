@@ -3,6 +3,7 @@ const Listing = require('../db/models/listing');
 
 function getListings(req, res) {
   let where = {};
+  where.completed = req.query.completed || false;
   if (req.query.q) {
     where.$or = [{
       name: { $like: '%' + req.query.q + '%' }

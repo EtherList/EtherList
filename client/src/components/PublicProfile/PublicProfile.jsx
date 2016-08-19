@@ -13,7 +13,6 @@ export default class PublicProfile extends React.Component {
   }
 
   componentWillMount() {
-    console.log(window.location);
     
   }
 
