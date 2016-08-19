@@ -1,0 +1,33 @@
+import { connect } from 'react-redux';
+import * as actions from '../../redux/reducers/listings';
+import { select } from '../../redux/reducers/categories';
+import Listings from './Listings.jsx';
+
+const mapStateToProps = (state) => {
+  return {
+    listings: state.listings.listings,
+    categories: state.categories.categories
+  };
+};
+
+const mapDispatchToProps = function(dispatch) {
+  return {
+    onFetch: () => {
+      dispatch(actions.fetch())
+    },
+    onReceive: (listings) => {
+      dispatch(actions.receive(listings))
+    },
+    onFail: () => {
+      dispatch(actions.fail())
+    },
+    onSelectCategory: (category) => {
+      dispatch(select(category))
+    }
+  }
+};
+
+const VisibleListings = connect(
+  mapStateToProps, mapDispatchToProps)(Listings);
+
+export default VisibleListings;

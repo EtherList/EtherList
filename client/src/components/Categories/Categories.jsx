@@ -9,38 +9,40 @@ export default class Categories extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          categories: [],
           coordinates: []
-        }
-
+        };
     }
 
-    componentWillMount() {
+    fetchCategories() {
+      this.props.onFetch();
       fetch('/categories').then((response) => {
-      if(response.status !== 200) {
-        this.setState({
-          categories: fakeCategories,
-          coordinates: generateCoords(20, screenWidth, screenHeight)
-        });
-      }
-      return response.json().then((data) => {
-        this.setState({
-          categories: data,
-          coordinates: generateCoords(data.length + 1, screenWidth, screenHeight)
-        });
+        if(response.status !== 200) {
+          //TODO: handle error
+          alert('this dev team has no idea how to handle errors');
+        }
+        return response.json().then(this.props.onReceive);
+      }).catch((err) => {
+        console.error(err);
       });
-    }).catch((err) => {
-      console.error(err);
-    });
+    }
+
+    componentWillReceiveProps(nextProps) {
+      this.setState({
+        coordinates: generateCoords(nextProps.categories.length + 1, screenWidth, screenHeight)
+      });
+    }
+
+    componentDidMount() {
+      this.fetchCategories();
     }
 
     render() {
         return (
           <div id="dashboard" style={pageStyle}>
               <svg style={outerDivStyle}>
-                {this.state.categories.map((category) => {
+                {this.props.categories.map((category) => {
                   return (
-                    <Link to='/listings' key={category.id}>
+                    <Link to='/listings' key={category.id} onClick={() => {this.props.onSelect(category)}}>
                     <Category key={category.id} id={category.id} name={category.name} 
                       numPosts={category.numPosts} cx={this.state.coordinates[category.id].x} 
                       cy={this.state.coordinates[category.id].y}>

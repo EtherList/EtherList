@@ -16,7 +16,7 @@ export default class ListingPageNavigation extends React.Component {
           onChange={this.props.changeCategory}>
           {
             this.props.categories.map(function(category) {
-              return <option key={category} value={category}>{category}</option>
+              return <option key={category.name} value={category.name}>{category.name}</option>
             })
           }
         </select>
