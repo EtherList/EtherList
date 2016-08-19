@@ -3,11 +3,14 @@ var request = supertestChai.request;
 var chai = require('chai');
 chai.should();
 chai.use(supertestChai.httpAsserts);
-var server = require('../server/index');
+var server = require('../server/server');
+var db = require('../server/db');
 var Listing = require('../server/db/models/listing');
 
 var supertest = require('supertest');
 var should = chai.should();
+
+db.options.logging = false;
 
 describe('Search Functionality', function() {
   let listing1 = {
@@ -21,11 +24,10 @@ describe('Search Functionality', function() {
   };
 
   beforeEach(function() {
-    return Listing.truncate().then(() => {
-      return Listing.create(listing1);
-    }).then(() => {
-      return Listing.create(listing2);
-    });
+    return db.sync()
+    .then(() => Listing.truncate())
+    .then(() => Listing.create(listing1))
+    .then(() => Listing.create(listing2));
   });
 
   it('should fetch listings', function(done) {
