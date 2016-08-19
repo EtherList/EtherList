@@ -1,8 +1,26 @@
 const express = require('express');
 const Listing = require('../db/models/listing');
 
-function getAllListings(req, res) {
-  res.handlePromise(Listing.findAll());
+function getListings(req, res) {
+  let q = req.query.q;
+  q = q || '';
+
+  res.handlePromise(Listing.findAll({
+    where: {
+      $or: [
+        {
+          name: {
+            $like: '%' + q + '%'
+          }
+        },
+        {
+          description: {
+            $like: '%' + q + '%'
+          }
+        }
+      ]
+    }
+  }));
 }
 
 function createListing(req, res) {
@@ -11,7 +29,7 @@ function createListing(req, res) {
 
 function loadController(app) {
   let routes = express.Router();
-  routes.get('/listings', getAllListings);
+  routes.get('/listings', getListings);
   routes.post('/listings', createListing);
 
   app.use(routes);

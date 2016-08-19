@@ -8,7 +8,7 @@ var server = require('../server/index.js');
 var supertest = require('supertest');
 var should = chai.should();
 
-describe('Environment Setup',
+describe('Environment Setup', function() {
   it('should connect to server', function(done) {
     request(server)
       .get('/')
@@ -16,4 +16,5 @@ describe('Environment Setup',
         res.should.have.status(200);
         done();
       });
-  }));
+  });
+})
