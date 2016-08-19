@@ -5,7 +5,7 @@ import Listings from './Listings.jsx';
 
 const mapStateToProps = (state) => {
   return {
-    listings: state.listings.listings,
+    listings: state.listings.listings.filter(state.listings.visibilityFilter),
     categories: state.categories.categories
   };
 };
