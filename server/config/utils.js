@@ -11,7 +11,7 @@ function utils(req, res, next) {
       res.json(data);
     })
     .catch(error => {
-      res.end(error);
+      res.end(error.toString());
     });
   }
   next();

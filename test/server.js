@@ -9,7 +9,6 @@ var supertest = require('supertest');
 var should = chai.should();
 
 describe('Environment Setup', function() {
-
   it('should connect to server', function(done) {
     request(server)
       .get('/')
