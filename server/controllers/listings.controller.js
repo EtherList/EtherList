@@ -14,7 +14,6 @@ function getListings(req, res) {
   if (req.query.userId) {
     where.userId = req.query.userId;
   }
-  console.log('where ', where);
   res.handlePromise(Listing.findAll({ where }));
 }
 

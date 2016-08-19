@@ -63,8 +63,18 @@ function loadController(app) {
     res.redirect('/');
   });
   // TODO : maybe move this elsewhere
-  routes.get('/profile', isAuth, function(req, res) {
-    res.json(req.user);
+  routes.get('/profile', function(req, res) {
+    if (req.query.userId) {
+      res.handlePromise(User.findById(req.query.userId)
+      .then(user => {
+        user.privateKey = null;
+        return user;
+      }));
+    } else {
+      // TODO: maybe write a better else case
+      // coffee sucks at Hack Reactor
+      res.end('I can\'t do that, Dave.');
+    }
   });
 
   app.use(passport.initialize());
