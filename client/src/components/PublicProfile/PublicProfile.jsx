@@ -7,27 +7,14 @@ import Reputation from '../Reputation/Reputation.jsx';
 export default class PublicProfile extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      profile: null
+    };
   }
 
   componentWillMount() {
     console.log(window.location);
-    fetch('/profile', {credentials: 'same-origin'}).then((response) => {
-      if(response.status !== 200) {
-        window.location = window.location.origin + "/";
-      }
-      return response.json().then((data) => {
-        this.setState({
-          user: { 
-            name: data.name,
-            imageURL: data.imageURL,
-            wallet: data.wallet
-          }
-        });
-      });
-    }).catch((err) => {
-      console.error(err);
-    });
-
+    
   }
 
   render() {
