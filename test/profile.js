@@ -8,7 +8,6 @@ var server = require('../server/server');
 var db = require('../server/db');
 
 var supertest = require('supertest');
-var should = chai.should();
 
 db.options.logging = false;
 

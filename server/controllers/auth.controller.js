@@ -71,8 +71,8 @@ function loadController(app) {
         return user;
       }));
     } else {
-      // TODO: maybe write a better else case
-      // coffee sucks at Hack Reactor
+      // TODO: show user's profile if the user is logged in,
+      //error if not logged in
       res.end('I can\'t do that, Dave.');
     }
   });

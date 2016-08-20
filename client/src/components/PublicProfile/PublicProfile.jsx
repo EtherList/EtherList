@@ -21,14 +21,14 @@ export default class PublicProfile extends React.Component {
     return (
       <div>
         <div>
-          <img src={this.state.user.imageURL} style={userpicStyle}/>
+          <img src={this.state.profile.imageURL} style={userpicStyle}/>
         </div>
         <div>
-        <p>name: {this.state.user.name}</p>
+        <p>name: {this.state.profile.name}</p>
         {/* TODO : only use wallet from DB, or let web3 provider plug in? */}
-        <p>reputation: <Reputation wallet={this.state.user.wallet || accounts[0]}/> </p>
-        <p>active contracts: {this.props.userContracts}</p>
-        <p>active listings: {this.props.userListings}</p>
+        <p>reputation: <Reputation wallet={this.state.profile.wallet || accounts[0]}/> </p>
+        <p>active contracts: {this.props.contracts}</p>
+        <p>active listings: {this.props.listings}</p>
         <p><Button bsStyle='primary'>see history</Button></p>
         </div>
       </div>
