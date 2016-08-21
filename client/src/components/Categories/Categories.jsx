@@ -26,6 +26,16 @@ export default class Categories extends React.Component {
       });
     }
 
+    handleWindowResize() {
+        //TODO: fix the grabbed size (too big)
+      let width = document.getElementById('dashboard').getBoundingClientRect().width;
+      let height = document.getElementById('dashboard').getBoundingClientRect().height;
+      console.log(width, height);
+      this.setState({
+        coordinates: generateCoords(this.props.categories.length + 1, width, height)
+      });
+    }
+
     componentWillReceiveProps(nextProps) {
       this.setState({
         coordinates: generateCoords(nextProps.categories.length + 1, screenWidth, screenHeight)
@@ -34,9 +44,15 @@ export default class Categories extends React.Component {
 
     componentDidMount() {
       this.fetchCategories();
+      window.addEventListener('resize', this.handleWindowResize.bind(this));
+    }
+
+    componentWillUnmount() {
+      window.removeEventListener('resize', this.handleWindowResize.bind(this));
     }
 
     render() {
+      //TODO: fix outerDivStyle and pageStyle to allow dynamic resizing
         return (
           <div id="dashboard" style={pageStyle}>
               <svg style={outerDivStyle}>
