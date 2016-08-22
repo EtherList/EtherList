@@ -2,25 +2,19 @@ const express = require('express');
 const Listing = require('../db/models/listing');
 
 function getListings(req, res) {
-  let q = req.query.q;
-  q = q || '';
-
-  res.handlePromise(Listing.findAll({
-    where: {
-      $or: [
-        {
-          name: {
-            $like: '%' + q + '%'
-          }
-        },
-        {
-          description: {
-            $like: '%' + q + '%'
-          }
-        }
-      ]
-    }
-  }));
+  let where = {};
+  where.completed = req.query.completed || false;
+  if (req.query.q) {
+    where.$or = [{
+      name: { $like: '%' + req.query.q + '%' }
+    }, {
+      description: { $like: '%' + req.query.q + '%' }
+    }];
+  }
+  if (req.query.userId) {
+    where.userId = req.query.userId;
+  }
+  res.handlePromise(Listing.findAll({ where }));
 }
 
 function createListing(req, res) {

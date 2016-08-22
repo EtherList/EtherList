@@ -6,6 +6,7 @@ chai.use(supertestChai.httpAsserts);
 var server = require('../server/server');
 var db = require('../server/db');
 var Listing = require('../server/db/models/listing');
+var User = require('../server/db/models/user');
 
 var supertest = require('supertest');
 var should = chai.should();
@@ -13,22 +14,30 @@ var should = chai.should();
 db.options.logging = false;
 
 describe('Search Functionality', function() {
+  let addUser = (name) => () => User.create({name, facebookId: 'none'});
+  let userAddsListing = (listing) => (user) => Listing.create(Object.assign({}, listing, { userId: user.id }));
+
   let listing1 = {
     name: 'wow, this is crazy',
-    description: 'here\'s my number, so call me maybe'
+    description: 'here\'s my number, so call me maybe',
+    completed: false
   };
 
   let listing2 = {
     name: 'Donovan is cool',
-    description: 'Casper is crazy'
+    description: 'Casper is crazy',
+    completed: false
   };
 
   beforeEach(function() {
-    return db.sync()
-    .then(() => Listing.truncate())
-    .then(() => Listing.create(listing1))
-    .then(() => Listing.create(listing2));
+    return db.sync({force:true})
+    .then(addUser('casper'))
+    .then(userAddsListing(listing1))
+    .then(addUser('nat'))
+    .then(userAddsListing(listing2));
   });
+
+  // TODO : add test about only returning active listings
 
   it('should fetch listings', function(done) {
     request(server)
@@ -64,5 +73,14 @@ describe('Search Functionality', function() {
         res.body.length.should.equal(2);
         done();
       });
+  });
+
+  it('should return item searched for by user id', function(done) {
+    request(server)
+    .get('/listings?userId=2')
+    .end(function(err, res){
+      res.body[0].id.should.equal(2);
+      done();
+    });
   });
 });

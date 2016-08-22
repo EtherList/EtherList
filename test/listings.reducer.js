@@ -1,5 +1,6 @@
 import listings, * as actions from '../client/src/redux/reducers/listings.js';
-import chai, { expect } from 'chai';
+var chai = require('chai');
+var expect = chai.expect;
 import chaiSubset from 'chai-subset';
 chai.use(chaiSubset);
 

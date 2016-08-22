@@ -1,17 +1,17 @@
 import { loginSuccess, loginFail } from '../redux/reducers/auth';
 
-import $ from 'jquery';
+// import $ from 'jquery';
 
-export function ajaxJSON(url, type, data) {
-  return $.ajax({
-    method: type,
-    url: url,
-    data: data,
-    contentType: "application/json",
-    success: returnedData => console.log('Successful', type + ':', returnedData),
-    dataType: 'json'
-  });
-};
+// export function ajaxJSON(url, type, data) {
+//   return $.ajax({
+//     method: type,
+//     url: url,
+//     data: data,
+//     contentType: "application/json",
+//     success: returnedData => console.log('Successful', type + ':', returnedData),
+//     dataType: 'json'
+//   });
+// };
 
 export function fetchAuthStatus(store) {
   fetch('/auth/status', {credentials: 'same-origin'}).then((response) => {

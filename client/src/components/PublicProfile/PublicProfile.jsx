@@ -7,27 +7,13 @@ import Reputation from '../Reputation/Reputation.jsx';
 export default class PublicProfile extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      profile: null
+    };
   }
 
   componentWillMount() {
-    console.log(window.location);
-    fetch('/profile', {credentials: 'same-origin'}).then((response) => {
-      if(response.status !== 200) {
-        window.location = window.location.origin + "/";
-      }
-      return response.json().then((data) => {
-        this.setState({
-          user: { 
-            name: data.name,
-            imageURL: data.imageURL,
-            wallet: data.wallet
-          }
-        });
-      });
-    }).catch((err) => {
-      console.error(err);
-    });
-
+    
   }
 
   render() {
@@ -35,14 +21,14 @@ export default class PublicProfile extends React.Component {
     return (
       <div>
         <div>
-          <img src={this.state.user.imageURL} style={userpicStyle}/>
+          <img src={this.state.profile.imageURL} style={userpicStyle}/>
         </div>
         <div>
-        <p>name: {this.state.user.name}</p>
+        <p>name: {this.state.profile.name}</p>
         {/* TODO : only use wallet from DB, or let web3 provider plug in? */}
-        <p>reputation: <Reputation wallet={this.state.user.wallet || accounts[0]}/> </p>
-        <p>active contracts: {this.props.userContracts}</p>
-        <p>active listings: {this.props.userListings}</p>
+        <p>reputation: <Reputation wallet={this.state.profile.wallet || accounts[0]}/> </p>
+        <p>active contracts: {this.props.contracts}</p>
+        <p>active listings: {this.props.listings}</p>
         <p><Button bsStyle='primary'>see history</Button></p>
         </div>
       </div>
