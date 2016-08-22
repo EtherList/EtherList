@@ -1,6 +1,7 @@
 const initialState = {
   isLoading: false,
   categories: [],
+  coordinates: [],
   currentCategory: null
 };
 
@@ -17,7 +18,8 @@ export default function reducer(state = initialState, action) {
     case RECEIVE:
       return Object.assign({}, state, {
         isLoading: false,
-        categories: action.categories
+        categories: action.categories,
+        coordinates: action.coordinates
       });
     case SELECT:
       return Object.assign({}, state, {
@@ -34,10 +36,11 @@ export function fetch() {
   };
 }
 
-export function receive(categories) {
+export function receive(categories, coordinates) {
   return {
     type: RECEIVE,
-    categories
+    categories,
+    coordinates
   };
 }
 

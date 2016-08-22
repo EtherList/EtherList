@@ -6,7 +6,8 @@ import Categories from './Categories.jsx';
 const mapStateToProps = (state) => {
   return {
     isLoading: state.categories.isLoading,
-    categories: state.categories.categories
+    categories: state.categories.categories,
+    coordinates: state.categories.coordinates
   };
 };
 
@@ -15,8 +16,8 @@ const mapDispatchToProps = function(dispatch) {
     onFetch: () => {
       dispatch(actions.fetch());
     },
-    onReceive: (categories) => {
-      dispatch(actions.receive(categories));
+    onReceive: (categories, coordinates) => {
+      dispatch(actions.receive(categories, coordinates));
     },
     onSelect: (category) => {
       dispatch(actions.select(category));
