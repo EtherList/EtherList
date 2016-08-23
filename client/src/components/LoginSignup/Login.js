@@ -4,8 +4,8 @@ import LoginButton from './LoginButton.jsx';
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user,
-    message: state.message
+    user: state.auth.user,
+    message: state.auth.message
   };
 };
 
