@@ -16,7 +16,6 @@ export default class UserProfile extends React.Component{
   }
 
   getMyListings() {
-    this.props.onFetch();
     fetch('/listings').then((response) => {
       if (response.status !== 200) {
         this.props.onFail(err);
@@ -27,8 +26,7 @@ export default class UserProfile extends React.Component{
         });
       }
     }).catch((err) => {
-      this.props.onFail(err);
-      console.error(err);
+      console.log('error');
     });
   }
 
@@ -38,7 +36,6 @@ export default class UserProfile extends React.Component{
         this.props.onFail(err);
       } else {
         return response.json().then((myProfile) => {
-          console.log('myProfile', myProfile);
           this.props.onProfileReceive(myProfile);
         });
       }
@@ -48,12 +45,8 @@ export default class UserProfile extends React.Component{
   render() {
     return (
       <div>
-        <div>
-          <PublicProfile myProfile={this.props.profile}/>
-        </div>
-        <div>
-          <PrivateProfile listings={this.props.listings}/>
-        </div>
+        <PublicProfile myProfile={this.props.profile}/>}
+        <PrivateProfile listings={this.props.listings}/>
       </div>
     )
   }
