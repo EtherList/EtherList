@@ -6,3 +6,4 @@ keyStorage.js
 client/public/app.js
 client/public/contracts/
 docker/redis/
+EtherRep/
