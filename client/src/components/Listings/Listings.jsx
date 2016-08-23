@@ -10,7 +10,8 @@ export default class Listings extends React.Component {
     this.state = {
       color: {backgroundColor: 'transparent'},
       isListingHovered: null,
-      showModal: false,
+      listingsInView: [],
+      category: 'CategoryName',
       newListing: {
         name: '',
         description: '',
@@ -21,7 +22,8 @@ export default class Listings extends React.Component {
         terms: '',
         lat: '',
         lng: '',
-        hovered: false
+        hovered: false,
+        clusterCtr: 0
       },
       categories: this.props.categories,
       listings: [{'id': 0}],
@@ -62,10 +64,6 @@ export default class Listings extends React.Component {
     this.props.onSelectCategory(categoryName);
   }
 
-  toggleModal() {
-    this.setState({showModal: !this.state.showModal});
-  }
-
   handleChange(e) {
     this.state.newListing[e.target.name] = e.target.value;
   }
@@ -92,6 +90,10 @@ export default class Listings extends React.Component {
     this.setState({isListingHovered: null});
   }
 
+  onListingScroll(listingsInView) {
+    this.setState({listingsInView: listingsInView})
+  }
+
   render() {
     return (
       <div className="flexbox">
@@ -104,16 +106,16 @@ export default class Listings extends React.Component {
           <ListingPageNavigation 
             categories={this.props.categories} 
             newListing={this.state.newListing} 
-            showModal={this.state.showModal}
             changeCategory={this.changeCategory.bind(this)} 
-            toggleModal={this.toggleModal.bind(this)}
             handleChange={this.handleChange.bind(this)}
             resetNewListing={this.resetNewListing.bind(this)}
             getListings={this.getListings.bind(this)}
             addListing={this.addListing.bind(this)}
           />
 
-          <ListingsTable listings={this.props.listings} 
+          <ListingsTable listings={this.state.listings} 
+            listingsInView={this.state.listingsInView}
+            onListingScroll={this.onListingScroll.bind(this)}
             onListingEnter={this.onListingEnter.bind(this)}
             onListingLeave={this.onListingLeave.bind(this)}
             isListingHovered={this.state.isListingHovered}
@@ -123,7 +125,8 @@ export default class Listings extends React.Component {
 
         <div className="mapContainer flexbox flexbox-column">
           <MapComponent 
-            listings={this.props.listings}
+            listingsInView={this.state.listingsInView}
+            listings={this.state.listings}
             defaultCenter={this.state.defaultCenter}
             onMapPinEnter={this.onMapPinEnter.bind(this)}
             onMapPinLeave={this.onMapPinLeave.bind(this)}
