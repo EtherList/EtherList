@@ -1,29 +1,33 @@
 import React from 'react';
-import { Button, Modal } from 'react-bootstrap';
-import { listingPicStyle } from '../../utils/customStyle.js';
 
-export default class Listing extends React.Component {
+export default class ListingTable extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+
+    }
   }
 
   render() {
-    return(
-      <div>
-      <div>
-      <div>
-      <img src={this.props.image} style={listingPicStyle}/>
-      </div>
-      <p>{this.props.reputation}</p>
-      <p>name: {this.props.name}</p>
-      <p>description: {this.props.description}</p>
-      <p>time: {this.props.time}</p>
-      <p>price: {this.props.price}</p>
-      <p>location: {this.props.location}</p>
-      </div>
-      </div>
+    var myStyle;
+    if (this.props.hovered === this.props.listing) {
+      var myStyle = {
+        backgroundColor: '#2c3e50', 
+        color: 'white', 
+        WebkitTransition: 'width 0.5s, height 0.5s, background-color 0.5s, -webkit-transform 0.5s',
+        transition: 'width 0.5s, height 0.5s, background-color 0.5s, transform 0.5s'
+      };
+    }
 
-      );
-  }
-};
-
+    return (
+      <div id={this.props.index} className="flex-container listingItem" key={this.props.index} style={myStyle} 
+        onMouseOver={this.props.onListingEnter} onMouseLeave={this.props.onListingLeave} onClick={this.props.onListingClick}>
+        <div className="flex-item" id={this.props.index} >{'Item: ' + this.props.listing.name}</div>
+        <div className="flex-item" id={this.props.index} >{'Description: ' + this.props.listing.description}</div>
+        <div className="flex-item" id={this.props.index} >{'Time: ' + this.props.listing.time}</div>
+        <div className="flex-item" id={this.props.index} >{'Reputation: ' + this.props.listing.reputation}</div>
+        <div className="flex-item" id={this.props.index} >{'Price: ' + this.props.listing.price}</div>
+      </div>
+    )
+  } 
+}
