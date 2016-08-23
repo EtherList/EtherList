@@ -2,6 +2,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const morgan = require('morgan');
 const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
 
 const utils = require('./config/utils');
 const auth = require('./controllers/auth.controller');
@@ -14,6 +15,9 @@ app.use(utils);
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(session({
+  store: new RedisStore({
+    url: 'redis://redis-session'
+  }),
   secret: process.env.SESSION_SECRET || 'keyboard cat',
   resave: false,
   saveUninitialized: false
