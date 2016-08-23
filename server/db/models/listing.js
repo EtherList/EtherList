@@ -45,7 +45,6 @@ let Listing = db.define('listing', {
     type: Sequelize.FLOAT,
     allowNull: true
   }
-
 });
 
 module.exports = Listing;
