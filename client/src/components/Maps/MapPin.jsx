@@ -11,7 +11,14 @@ export default class MapPin extends React.Component {
         className="mapPin"
         key={this.props.key}
         style={this.props.myStyle}
-      >
+      >{ () => {
+                if (Object.keys(listing.cluster).length < 1) {
+                  return "";
+                } else {
+                  console.log('should have a number');
+                  return Object.keys(listing.cluster).length;
+                }
+              }}
 
       </div>
     )
