@@ -18,7 +18,7 @@ export default class CustomModal extends React.Component {
   render() {
     return (
       <Modal
-        show={this.props.showModal}
+        show={this.props.showAddListingModal}
         onEnter={this.toggleMapHeight}
         onHide={this.props.toggleModal}
         container={this}
