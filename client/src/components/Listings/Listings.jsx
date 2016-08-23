@@ -10,7 +10,6 @@ export default class Listings extends React.Component {
     this.state = {
       color: {backgroundColor: 'transparent'},
       isListingHovered: null,
-      category: 'CategoryName',
       showModal: false,
       newListing: {
         name: '',
@@ -99,7 +98,7 @@ export default class Listings extends React.Component {
 
         <div className="listingColumn flexbox flexbox-column" id="listingTable">
           <h3 className="flexbox categoryName">
-            {this.state.category}
+            {this.props.currentCategory.name}
           </h3>
 
           <ListingPageNavigation 

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import * as actions from '../../redux/reducers/categories';
+import * as listings from '../../redux/reducers/listings';
 import Categories from './Categories.jsx';
 
 const mapStateToProps = (state) => {
@@ -12,13 +13,14 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = function(dispatch) {
   return {
     onFetch: () => {
-      dispatch(actions.fetch())
+      dispatch(actions.fetch());
     },
     onReceive: (categories) => {
-      dispatch(actions.receive(categories))
+      dispatch(actions.receive(categories));
     },
     onSelect: (category) => {
-      dispatch(actions.select(category))
+      dispatch(actions.select(category));
+      dispatch(listings.filter('category', category));
     }
   }
 };
