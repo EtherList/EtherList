@@ -14,10 +14,6 @@ export default class PageLayout extends React.Component {
     return (
       <div className="flexbox">
         <Nav />
-        <div>
-          <Link to="/profile/1">one</Link>
-          <Link to="/profile/2">two</Link>
-        </div>
 
         <div className="flexbox">
           {this.props.children}

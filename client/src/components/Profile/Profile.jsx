@@ -45,7 +45,7 @@ export default class UserProfile extends React.Component{
   render() {
     return (
       <div>
-        <PublicProfile myProfile={this.props.profile}/>}
+        <PublicProfile myProfile={this.props.profile}/>
         <PrivateProfile listings={this.props.listings}/>
       </div>
     )

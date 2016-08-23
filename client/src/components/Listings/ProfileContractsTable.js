@@ -9,7 +9,7 @@ const ProfileContractsTable = (props) => (
 
 let TableEntry = (props) => (
   <div>
-  	Name: {props.entryName}
+  	Contracts Name: {props.entryName}
     {
     // Description: {props.entryDescription}
     // Price: {props.entryPrice}

@@ -9,12 +9,19 @@ const ProfileListingsTable = (props) => (
 
 let TableEntry = (props) => (
   <div>
-  	Name: {props.entry.name}
-    {
-    // Description: {props.entryDescription}
-    // Price: {props.entryPrice}
-    // Completed: {props.entryCompleted}
-    // Edit: // clickable: opens table entry for editing
+    <div>
+  	   Name: {props.entry.name}
+    </div>
+    <div>
+      Description: {props.entryDescription}
+    </div>
+    <div>
+      Price: {props.entryPrice}
+    </div>
+    <div>
+      Completed: {props.entryCompleted}
+    </div>
+    {// Edit: // clickable: opens table entry for editing
     }
   </div>
 );
