@@ -9,6 +9,7 @@ services:
       - .:/usr/src/app
     depends_on:
       - postgres
+      - redis-session
     # entrypoint: node
     command: npm run start:dev
     environment:
@@ -22,3 +23,8 @@ services:
     volumes:
       - ./docker:/docker-entrypoint-initdb.d
     command: /docker-entrypoint.sh postgres
+  redis-session:
+    image: redis:alpine
+    volumes:
+      - ./docker/redis:/data
+    command: redis-server --appendonly yes
