@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, Route, browserHistory, IndexRoute, replace } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import { store } from './redux/store';
 import PageLayout from './PageLayout.jsx';
 import VisibleCategories from './components/Categories/VisibleCategories.js';
