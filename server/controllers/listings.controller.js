@@ -1,5 +1,6 @@
 const express = require('express');
 const Listing = require('../db/models/listing');
+const Auth = require('./auth.controller');
 
 function getListings(req, res) {
   let where = {};
@@ -14,6 +15,7 @@ function getListings(req, res) {
   if (req.query.userId) {
     where.userId = req.query.userId;
   }
+
   res.handlePromise(Listing.findAll({ where }));
 }
 
@@ -24,7 +26,7 @@ function createListing(req, res) {
 function loadController(app) {
   let routes = express.Router();
   routes.get('/listings', getListings);
-  routes.post('/listings', createListing);
+  routes.post('/listings', Auth.isAuth, createListing);
 
   app.use(routes);
 }
