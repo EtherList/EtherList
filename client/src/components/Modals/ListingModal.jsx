@@ -2,7 +2,8 @@ import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import ViewListing from './ViewListing.jsx';
 // import ViewListingModal from '../Modals/ViewListingModal.jsx';
-import Utils from '../../utils/Utils.jsx';
+import { ajaxJSON } from '../../utils/utils.js';
+
 
 export default class CustomModal extends React.Component {
   constructor(props) {
@@ -13,13 +14,16 @@ export default class CustomModal extends React.Component {
   }
 
   expressBuyerInterest() {
+    var nonCircularListing = this.props.clickedListing;
+    delete nonCircularListing['cluster'];
     var postObj = {
       listing_id: this.props.clickedListing.id, 
       terms: this.state.terms, 
-      listing: this.props.clickedListing
+      listing: nonCircularListing
     };
+    console.log('postObj is', postObj);
     
-    Utils.ajaxJSON('/contracts', 'POST', JSON.stringify(postObj))
+    ajaxJSON('/contracts', 'POST', JSON.stringify(postObj))
     .done(this.props.getListings)
     .done(this.props.toggleModal)
     .fail(e => {
