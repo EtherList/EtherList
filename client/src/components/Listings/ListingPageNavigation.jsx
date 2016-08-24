@@ -22,6 +22,7 @@ export default class ListingPageNavigation extends React.Component {
         </button>
         <CustomModal 
           currentCategory={this.props.currentCategory} 
+          userId={this.props.userId}
           newListing={this.props.newListing} 
           showAddListingModal={this.state.showAddListingModal}
           toggleModal={this.toggleModal.bind(this)} 
