@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav from './components/HeaderFooter/Nav.jsx';
+import Nav from './components/HeaderFooter/Nav';
 import Foot from './components/HeaderFooter/Foot.jsx';
 import { Router, Route, Link, browserHistory, IndexRoute  } from 'react-router';
 
@@ -17,7 +17,6 @@ export default class PageLayout extends React.Component {
         <div className="flexbox">
           {this.props.children}
         </div>
-
         <Foot />
       </div>
     );
