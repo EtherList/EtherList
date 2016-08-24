@@ -173,3 +173,12 @@ div.flexbox div.flex-container:nth-of-type(odd) {
   -webkit-transition: width 0.5s, height 0.5s, background-color 0.5s, -webkit-transform 0.5s;
   transition: width 0.5s, height 0.5s, background-color 0.5s, transform 0.5s;
 }
+
+.listingBox {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.listingHeader {
+  background-color: #2c3e50;
+}
