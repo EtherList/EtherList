@@ -41,7 +41,15 @@ export default class ListingTable extends React.Component {
 
   onListingClick(e) {
     this.toggleModal();
-    this.setState({clickedListing: this.props.listings[e.target.id]})
+
+    var clickedListing;
+    if (e.target.id) {
+      clickedListing = this.props.listings[e.target.id];
+    } else {
+      clickedListing = this.props.listings[e.target.parentElement.id];
+    }
+
+    this.setState({clickedListing: clickedListing})
   }
 
   toggleModal() {

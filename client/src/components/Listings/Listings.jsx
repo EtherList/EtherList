@@ -83,7 +83,11 @@ export default class Listings extends React.Component {
   }
 
   onListingEnter(e) {
-    this.setState({isListingHovered: [this.props.listings[e.target.id]]});
+    if (e.target.id) {
+      this.setState({isListingHovered: [this.props.listings[e.target.id]]});
+    } else {
+      this.setState({isListingHovered: [this.props.listings[e.target.parentElement.id]]});
+    }
   }
 
   onListingLeave(index, listing) {
