@@ -1,17 +1,5 @@
 import { loginSuccess, loginFail } from '../redux/reducers/auth';
-
-import $ from 'jquery';
-
-export function ajaxJSON(url, type, data) {
-  return $.ajax({
-    method: type,
-    url: url,
-    data: data,
-    contentType: "application/json",
-    success: returnedData => console.log('Successful', type + ':', returnedData),
-    dataType: 'json'
-  });
-};
+import { store } from '../redux/store';
 
 export function fetchAuthStatus(store) {
   fetch('/auth/status', {credentials: 'same-origin'}).then((response) => {
@@ -25,5 +13,20 @@ export function fetchAuthStatus(store) {
   }).catch((err) => {
     store.dispatch(loginFail(err));
     console.error(err);
+  });
+};
+
+export function fetchListings(store, keyword) {
+  fetch(`/listings${keyword ? '?q=' + keyword : ''}`).then((response) => {
+    if(response.status !== 200) {
+      store.dispatch({type: 'etherlist/listings/FAIL', error});
+    } else {
+      return response.json().then((listings) => {
+        store.dispatch({type: 'etherlist/listings/RECEIVE', listings});
+      }); 
+    }
+  }).catch((err) => {
+    console.error(err);
+    store.dispatch({type: 'etherlist/listings/FAIL', error: err});
   });
 };
