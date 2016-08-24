@@ -87,10 +87,6 @@ export default class Listings extends React.Component {
     this.setState({listingsInView: listingsInView})
   }
 
-  onListingScroll(listingsInView) {
-    this.setState({listingsInView: listingsInView})
-  }
-
   render() {
     return (
       <div className="flexbox">
