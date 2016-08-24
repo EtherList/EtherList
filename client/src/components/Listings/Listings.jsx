@@ -23,7 +23,8 @@ export default class Listings extends React.Component {
         lat: '',
         lng: '',
         hovered: false,
-        clusterCtr: 0
+        clusterCtr: 0,
+        userId: ''
       },
       categories: this.props.categories,
       listings: [],
@@ -104,6 +105,7 @@ export default class Listings extends React.Component {
 
           <ListingPageNavigation 
             currentCategory={this.props.currentCategory} 
+            userId={this.props.user}
             newListing={this.state.newListing} 
             changeCategory={this.changeCategory.bind(this)} 
             handleChange={this.handleChange.bind(this)}

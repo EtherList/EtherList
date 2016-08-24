@@ -9,13 +9,11 @@ export default class CustomModal extends React.Component {
   }
 
   postData() {
-    var newListing = this.props.newListing;
-    console.log('this.props.currentCategory is', this.props.currentCategory);
-    console.log('this.props.newListing is', this.props.newListing);
+    var newListing = JSON.parse(JSON.stringify(this.props.newListing));
     newListing['categoryId'] = this.props.currentCategory['id'];
-    console.log('newListing is now', newListing);
+    newListing['userId'] = this.props.userId['id'];
 
-    ajaxJSON('/listings', 'POST', JSON.stringify(this.props.newListing))
+    ajaxJSON('/listings', 'POST', JSON.stringify(newListing))
     .done(this.props.getListings)
     .done(this.props.toggleModal)
     .fail(e => console.log('post failed, error is', e));
