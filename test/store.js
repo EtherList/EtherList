@@ -1,7 +1,11 @@
 import { createStore } from 'redux';
 import reducer from '../client/src/redux/reducers';
 import * as categories from '../client/src/redux/reducers/categories';
-import { expect } from 'chai';
+import chai from 'chai';
+import chaiSubset from 'chai-subset';
+
+const expect = chai.expect;
+chai.use(chaiSubset);
 
 
 describe('store', function() {
