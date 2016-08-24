@@ -1,5 +1,6 @@
 const express = require('express');
 const Listing = require('../db/models/listing');
+const utils = require('../config/utils.js')
 
 function getListings(req, res) {
   let where = {};
