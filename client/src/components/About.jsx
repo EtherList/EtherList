@@ -2,41 +2,36 @@ import React from 'react';
 
 export default function About(props) {
   return (
-    <div className="container">
+    <div id="about" className="container">
       <div className="jumbotron">
         <h2>EtherList<br />
-          <small>CraigsList, without the murderers</small>
+          <small>The Reputable Marketplace</small>
         </h2>
-        <h5>(Or, at least, very reputable ones...)</h5>
       </div>
       <div>
-        <h3>Whatitdo</h3>
+        <h3>Who We Are</h3>
         <p>
-          <strong>EtherList is an online community that cares.</strong>
-          We care about how well behaved you are relative to your peers.
-          EtherList enables strangers to engage other members of their community based on an entirely transparent system for establishing trust.
-          Phew, that was a mouthful. Can somebody <strong>please</strong> reword that?
+          <strong>EtherList is an online community that cares. </strong>
+          We care about our users having an enjoyable shopping experience.
+          This is why EtherList uses Blockchain Technology to maintain a Reputation score for all of our users.
+          The Reputation score is earned by engaging in successful transactions with other users.
+          This enables users to have confidence in their transactions with other members of our community.
         </p>
       </div>
       <div>
-        <h3>Whodunnit</h3>
+        <h3>Meet The Team</h3>
         <div className="row">
 
           <div className="col-xs-3 text-center">
             <div>
               <img className="img-circle img-responsive" src="https://m.popkey.co/ce6d77/J6786.gif" />
+              Casper Holmgreen
             </div>
           </div>
-          <div className="col-xs-3 text-center"><GitHub username="08martinm" /></div>
-          <div className="col-xs-3 text-center"><GitHub username="donovanCarreno" /></div>
-          <div className="col-xs-3 text-center"><GitHub username="grigorovskaya" /></div>
+          <div className="col-xs-3 text-center"><GitHub username="08martinm" />Matt Martin</div>
+          <div className="col-xs-3 text-center"><GitHub username="donovanCarreno" />Donovan Carreno</div>
+          <div className="col-xs-3 text-center"><GitHub username="grigorovskaya" />Nat Grigorovskaya</div>
         </div>
-      </div>
-      <div>
-        <h3>Whhy</h3>
-        <p>
-          Because you don't trust strangers online and neither do we!
-        </p>
       </div>
     </div>
   )
@@ -66,6 +61,3 @@ class GitHub extends React.Component {
     )
   }
 }
-
-
-
