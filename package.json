@@ -28,7 +28,6 @@
     "body-parser": "^1.15.2",
     "connect-redis": "^3.1.0",
     "etherrep": "git+https://github.com/EtherList/EtherRep.git",
-    "etherrep": "file:///usr/src/app/EtherRep",
     "express": "^4.14.0",
     "express-session": "^1.14.0",
     "google-map-react": "^0.16.3",
@@ -59,3 +58,4 @@
     "webpack": "^1.13.1"
   }
 }
+
