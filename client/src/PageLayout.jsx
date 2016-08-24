@@ -1,7 +1,6 @@
 import React from 'react';
-import Nav from './components/HeaderFooter/Nav.jsx';
+import Nav from './components/HeaderFooter/Nav';
 import Foot from './components/HeaderFooter/Foot.jsx';
-import PrivateProfile from './components/Profile/PrivateProfile.jsx';
 import { Router, Route, Link, browserHistory, IndexRoute  } from 'react-router';
 
 
