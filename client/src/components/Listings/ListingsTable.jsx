@@ -15,6 +15,10 @@ export default class ListingTable extends React.Component {
     }
   }
 
+  componentDidMount() {
+    setTimeout(this.showListingsInView.bind(this), 1000);
+  }
+
   showListingsInView() {
     var context = this;
     var areaHeight = $('.scrollableDiv').height();
@@ -27,7 +31,7 @@ export default class ListingTable extends React.Component {
       var height = $(this).height();
       var thisListing = context.props.listings[this.id];
 
-      if (top > areaTop && top < areaBottom) {
+      if (top > (areaTop - height * 4/5) && top < (areaBottom - height * 1/5)) {
         listingsInView.push(thisListing);
       }
     });
@@ -73,11 +77,6 @@ export default class ListingTable extends React.Component {
           showViewListingModal={this.state.showViewListingModal}
           toggleModal={this.toggleModal.bind(this)} 
           clickedListing={this.state.clickedListing}
-          // newListing={this.props.newListing} 
-          // handleChange={this.props.handleChange}
-          // resetNewListing={this.props.resetNewListing}
-          // getListings={this.props.getListings}
-          // addListing={this.props.addListing}
         />
       </div>
 

@@ -9,7 +9,7 @@ export default class Listings extends React.Component {
     super(props);
     this.state = {
       color: {backgroundColor: 'transparent'},
-      isListingHovered: null,
+      isListingHovered: [],
       listingsInView: [],
       currentCategory: this.props.currentCategory,
       newListing: {
@@ -74,20 +74,20 @@ export default class Listings extends React.Component {
     }
   }
 
-  onMapPinEnter(index, listing) {
-    this.setState({isListingHovered: listing.listing});
+  onMapPinEnter(index, mapPin) {
+    this.setState({isListingHovered: mapPin.cluster});
   }
 
   onMapPinLeave(index, listing) {
-    this.setState({isListingHovered: null});
+    this.setState({isListingHovered: []});
   }
 
   onListingEnter(e) {
-    this.setState({isListingHovered: this.props.listings[e.target.id]});
+    this.setState({isListingHovered: [this.props.listings[e.target.id]]});
   }
 
   onListingLeave(index, listing) {
-    this.setState({isListingHovered: null});
+    this.setState({isListingHovered: []});
   }
 
   onListingScroll(listingsInView) {

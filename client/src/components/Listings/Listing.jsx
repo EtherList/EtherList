@@ -10,13 +10,15 @@ export default class ListingTable extends React.Component {
 
   render() {
     var myStyle;
-    if (this.props.hovered === this.props.listing) {
-      var myStyle = {
-        backgroundColor: '#2c3e50', 
-        color: 'white', 
-        WebkitTransition: 'width 0.5s, height 0.5s, background-color 0.5s, -webkit-transform 0.5s',
-        transition: 'width 0.5s, height 0.5s, background-color 0.5s, transform 0.5s'
-      };
+    for (var i = 0; i < this.props.hovered.length; i++) {
+      if (this.props.hovered[i] === this.props.listing) {
+        var myStyle = {
+          backgroundColor: '#2c3e50', 
+          color: 'white', 
+          WebkitTransition: 'width 0.5s, height 0.5s, background-color 0.5s, -webkit-transform 0.5s',
+          transition: 'width 0.5s, height 0.5s, background-color 0.5s, transform 0.5s'
+        };
+      }
     }
 
     return (

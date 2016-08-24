@@ -35,14 +35,3 @@ export default class ListingPageNavigation extends React.Component {
     )
   }
 }
-
-        // <select 
-        //   selected="Select new category"
-        //   className="form-control" 
-        //   onChange={this.props.changeCategory}>
-        //   {
-        //     this.props.categories.map(function(category) {
-        //       return <option key={category} value={category}>{category}</option>
-        //     })
-        //   }
-        // </select>
