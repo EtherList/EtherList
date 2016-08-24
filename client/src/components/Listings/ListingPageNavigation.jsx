@@ -17,21 +17,11 @@ export default class ListingPageNavigation extends React.Component {
   render() {
     return (
       <div className="flexbox categorySelect centerDiv">
-        <select 
-          selected="Select new category"
-          className="form-control" 
-          onChange={this.props.changeCategory}>
-          {
-            this.props.categories.map(function(category) {
-              return <option key={category} value={category}>{category}</option>
-            })
-          }
-        </select>
-
         <button className="margin10 btn btn-success btn-sm" onClick={this.toggleModal.bind(this)}>
           Add New Listing
         </button>
         <CustomModal 
+          currentCategory={this.props.currentCategory} 
           newListing={this.props.newListing} 
           showAddListingModal={this.state.showAddListingModal}
           toggleModal={this.toggleModal.bind(this)} 
@@ -44,3 +34,14 @@ export default class ListingPageNavigation extends React.Component {
     )
   }
 }
+
+        // <select 
+        //   selected="Select new category"
+        //   className="form-control" 
+        //   onChange={this.props.changeCategory}>
+        //   {
+        //     this.props.categories.map(function(category) {
+        //       return <option key={category} value={category}>{category}</option>
+        //     })
+        //   }
+        // </select>

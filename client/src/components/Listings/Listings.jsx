@@ -11,7 +11,7 @@ export default class Listings extends React.Component {
       color: {backgroundColor: 'transparent'},
       isListingHovered: null,
       listingsInView: [],
-      category: 'CategoryName',
+      currentCategory: this.props.currentCategory,
       newListing: {
         name: '',
         description: '',
@@ -26,7 +26,7 @@ export default class Listings extends React.Component {
         clusterCtr: 0
       },
       categories: this.props.categories,
-      listings: [{'id': 0}],
+      listings: [],
       defaultCenter: {lat: 37.6547, lng: -122.4194}
     }
   }
@@ -52,7 +52,6 @@ export default class Listings extends React.Component {
     });
   }
 
-  
   addListing(newListing) {
     var updatedListings = this.state.listings;
     updatedListings.push(JSON.parse(JSON.stringify(newListing)));
@@ -104,7 +103,7 @@ export default class Listings extends React.Component {
           </h3>
 
           <ListingPageNavigation 
-            categories={this.props.categories} 
+            currentCategory={this.props.currentCategory} 
             newListing={this.state.newListing} 
             changeCategory={this.changeCategory.bind(this)} 
             handleChange={this.handleChange.bind(this)}
@@ -113,7 +112,7 @@ export default class Listings extends React.Component {
             addListing={this.addListing.bind(this)}
           />
 
-          <ListingsTable listings={this.state.listings} 
+          <ListingsTable listings={this.props.listings} 
             listingsInView={this.state.listingsInView}
             onListingScroll={this.onListingScroll.bind(this)}
             onListingEnter={this.onListingEnter.bind(this)}
@@ -126,7 +125,7 @@ export default class Listings extends React.Component {
         <div className="mapContainer flexbox flexbox-column">
           <MapComponent 
             listingsInView={this.state.listingsInView}
-            listings={this.state.listings}
+            listings={this.props.listings}
             defaultCenter={this.state.defaultCenter}
             onMapPinEnter={this.onMapPinEnter.bind(this)}
             onMapPinLeave={this.onMapPinLeave.bind(this)}

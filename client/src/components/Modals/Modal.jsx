@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import AddListingForm from './AddListingForm.jsx';
-import { ajaxJSON } from '../../utils/utils';
+import { ajaxJSON } from '../../utils/utils.js';
 
 export default class CustomModal extends React.Component {
   constructor(props) {
@@ -9,6 +9,12 @@ export default class CustomModal extends React.Component {
   }
 
   postData() {
+    var newListing = this.props.newListing;
+    console.log('this.props.currentCategory is', this.props.currentCategory);
+    console.log('this.props.newListing is', this.props.newListing);
+    newListing['categoryId'] = this.props.currentCategory['id'];
+    console.log('newListing is now', newListing);
+
     ajaxJSON('/listings', 'POST', JSON.stringify(this.props.newListing))
     .done(this.props.getListings)
     .done(this.props.toggleModal)
