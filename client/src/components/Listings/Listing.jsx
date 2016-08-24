@@ -3,9 +3,6 @@ import React from 'react';
 export default class ListingTable extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-
-    }
   }
 
   render() {
