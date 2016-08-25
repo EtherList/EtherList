@@ -8,6 +8,10 @@ import PrivateProfile from './PrivateProfile.jsx';
 export default class UserProfile extends React.Component{
   constructor(props) {
     super(props);
+
+    this.state = {
+      showModal: false
+    }
   }
 
   componentWillMount() {
@@ -42,11 +46,18 @@ export default class UserProfile extends React.Component{
     });
   }
 
+  toggleModal() {
+    console.log('you win');
+    this.setState({
+      showModal: !this.state.showModal
+    });
+  }
+
   render() {
     return (
       <div>
         <PublicProfile myProfile={this.props.profile}/>
-        <PrivateProfile listings={this.props.listings}/>
+        <PrivateProfile showModal={this.state.showModal} toggleModal={this.toggleModal.bind(this)} listings={this.props.listings}/>
       </div>
     )
   }

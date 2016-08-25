@@ -1,4 +1,5 @@
 import React from 'react';
+import EditListingModal from '../Modals/EditListingModal.jsx';
 
 const ProfileListingsTable = (props) => (
     <div className="listingBox">
@@ -12,13 +13,14 @@ const ProfileListingsTable = (props) => (
 
       <div className="flexbox">
         {(props.entries || []).map(entry =>
-          <TableEntry entry={entry}/>)}
+          <TableEntry key={entry.id} entry={entry} toggleModal={props.toggleModal}/>)}
       </div>
+      <EditListingModal showModal={props.showModal}/>
     </div>
 );
 
 let TableEntry = (props) => (
-  <div className="flex-container">
+  <div className="flex-container" onClick={() => props.toggleModal()}>
     <div className="flex-item">Name: {props.entry.name}</div>
     <div className="flex-item">Description: {props.entryDescription}</div>
     <div className="flex-item">Price: {props.entryPrice}</div>
