@@ -17,6 +17,7 @@ export default class PageLayout extends React.Component {
         <div className="flexbox">
           {this.props.children}
         </div>
+
         <Foot />
       </div>
     );
