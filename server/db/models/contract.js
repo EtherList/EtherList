@@ -24,8 +24,13 @@ let Contract = db.define('contract', {
     allowNull: true
   },
 
-  sellerComments: {
-    type: Sequelize.STRING,
+  buyerId: {
+    type: Sequelize.INTEGER,
+    allowNull: true
+  },
+
+  sellerId: {
+    type: Sequelize.INTEGER,
     allowNull: true
   }
 });
