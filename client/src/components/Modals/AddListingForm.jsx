@@ -2,7 +2,6 @@ import React from 'react';
 import { DateField } from 'react-date-picker';
 import GoogleMap from 'google-map-react';
 import MapPin from '../Maps/MapPin.jsx';
-import $ from 'jquery';
 import Promise from 'bluebird';
 import apiKeys from '../../../../keyStorage.js';
 
@@ -18,15 +17,8 @@ export default class AddListingForm extends React.Component {
   }
 
   componentDidMount() {
-    this.toggleMapHeight();
     var input = document.getElementById("modalMapSearchBox");
     this.autoCompleteBox = new google.maps.places.Autocomplete(input, {geocode: true});
-  }
-
-  // TODO: Use CSS to dynamically generate height of container div
-  // Do not forget to take out the import $ after done
-  toggleMapHeight() {
-    $('#modalMapContainer').height(250);
   }
 
   //TODO: the setTimeout is to allow the autoCompleteBox to update

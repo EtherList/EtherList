@@ -31,7 +31,6 @@
     "express": "^4.14.0",
     "express-session": "^1.14.0",
     "google-map-react": "^0.16.3",
-    "jquery": "^3.1.0",
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",

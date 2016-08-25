@@ -37,7 +37,7 @@ export default class CustomModal extends React.Component {
         <Modal.Body>
           Add your listing here:
           <AddListingForm handleChange={this.props.handleChange} 
-            newListing={this.props.newListing}
+            newListing={this.props.newListing} showAddListingModal={this.props.showAddListingModal}
           />
         </Modal.Body>
 
