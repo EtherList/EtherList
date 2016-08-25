@@ -9,8 +9,9 @@ export default class Listings extends React.Component {
     super(props);
     this.state = {
       color: {backgroundColor: 'transparent'},
-      isListingHovered: null,
-      showModal: false,
+      isListingHovered: [],
+      listingsInView: [],
+      currentCategory: this.props.currentCategory,
       newListing: {
         name: '',
         description: '',
@@ -21,10 +22,12 @@ export default class Listings extends React.Component {
         terms: '',
         lat: '',
         lng: '',
-        hovered: false
+        hovered: false,
+        clusterCtr: 0,
+        userId: ''
       },
       categories: this.props.categories,
-      listings: [{'id': 0}],
+      listings: [],
       defaultCenter: {lat: 37.6547, lng: -122.4194}
     }
   }
@@ -50,7 +53,6 @@ export default class Listings extends React.Component {
     });
   }
 
-  
   addListing(newListing) {
     var updatedListings = this.state.listings;
     updatedListings.push(JSON.parse(JSON.stringify(newListing)));
@@ -60,10 +62,6 @@ export default class Listings extends React.Component {
   changeCategory(e) {
     var categoryName = e.target.value;
     this.props.onSelectCategory(categoryName);
-  }
-
-  toggleModal() {
-    this.setState({showModal: !this.state.showModal});
   }
 
   handleChange(e) {
@@ -76,20 +74,32 @@ export default class Listings extends React.Component {
     }
   }
 
-  onMapPinEnter(index, listing) {
-    this.setState({isListingHovered: listing.listing});
+  onMapPinEnter(index, mapPin) {
+    this.setState({isListingHovered: mapPin.cluster});
   }
 
   onMapPinLeave(index, listing) {
-    this.setState({isListingHovered: null});
+    this.setState({isListingHovered: []});
   }
 
   onListingEnter(e) {
-    this.setState({isListingHovered: this.props.listings[e.target.id]});
+    if (e.target.id) {
+      this.setState({isListingHovered: [this.props.listings[e.target.id]]});
+    } else {
+      this.setState({isListingHovered: [this.props.listings[e.target.parentElement.id]]});
+    }
   }
 
   onListingLeave(index, listing) {
-    this.setState({isListingHovered: null});
+    this.setState({isListingHovered: []});
+  }
+
+  onListingScroll(listingsInView) {
+    this.setState({listingsInView: listingsInView})
+  }
+
+  onListingScroll(listingsInView) {
+    this.setState({listingsInView: listingsInView})
   }
 
   render() {
@@ -102,11 +112,10 @@ export default class Listings extends React.Component {
           </h3>
 
           <ListingPageNavigation 
-            categories={this.props.categories} 
+            currentCategory={this.props.currentCategory} 
+            userId={this.props.user}
             newListing={this.state.newListing} 
-            showModal={this.state.showModal}
             changeCategory={this.changeCategory.bind(this)} 
-            toggleModal={this.toggleModal.bind(this)}
             handleChange={this.handleChange.bind(this)}
             resetNewListing={this.resetNewListing.bind(this)}
             getListings={this.getListings.bind(this)}
@@ -114,6 +123,8 @@ export default class Listings extends React.Component {
           />
 
           <ListingsTable listings={this.props.listings} 
+            listingsInView={this.state.listingsInView}
+            onListingScroll={this.onListingScroll.bind(this)}
             onListingEnter={this.onListingEnter.bind(this)}
             onListingLeave={this.onListingLeave.bind(this)}
             isListingHovered={this.state.isListingHovered}
@@ -123,6 +134,7 @@ export default class Listings extends React.Component {
 
         <div className="mapContainer flexbox flexbox-column">
           <MapComponent 
+            listingsInView={this.state.listingsInView}
             listings={this.props.listings}
             defaultCenter={this.state.defaultCenter}
             onMapPinEnter={this.onMapPinEnter.bind(this)}

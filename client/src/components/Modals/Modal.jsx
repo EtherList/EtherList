@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import AddListingForm from './AddListingForm.jsx';
-import { ajaxJSON } from '../../utils/utils';
+import { ajaxJSON } from '../../utils/utils.js';
 
 export default class CustomModal extends React.Component {
   constructor(props) {
@@ -9,7 +9,11 @@ export default class CustomModal extends React.Component {
   }
 
   postData() {
-    ajaxJSON('/listings', 'POST', JSON.stringify(this.props.newListing))
+    var newListing = JSON.parse(JSON.stringify(this.props.newListing));
+    newListing['categoryId'] = this.props.currentCategory['id'];
+    newListing['userId'] = this.props.userId['id'];
+
+    ajaxJSON('/listings', 'POST', JSON.stringify(newListing))
     .done(this.props.getListings)
     .done(this.props.toggleModal)
     .fail(e => console.log('post failed, error is', e));
@@ -18,7 +22,7 @@ export default class CustomModal extends React.Component {
   render() {
     return (
       <Modal
-        show={this.props.showModal}
+        show={this.props.showAddListingModal}
         onEnter={this.toggleMapHeight}
         onHide={this.props.toggleModal}
         container={this}

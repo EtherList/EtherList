@@ -11,8 +11,7 @@ export default class MapPin extends React.Component {
         className="mapPin"
         key={this.props.key}
         style={this.props.myStyle}
-      >
-
+      >{this.props.text}
       </div>
     )
   }

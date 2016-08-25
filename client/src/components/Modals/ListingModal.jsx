@@ -1,51 +1,61 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
-import Listing from '../Listings/Listing.jsx';
+import ViewListing from './ViewListing.jsx';
+// import ViewListingModal from '../Modals/ViewListingModal.jsx';
+import { ajaxJSON } from '../../utils/utils.js';
 
-export default class ListingModal extends React.Component {
+
+export default class CustomModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: false
+      terms: '',
+    }
+  }
+
+  expressBuyerInterest() {
+    var nonCircularListing = this.props.clickedListing;
+    delete nonCircularListing['cluster'];
+    var postObj = {
+      listing_id: this.props.clickedListing.id, 
+      terms: this.state.terms, 
+      listing: nonCircularListing
     };
+    console.log('postObj is', postObj);
+    
+    ajaxJSON('/contracts', 'POST', JSON.stringify(postObj))
+    .done(this.props.getListings)
+    .done(this.props.toggleModal)
+    .fail(e => {
+      console.log('post failed, error is', e);
+      this.props.toggleModal();
+    });
   }
 
-  toggleModal() {
-    this.props.toggleModal();
-    console.log(this.props);
+  handleTermsChange(e) {
+    this.setState({terms: e.target.value});
   }
-
-
 
   render() {
-
     return (
-      <div>
-      <Modal id='ListingModal' show={this.props.showModal} onHide={this.props.toggleModal.bind(this)}>
-      <Modal.Header closeButton>
-      <Modal.Title>
-      {this.props.name}
-      </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-      <div>
-      <Listing />
-      </div>
-      <div>
-      <Button className="btn btn-success" onClick={this.toggleModal.bind(this)}>
-      Sign the contract
-      </Button>
-      <Button className="btn btn-danger" onClick={this.toggleModal.bind(this)}>
-      Cancel
-      </Button>
-      </div>
-      </Modal.Body>
-      <Modal.Footer>
-      </Modal.Footer>
-      </Modal>
-      </div>
-      );
-  }
-  
-};
+      <Modal show={this.props.showViewListingModal} onHide={this.props.toggleModal}
+        container={this} aria-labelledby="contained-modal-title"
+      >
+        
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title">View Listing</Modal.Title>
+        </Modal.Header>
 
+        <Modal.Body>
+          View listing details:
+          <ViewListing handleChange={this.props.handleChange} clickedListing={this.props.clickedListing} handleTermsChange={this.handleTermsChange.bind(this)}/>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button className="btn btn-success" onClick={this.expressBuyerInterest.bind(this)}>Contact Seller</Button>
+          <Button className="btn btn-danger" onClick={this.props.toggleModal}>Cancel</Button>
+        </Modal.Footer>
+      </Modal>
+    )
+  }
+}

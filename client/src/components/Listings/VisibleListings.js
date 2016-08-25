@@ -7,7 +7,8 @@ const mapStateToProps = (state) => {
   return {
     listings: state.listings.listings.filter(state.listings.visibilityFilter),
     categories: state.categories.categories,
-    currentCategory: state.categories.currentCategory
+    currentCategory: state.categories.currentCategory,
+    user: state.auth.user
   };
 };
 

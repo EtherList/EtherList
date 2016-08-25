@@ -8,6 +8,7 @@ const utils = require('./config/utils');
 const auth = require('./controllers/auth.controller');
 const categories = require('./controllers/categories.controller');
 const listings = require('./controllers/listings.controller');
+const contracts = require('./controllers/contracts.controller');
 
 let app = express();
 
@@ -25,6 +26,7 @@ app.use(session({
 auth.loadController(app);
 categories.loadController(app);
 listings.loadController(app);
+contracts.loadController(app);
 app.use(express.static(__dirname + '/../client/public'));
 
 module.exports = app;
