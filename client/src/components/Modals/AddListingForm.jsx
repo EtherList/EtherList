@@ -54,7 +54,7 @@ export default class AddListingForm extends React.Component {
       : <MapPin 
           lat={this.state.center.lat} 
           lng={this.state.center.lng} 
-          key={1} text={'pin'} 
+          key={1} text={''} 
         />;
 
     return (

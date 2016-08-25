@@ -30,6 +30,11 @@ export default class ListingPageNavigation extends React.Component {
           resetNewListing={this.props.resetNewListing}
           getListings={this.props.getListings}
           addListing={this.props.addListing}
+          updateClusters={this.props.updateClusters}
+          groupClusters={this.props.groupClusters}
+          showListingsInView={this.props.showListingsInView}
+          listings={this.props.listings}
+          mapPins={this.props.mapPins}
         />
       </div>
     )

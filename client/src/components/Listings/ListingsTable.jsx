@@ -8,36 +8,14 @@ export default class ListingTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      listingsInView: [],
+      listingsInView: this.props.listingsInView,
       showViewListingModal: false,
       clickedListing: {}
     }
   }
 
   componentDidMount() {
-    setTimeout(this.showListingsInView.bind(this), 1000);
-  }
-
-  showListingsInView() {
-    var context = this;
-    var listingItems = document.getElementsByClassName('listingItem');
-
-    var scrollViewHeight = document.getElementById('scrollDiv').offsetHeight;
-    var scrollViewTop = document.getElementById('scrollDiv').getBoundingClientRect().top;
-    var scrollViewBottom = scrollViewTop + scrollViewHeight;
-    var listingsInView = [];
-
-    for (var i = 0; i < listingItems.length; i++) {
-      var height = document.getElementById(listingItems[i].id).offsetHeight;
-      var top = document.getElementById(listingItems[i].id).getBoundingClientRect().top;
-      var thisListing = context.props.listings[listingItems[i].id];
-
-      if (top > (scrollViewTop - height * 4/5) && top < (scrollViewBottom - height * 1/5)) {
-        listingsInView.push(thisListing);
-      }
-    };
-
-    context.props.onListingScroll(listingsInView);
+    setTimeout(this.props.showListingsInView.bind(this), 1000);
   }
 
   onListingClick(e) {
@@ -64,7 +42,6 @@ export default class ListingTable extends React.Component {
     var onListingClick = this.onListingClick.bind(this);
 
     return ( 
-
       <div className="flexbox">
         <div className="flexbox" style={{height: 'auto'}}>
           <div className="flex-container" style={{backgroundColor: '#888888'}}>
@@ -75,7 +52,7 @@ export default class ListingTable extends React.Component {
             <div className="flex-item">Price</div>
           </div>
         </div>
-        <div className="scroll scrollableDiv" id="scrollDiv" onScroll={this.showListingsInView.bind(this)} style={{overflowY: 'scroll', zIndex: 2}}>
+        <div className="scroll scrollableDiv" id="scrollDiv" onScroll={this.props.showListingsInView} style={{overflowY: 'scroll', zIndex: 2}}>
           {this.props.listings.map(function(listing, index) {
             return <Listing key={index} listing={listing} index={index} hovered={onHover} onListingEnter={onListingEnter}
               onListingLeave={onListingLeave} onListingClick={onListingClick}
@@ -83,6 +60,7 @@ export default class ListingTable extends React.Component {
           })}
         </div>
         <ListingModal 
+          userId={this.props.userId}
           showViewListingModal={this.state.showViewListingModal}
           toggleModal={this.toggleModal.bind(this)} 
           clickedListing={this.state.clickedListing}
