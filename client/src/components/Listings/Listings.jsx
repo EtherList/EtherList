@@ -41,7 +41,6 @@ export default class Listings extends React.Component {
 
   updateClusters() {
     var newMapPins = {};
-    console.log('listings from updateClusters is', this.props.listings);
 
     this.props.listings.forEach((listing, index) => {
       var newPin = {id: 0, value: 0, lat: 0, lng: 0, cluster: []};
@@ -92,7 +91,6 @@ export default class Listings extends React.Component {
       mapPinsArray.push(mapPins[key]);
     }
     this.setState({mapPinsArray: mapPinsArray});
-    console.log('mapPinsArray is now', mapPinsArray);
   }
 
   showListingsInView() {

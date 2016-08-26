@@ -12,7 +12,6 @@ export default class CustomModal extends React.Component {
   postData() {
     var newListing = JSON.parse(JSON.stringify(this.props.newListing));
     newListing['categoryId'] = this.props.currentCategory['id'];
-    console.log('this.props.user is', this.props.user);
     newListing['userId'] = this.props.userId['id'];
 
     fetch('/listings', {credentials: 'same-origin', method: 'post', 

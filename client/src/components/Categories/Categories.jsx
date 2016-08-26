@@ -30,7 +30,6 @@ export default class Categories extends React.Component {
       //   //TODO: fix the grabbed size (too big)
       let width = document.getElementById('dashboard').getBoundingClientRect().width;
       let height = document.getElementById('dashboard').getBoundingClientRect().height;
-      console.log(width, height);
       this.props.onReceive(this.props.categories, generateCoords(this.props.categories.length + 1, width, height));
     }
 

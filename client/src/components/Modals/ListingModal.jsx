@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import ViewListing from './ViewListing.jsx';
-// import Utils from '../../utils/Utils.jsx';
 
 export default class CustomModal extends React.Component {
   constructor(props) {
