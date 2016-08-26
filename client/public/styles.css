@@ -115,7 +115,8 @@ div.flexbox div.flex-container:nth-of-type(odd) {
 }
 
 #modalMapContainer {
-  margin-top: 10px;
+  margin-top: 10px;  
+  height: 250px;
 }
 
 .pac-container {

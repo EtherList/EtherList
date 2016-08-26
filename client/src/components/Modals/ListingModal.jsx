@@ -1,9 +1,6 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import ViewListing from './ViewListing.jsx';
-// import ViewListingModal from '../Modals/ViewListingModal.jsx';
-import { ajaxJSON } from '../../utils/utils.js';
-
 
 export default class CustomModal extends React.Component {
   constructor(props) {
@@ -19,18 +16,27 @@ export default class CustomModal extends React.Component {
     var postObj = {
       listing_id: this.props.clickedListing.id, 
       terms: this.state.terms, 
-      listing: nonCircularListing
+      listing: nonCircularListing,
+      buyerId: this.props.userId['id'],
+      sellerId: this.props.clickedListing.userId
     };
-    console.log('postObj is', postObj);
-    
-    ajaxJSON('/contracts', 'POST', JSON.stringify(postObj))
-    .done(this.props.getListings)
-    .done(this.props.toggleModal)
-    .fail(e => {
-      console.log('post failed, error is', e);
-      this.props.toggleModal();
+
+    fetch('/contracts', {credentials: 'same-origin', method: 'post', 
+      headers: {'Accept': 'application/json', 'Content-Type': 'application/json'}, 
+      body: JSON.stringify(postObj)})
+    .then((response) => {
+      if(response.status !== 200) {
+        console.log('err in then');
+      } else {
+        return response.json()
+        .then((jsonResponse) => console.log('successfully posted', jsonResponse))
+        .then(this.props.toggleModal)
+      }
+    }).catch((err) => {
+      console.error('err in catch is', err);
     });
   }
+
 
   handleTermsChange(e) {
     this.setState({terms: e.target.value});

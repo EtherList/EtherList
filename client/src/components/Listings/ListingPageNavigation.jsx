@@ -30,19 +30,13 @@ export default class ListingPageNavigation extends React.Component {
           resetNewListing={this.props.resetNewListing}
           getListings={this.props.getListings}
           addListing={this.props.addListing}
+          updateClusters={this.props.updateClusters}
+          groupClusters={this.props.groupClusters}
+          showListingsInView={this.props.showListingsInView}
+          listings={this.props.listings}
+          mapPins={this.props.mapPins}
         />
       </div>
     )
   }
 }
-
-        // <select 
-        //   selected="Select new category"
-        //   className="form-control" 
-        //   onChange={this.props.changeCategory}>
-        //   {
-        //     this.props.categories.map(function(category) {
-        //       return <option key={category} value={category}>{category}</option>
-        //     })
-        //   }
-        // </select>

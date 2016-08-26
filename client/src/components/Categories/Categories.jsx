@@ -30,7 +30,6 @@ export default class Categories extends React.Component {
       //   //TODO: fix the grabbed size (too big)
       let width = document.getElementById('dashboard').getBoundingClientRect().width;
       let height = document.getElementById('dashboard').getBoundingClientRect().height;
-      console.log(width, height);
       this.props.onReceive(this.props.categories, generateCoords(this.props.categories.length + 1, width, height));
     }
 
@@ -47,7 +46,9 @@ export default class Categories extends React.Component {
       //TODO: fix outerDivStyle and pageStyle to allow dynamic resizing
         return (
           <div id="dashboard" style={pageStyle}>
-            <Search onSearch={this.props.onClearFilter} />
+            <div className="col-xs-offset-5">
+              <Search onSearch={this.props.onClearFilter} />
+            </div>
               <svg style={outerDivStyle}>
                 {this.props.categories.map((category) => {
                   return (

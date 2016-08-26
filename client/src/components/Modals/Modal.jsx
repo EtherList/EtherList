@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import AddListingForm from './AddListingForm.jsx';
-import { ajaxJSON } from '../../utils/utils.js';
+import { store } from '../../redux/store';
+import { fetchListings } from '../../utils/utils';
 
 export default class CustomModal extends React.Component {
   constructor(props) {
@@ -13,10 +14,23 @@ export default class CustomModal extends React.Component {
     newListing['categoryId'] = this.props.currentCategory['id'];
     newListing['userId'] = this.props.userId['id'];
 
-    ajaxJSON('/listings', 'POST', JSON.stringify(newListing))
-    .done(this.props.getListings)
-    .done(this.props.toggleModal)
-    .fail(e => console.log('post failed, error is', e));
+    fetch('/listings', {credentials: 'same-origin', method: 'post', 
+      headers: {'Accept': 'application/json', 'Content-Type': 'application/json'}, 
+      body: JSON.stringify(newListing)})
+    .then((response) => {
+      if(response.status !== 200) {
+        console.log('err in then');
+      } else {
+        return response.json()
+        .then(() => fetchListings(store))
+        .then(this.props.toggleModal)
+        .then(this.props.resetNewListing)
+        .then(setTimeout(this.props.updateClusters, 750))
+        .then(this.props.showListingsInView)
+      }
+    }).catch((err) => {
+      console.error('err in catch is', err);
+    });
   }
 
   render() {
@@ -37,7 +51,7 @@ export default class CustomModal extends React.Component {
         <Modal.Body>
           Add your listing here:
           <AddListingForm handleChange={this.props.handleChange} 
-            newListing={this.props.newListing}
+            newListing={this.props.newListing} showAddListingModal={this.props.showAddListingModal}
           />
         </Modal.Body>
 

@@ -7,10 +7,8 @@ function getContracts(req, res) {
 }
 
 function createContract(req, res) {
-  var vals = {buyerExpressedInterest: true, terms: req.body.terms, listingId: req.body.listing_id};
-  var options = {fields: ['buyerExpressedInterest', 'terms']};
-  console.log('\n\n\nreq.body from contracts post model is', req.body,'\n\n\n')
-
+  var vals = {buyerComments: req.body.terms, listingId: req.body.listing_id, buyerId: req.body.buyerId, sellerId: req.body.sellerId};
+  var options = {fields: ['buyerComments', 'listingId', 'buyerId', 'sellerId']};
   res.handlePromise(Contract.create(vals, options));
 }
 
