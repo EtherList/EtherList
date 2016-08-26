@@ -5,7 +5,7 @@ export default class EditListingModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      interestedBuyers: [1, 2, 3, 4, 5],
+      interestedBuyers: [],
       clickedItem: this.props.currentListing
     }
   }
