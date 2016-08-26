@@ -8,7 +8,7 @@ const PublicProfile = (props) => (
     <div>
       <img src={props.myProfile.imageURL} style={userpicStyle}/>
     </div>
-    <div style={userProfileStyle}>
+    <div>
       <p>name: {props.myProfile.name}</p>
       {/* TODO : only use wallet from DB, or let web3 provider plug in? */}
       <p>reputation: <Reputation wallet={props.myProfile.wallet}/> </p>
