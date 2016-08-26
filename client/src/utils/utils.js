@@ -31,17 +31,17 @@ export function fetchListings(store, keyword) {
   });
 };
 
-export function fetchContracts(store, keyword) {
-  fetch(`/contracts${keyword ? '?q=' + keyword : ''}`).then((response) => {
-    if(response.status !== 200) {
+export function fetchContracts(store, userId) {
+    fetch(`/contracts${userId ? '?q=' + userId : ''}`).then((response) => {
+      if(response.status !== 200) {
+        store.dispatch({type: 'etherlist/contracts/FAIL', error});
+      } else {
+        return response.json().then((contracts) => {
+          store.dispatch({type: 'etherlist/contracts/RECEIVE', contracts});
+        }); 
+      }
+    }).catch((err) => {
+      console.error(err);
       store.dispatch({type: 'etherlist/contracts/FAIL', error});
-    } else {
-      return response.json().then((contracts) => {
-        store.dispatch({type: 'etherlist/contracts/RECEIVE', contracts});
-      }); 
-    }
-  }).catch((err) => {
-    console.error(err);
-    store.dispatch({type: 'etherlist/contracts/FAIL', error: err});
-  });
-};
+    });
+  };
