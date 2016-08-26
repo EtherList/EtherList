@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import AddListingForm from './AddListingForm.jsx';
+import { store } from '../../redux/store';
+import { fetchListings } from '../../utils/utils';
 
 export default class CustomModal extends React.Component {
   constructor(props) {
@@ -21,7 +23,7 @@ export default class CustomModal extends React.Component {
         console.log('err in then');
       } else {
         return response.json()
-        .then(this.props.getListings)
+        .then(() => fetchListings(store))
         .then(this.props.toggleModal)
         .then(this.props.resetNewListing)
         .then(setTimeout(this.props.updateClusters, 750))
