@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { fetchListings } from '../../utils/utils';
 import { store } from '../../redux/store';
+import { globalSearchStyle } from '../../utils/customStyle.js';
 
 export default class Search extends React.Component {
   constructor(props) {
@@ -32,11 +33,11 @@ export default class Search extends React.Component {
 
   render() {
     return (
-      <div id='search'>
+      <div id='search' style={globalSearchStyle}>
       <form onSubmit={this.search.bind(this)}>
       <input type="text" maxLength='100' value={this.state.keyword} onChange={this.onChange.bind(this)}>
       </input>
-      <Button bsStyle='primary' onClick={this.search.bind(this)}>Search</Button>
+      <Button bsStyle='primary' bsSize="small" onClick={this.search.bind(this)}>Search</Button>
       </form>
       </div>
       )
