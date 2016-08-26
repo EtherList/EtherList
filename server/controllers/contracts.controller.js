@@ -1,9 +1,17 @@
 const express = require('express');
 const Contract = require('../db/models/contract');
-const utils = require('../config/utils.js')
 
 function getContracts(req, res) {
-  console.log('build out functionality');
+  let where = {};
+  if (req.query.userId) {
+    where.userId = req.query.userId;
+  }
+
+  if (req.query.listingId) {
+    where.listingId = req.query.listingId;
+  }
+
+  res.handlePromise(Listing.findAll({ where }));
 }
 
 function createContract(req, res) {

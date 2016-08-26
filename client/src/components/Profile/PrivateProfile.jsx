@@ -1,5 +1,6 @@
 import React from 'react';
 import ProfileListingsTable from '../Listings/ProfileListingsTable';
+import ContractsListingsTable from '../Listings/ContractsListingsTable';
 import ProfileContractsTable from '../Listings/ProfileContractsTable';
 import { Tab, Tabs } from 'react-bootstrap';
 
