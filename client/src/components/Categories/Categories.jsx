@@ -34,7 +34,6 @@ export default class Categories extends React.Component {
     }
 
     componentDidMount() {
-      this.props.onSelect({});
       this.fetchCategories();
       window.addEventListener('resize', this.handleWindowResize.bind(this), false);
     }

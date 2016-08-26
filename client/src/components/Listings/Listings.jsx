@@ -31,8 +31,15 @@ export default class Listings extends React.Component {
       categories: this.props.categories,
       defaultCenter: {lat: 37.6547, lng: -122.4194},
       mapPins: {lat: 0, lng: 0},
-      mapPinsArray: []
+      mapPinsArray: [],
+      zoom: 9,
+      defaultZoom: 9
     }
+  }
+
+  updateZoom(newZoom) {
+    this.setState({zoom: newZoom});
+    this.updateClusters();
   }
 
   componentDidMount() {
@@ -61,6 +68,8 @@ export default class Listings extends React.Component {
   groupClusters() {
     var mapPins = this.state.mapPins;
     var anyClusters = false;
+    var radius = (1 / Math.pow(this.state.zoom, 3)) * 100;
+
 
     for (var key1 in mapPins) {
       for (var key2 in mapPins) {
@@ -70,7 +79,7 @@ export default class Listings extends React.Component {
         );
 
         //TODO: replace '1' with a pixel size or a dynamically calculated distance based on zoom level
-        if (distance < 0.1 && key1 !== key2) { 
+        if (distance < radius && key1 !== key2) { 
           anyClusters = true;
 
           mapPins[key1]['value']++;
@@ -216,6 +225,9 @@ export default class Listings extends React.Component {
             onMapPinEnter={this.onMapPinEnter.bind(this)}
             onMapPinLeave={this.onMapPinLeave.bind(this)}
             isListingHovered={this.state.isListingHovered}
+            zoom={this.state.zoom}
+            defaultZoom={this.state.defaultZoom}
+            updateZoom={this.updateZoom.bind(this)}
           />
         </div>
 
