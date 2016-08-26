@@ -12,7 +12,7 @@ export default class PrivateProfile extends React.Component {
       <div>
         <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
           <Tab eventKey={1} title="My Listings"><ProfileListingsTable entries={this.props.listings} /></Tab>
-          <Tab eventKey={2} title="My Contracts">My Contracts Info Goes Here</Tab>
+          <Tab eventKey={2} title="My Contracts"><ProfileContractsTable contracts={['one', 'two', 'three', 'four', 'five']}/></Tab>
         </Tabs>
       </div>
     )
