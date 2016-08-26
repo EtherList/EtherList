@@ -1,13 +1,14 @@
-export const screenWidth = window.screen.width;
-export const screenHeight = window.screen.height;
+export const screenWidth = window.screen.width - 350;
+export const screenHeight = window.screen.height - 200;
 
 export const baseSize = 100;
 
 export const pageStyle = {
   backgroundImage: 'url(http://orig03.deviantart.net/b575/f/2012/083/7/f/blurry_lights_by_empegz-d4tu18a.jpg)',
-  opacity: 0.5,
+  opacity: 0.7,
   backgroundSize: 'cover',
-  backgroundRepeat: 'no-repeat'
+  backgroundRepeat: 'no-repeat',
+  verticalAlign: 'middle'
 };
 
 export const categoryStyle = {
@@ -33,12 +34,8 @@ export const outerDivStyle = {
 };
 
 export const userProfileStyle = {
-  width: screenWidth,
-  height: screenHeight,
-  float: 'right',
   fontSize: 16,
-  textAlign: 'center',
-  margin: 20
+  margin: 40
 };
 
 export const userpicStyle = {
@@ -59,6 +56,10 @@ export const listingPicStyle = {
 
 export const navbarMargin = {
   marginBottom: 1
+};
+
+export const globalSearchStyle = {
+  margin: '0 auto'
 };
 
 //52 pre-selected cool colors for categories

@@ -28,12 +28,13 @@ export default class Categories extends React.Component {
 
     handleWindowResize() {
       //   //TODO: fix the grabbed size (too big)
-      let width = document.getElementById('dashboard').getBoundingClientRect().width;
-      let height = document.getElementById('dashboard').getBoundingClientRect().height;
+      let width = document.getElementById('dashboard').getBoundingClientRect().width - 200;
+      let height = document.getElementById('dashboard').getBoundingClientRect().height - 100;
       this.props.onReceive(this.props.categories, generateCoords(this.props.categories.length + 1, width, height));
     }
 
     componentDidMount() {
+      this.props.onSelect({});
       this.fetchCategories();
       window.addEventListener('resize', this.handleWindowResize.bind(this), false);
     }
