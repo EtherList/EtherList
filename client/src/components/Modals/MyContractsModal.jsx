@@ -16,7 +16,7 @@ export default class MyContractsModal extends React.Component {
 
         <Modal.Body>
           <div className="form-group">
-            <label className="control-label">Name</label>
+            <label className="control-label">Contract</label>
             <input type="text" className="form-control" name="name" value={this.props.selectedContract ? this.props.selectedContract.name : ''} />
 
             <label className="control-label">Completed</label>
