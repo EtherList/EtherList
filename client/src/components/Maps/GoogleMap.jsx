@@ -8,7 +8,6 @@ export default class MapComponent extends React.Component {
     super(props);
     this.state ={
       center: {lat: 37.5047, lng: -122.4194},
-      zoom: 9,
       listings: this.props.listings,
       mapPinsArray: this.props.mapPinsArray
     }
@@ -31,9 +30,12 @@ export default class MapComponent extends React.Component {
           libraries: 'places'
         }}
         center={this.state.center}
-        zoom={this.state.zoom}
+        defaultZoom={this.props.defaultZoom}
         onChildMouseEnter={this.props.onMapPinEnter}
         onChildMouseLeave={this.props.onMapPinLeave}
+        onChange={(onChgObj) => {
+          this.props.updateZoom(onChgObj.zoom);
+        }}
       >
         {this.props.mapPinsArray.map((listing, index) => {
             var isListingInView = false;
