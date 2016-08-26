@@ -47,7 +47,9 @@ export default class Categories extends React.Component {
       //TODO: fix outerDivStyle and pageStyle to allow dynamic resizing
         return (
           <div id="dashboard" style={pageStyle}>
-            <Search onSearch={this.props.onClearFilter} />
+            <div className="col-xs-offset-5">
+              <Search onSearch={this.props.onClearFilter} />
+            </div>
               <svg style={outerDivStyle}>
                 {this.props.categories.map((category) => {
                   return (
