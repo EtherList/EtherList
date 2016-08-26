@@ -42,7 +42,9 @@ export default class ProfileListingsTable extends React.Component {
   render() {
     return (
       <div className="listingBox">
-        <EditListingModal selectedListing={this.state.selectedListing} showModal={this.state.showModal} toggleModal={this.toggleModal.bind(this)}/>
+        <EditListingModal selectedListing={this.state.selectedListing} showModal={this.state.showModal} 
+          toggleModal={this.toggleModal.bind(this)} currentListing={this.state.selectedListing}
+        />
         <div className="listingHeader flex-container" style={this.state.myStyle}>
           <div className="flex-item">Name</div>
           <div className="flex-item">Description</div>
