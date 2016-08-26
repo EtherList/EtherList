@@ -3,6 +3,7 @@ import Category from './Category.jsx';
 import { screenWidth, screenHeight, fakeCategories, pageStyle, outerDivStyle } from '../../utils/customStyle.js';
 import { generateCoords } from '../../utils/helpers.js';
 import { Link } from 'react-router';
+import Search from '../Search/Search';
 
 
 export default class Categories extends React.Component {
@@ -39,7 +40,6 @@ export default class Categories extends React.Component {
     }
 
     componentWillUnmount() {
-      console.log('unmounting');
       window.removeEventListener('resize', this.handleWindowResize.bind(this), false);
     }
 
@@ -47,6 +47,7 @@ export default class Categories extends React.Component {
       //TODO: fix outerDivStyle and pageStyle to allow dynamic resizing
         return (
           <div id="dashboard" style={pageStyle}>
+            <Search onSearch={this.props.onClearFilter} />
               <svg style={outerDivStyle}>
                 {this.props.categories.map((category) => {
                   return (

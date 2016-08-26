@@ -2,7 +2,7 @@ const initialState = {
   isLoading: false,
   categories: [],
   coordinates: [],
-  currentCategory: null
+  currentCategory: {}
 };
 
 const FETCH = 'etherlist/categories/FETCH';

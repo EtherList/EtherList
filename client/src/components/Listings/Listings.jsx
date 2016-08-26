@@ -3,6 +3,8 @@ import ListingsTable from './ListingsTable.jsx';
 import ListingPageNavigation from './ListingPageNavigation.jsx';
 import * as actions from '../../redux/reducers/listings';
 import MapComponent from '../Maps/GoogleMap.jsx';
+import Search from '../Search/Search';
+import { fetchListings } from '../../utils/utils';
 
 export default class Listings extends React.Component {
   constructor(props) {
@@ -27,7 +29,6 @@ export default class Listings extends React.Component {
         userId: ''
       },
       categories: this.props.categories,
-      listings: [],
       defaultCenter: {lat: 37.6547, lng: -122.4194}
     }
   }
@@ -38,19 +39,7 @@ export default class Listings extends React.Component {
 
   getListings() {
     this.props.onFetch();
-    fetch('/listings').then((response) => {
-      if(response.status !== 200) {
-        this.props.onFail(err);
-      } else {
-        return response.json().then((listings) => {
-          this.props.onReceive(listings);
-          this.resetNewListing();
-        }); 
-      }
-    }).catch((err) => {
-      this.props.onFail(err);
-      console.error(err);
-    });
+    this.resetNewListing();
   }
 
   addListing(newListing) {
@@ -121,6 +110,8 @@ export default class Listings extends React.Component {
             getListings={this.getListings.bind(this)}
             addListing={this.addListing.bind(this)}
           />
+
+          <Search />
 
           <ListingsTable listings={this.props.listings} 
             listingsInView={this.state.listingsInView}

@@ -22,7 +22,9 @@ export default function reducer(state = initialState, action) {
         listings: action.listings
       });
     case LISTINGS_FAIL:
-      return state;
+      return Object.assign({}, state, {
+        error: action.error
+      });
     default:
       return state;
   }

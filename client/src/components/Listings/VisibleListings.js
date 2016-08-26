@@ -25,6 +25,9 @@ const mapDispatchToProps = function(dispatch) {
     },
     onSelectCategory: (category) => {
       dispatch(select(category))
+    },
+    onClearFilter: () => {
+      dispatch(actions.filter('none', undefined))
     }
   }
 };

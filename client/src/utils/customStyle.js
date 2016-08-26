@@ -4,10 +4,10 @@ export const screenHeight = window.screen.height;
 export const baseSize = 100;
 
 export const pageStyle = {
-   backgroundImage: 'url(http://orig03.deviantart.net/b575/f/2012/083/7/f/blurry_lights_by_empegz-d4tu18a.jpg)',
-   opacity: 0.5,
-   backgroundSize: 'cover',
-   backgroundRepeat: 'no-repeat'
+  backgroundImage: 'url(http://orig03.deviantart.net/b575/f/2012/083/7/f/blurry_lights_by_empegz-d4tu18a.jpg)',
+  opacity: 0.5,
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat'
 };
 
 export const categoryStyle = {
