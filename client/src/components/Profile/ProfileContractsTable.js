@@ -84,10 +84,10 @@ export class TableEntry extends React.Component {
       <div id={this.props.thisId} className="flex-container" style={myStyle}
         onMouseOver={this.props.onListingEnter} onMouseLeave={this.props.onListingLeave} 
         onClick={() => {this.props.toggleModal(); this.props.selectedContractData(this.props.contract);}}>
-        <div className="flex-item">Contract Name: {this.props.contract}</div>
-        <div className="flex-item">Contract Completed: {this.props.contract}</div>
-        <div className="flex-item">Buyer ID: {this.props.contract}</div>
-        <div className="flex-item">Buyer Comments: {this.props.contract}</div>
+        <div className="flex-item">Contract Name: {this.props.contract.name}</div>
+        <div className="flex-item">Contract Completed: {this.props.contract.contractCompleted}</div>
+        <div className="flex-item">Buyer ID: {this.props.contract.buyerId}</div>
+        <div className="flex-item">Buyer Comments: {this.props.contract.buyerComments}</div>
       </div>
     )
   }

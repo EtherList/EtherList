@@ -17,16 +17,16 @@ export default class MyContractsModal extends React.Component {
         <Modal.Body>
           <div className="form-group">
             <label className="control-label">Name</label>
-            <input type="text" className="form-control" name="name" value={this.props.myContract ? this.props.myContract.name : ''} />
+            <input type="text" className="form-control" name="name" value={this.props.selectedContract ? this.props.selectedContract.name : ''} />
 
             <label className="control-label">Completed</label>
-            <input className="form-control" name="completed" value={this.props.myContract ? this.props.myContract.completed : ''} ></input>
+            <input className="form-control" name="completed" value={this.props.selectedContract ? this.props.selectedContract.contractCompleted : ''} ></input>
 
               <label className="control-label">Buyer ID</label>
-              <input className="form-control" name="buyerId" value={this.props.myContract ? this.props.myContract.buyerId : ''} ></input>
+              <input className="form-control" name="buyerId" value={this.props.selectedContract ? this.props.selectedContract.buyerId : ''} ></input>
 
             <label className="control-label">Buyer Comments</label>
-            <textarea type="text" className="form-control" rows="3" name="comments" value={this.props.myContract ? this.props.myContract.comments : ''} />
+            <textarea type="text" className="form-control" rows="3" name="comments" value={this.props.selectedContract ? this.props.selectedContract.buyerComments : ''} />
           </div>
         </Modal.Body>
 

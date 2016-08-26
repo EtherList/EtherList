@@ -7,11 +7,7 @@ function getContracts(req, res) {
     where.userId = req.query.userId;
   }
 
-  if (req.query.listingId) {
-    where.listingId = req.query.listingId;
-  }
-
-  res.handlePromise(Listing.findAll({ where }));
+  res.handlePromise(Contract.findAll({ where }));
 }
 
 function createContract(req, res) {

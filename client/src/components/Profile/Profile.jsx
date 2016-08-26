@@ -26,7 +26,7 @@ export default class UserProfile extends React.Component{
         });
       }
     }).catch((err) => {
-      console.log('error');
+      console.log('error', err);
     });
   }
 
@@ -46,7 +46,7 @@ export default class UserProfile extends React.Component{
     return (
       <div>
         <PublicProfile myProfile={this.props.profile}/>
-        <PrivateProfile listings={this.props.listings}/>
+        <PrivateProfile listings={this.props.listings} contracts={this.props.contracts}/>
       </div>
     )
   }
