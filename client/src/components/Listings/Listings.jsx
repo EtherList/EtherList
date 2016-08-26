@@ -79,7 +79,6 @@ export default class Listings extends React.Component {
         );
 
         //TODO: replace '1' with a pixel size or a dynamically calculated distance based on zoom level
-        console.log('zoom is', this.state.zoom, 'and radius is', radius);
         if (distance < radius && key1 !== key2) { 
           anyClusters = true;
 
